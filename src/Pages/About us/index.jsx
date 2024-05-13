@@ -37,17 +37,17 @@ const About = () => {
           {aboutImg.map((item, index) => (
             <Stack
               key={index}
-              maxWidth={190}
+              maxWidth={170}
               maxHeight={290}
               direction="column"
               alignItems="center"
-              spacing={2}
+              spacing={1}
             >
               <Stack>
                 <img
                   style={{
                     width: "100%",
-                    height: "190px",
+                    height: "170px",
                     borderRadius: "100%",
                   }}
                   src={item.img_src}
@@ -55,8 +55,9 @@ const About = () => {
                 />
               </Stack>
               <Typography
+                pb={{ lg: 0, md: 0, sm: 0, xs: 3 }}
                 fontFamily="Playfair Display"
-                fontSize={18}
+                fontSize={{ lg: 18, md: 18, sm: 18, xs: 16 }}
                 fontWeight={500}
                 color="#3A3A3A"
                 textAlign="center"
@@ -70,7 +71,7 @@ const About = () => {
           <Typography
             color="#3A3A3A"
             fontFamily="Montserrat"
-            fontSize={18}
+            fontSize={{ lg: 18, md: 18, sm: 18, xs: 16 }}
             fontWeight={500}
           >
             Купить немецкую кухню дешевле чем в Германии — ЛЕГКО! Приезжайте
@@ -82,7 +83,7 @@ const About = () => {
           <Typography
             color="#3A3A3A"
             fontFamily="Montserrat"
-            fontSize={18}
+            fontSize={{ lg: 18, md: 18, sm: 18, xs: 16 }}
             fontWeight={500}
           >
             В салоне можно оценить новинки фабрик — партнеров, высоко
@@ -93,7 +94,7 @@ const About = () => {
           <Typography
             color="#3A3A3A"
             fontFamily="Montserrat"
-            fontSize={18}
+            fontSize={{ lg: 18, md: 18, sm: 18, xs: 16 }}
             fontWeight={500}
           >
             Цените в немецкой кухонной мебели изысканность и оригинальное
@@ -105,7 +106,7 @@ const About = () => {
         <Stack justifyContent="center" alignItems="center" mt="50px" mb="70px">
           <Stack>
             <Typography
-              fontSize={22}
+              fontSize={{ lg: 22, md: 22, sm: 20, xs: 18 }}
               fontWeight={700}
               mb="30px"
               color="#3A3A3A"
@@ -116,7 +117,7 @@ const About = () => {
             </Typography>
             <Typography
               textAlign="center"
-              fontSize={22}
+              fontSize={{ lg: 22, md: 22, sm: 20, xs: 18 }}
               fontWeight={700}
               fontFamily="Montserrat"
               color="#3A3A3A"
@@ -124,7 +125,6 @@ const About = () => {
               Скидки{" "}
               <span
                 style={{
-                  fontSize: 22,
                   fontWeight: 400,
                   fontFamily: "Montserrat",
                   color: "#858585",
@@ -135,7 +135,7 @@ const About = () => {
             </Typography>
             <Typography
               textAlign="center"
-              fontSize={22}
+              fontSize={{ lg: 22, md: 22, sm: 20, xs: 18 }}
               fontWeight={700}
               fontFamily="Montserrat"
               color="#3A3A3A"
@@ -143,7 +143,6 @@ const About = () => {
               Скидки{" "}
               <span
                 style={{
-                  fontSize: 22,
                   fontWeight: 400,
                   fontFamily: "Montserrat",
                   color: "#858585",
@@ -154,7 +153,7 @@ const About = () => {
             </Typography>
             <Typography
               textAlign="center"
-              fontSize={22}
+              fontSize={{ lg: 22, md: 22, sm: 20, xs: 18 }}
               fontWeight={700}
               fontFamily="Montserrat"
               color="#3A3A3A"
@@ -162,7 +161,6 @@ const About = () => {
               Фирменная гарантия{" "}
               <span
                 style={{
-                  fontSize: 22,
                   fontWeight: 400,
                   fontFamily: "Montserrat",
                   color: "#858585",
@@ -173,7 +171,7 @@ const About = () => {
             </Typography>
             <Typography
               textAlign="center"
-              fontSize={22}
+              fontSize={{ lg: 22, md: 22, sm: 20, xs: 18 }}
               fontWeight={700}
               fontFamily="Montserrat"
               color="#3A3A3A"
@@ -181,7 +179,6 @@ const About = () => {
               Бесплатный {" "}
               <span
                 style={{
-                  fontSize: 22,
                   fontWeight: 400,
                   fontFamily: "Montserrat",
                   color: "#858585",

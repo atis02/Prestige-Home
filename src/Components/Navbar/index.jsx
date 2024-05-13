@@ -246,7 +246,9 @@ const Navbar = () => {
             onClose={toggleMobileMenu}
             sx={{
               "& .MuiDrawer-paper": {
-                width: "100%",
+                width: "40%",
+                // borderTopLeftRadius: "100%",
+                // borderBottomLeftRadius: "100%",
               },
             }}
           >
@@ -264,7 +266,6 @@ const Navbar = () => {
                 direction="column"
                 height="35px"
                 alignItems="center"
-                s
               >
                 <Button
                   sx={{ color: "currentColor" }}
@@ -320,36 +321,6 @@ const Navbar = () => {
                       }}
                     />
                   </Button>
-                  {openDropdown && (
-                    <Stack
-                      position="absolute"
-                      top="100%"
-                      width="100%"
-                      left={-16}
-                      backgroundColor="#fff"
-                      direction="row"
-                      flexWrap="wrap"
-                      sx={{ gap: 2 }}
-                      boxShadow="0px 5px 10px 0px rgba(0,0,0,0.25)"
-                      height={230}
-                      justifyContent="start"
-                      alignItems="center"
-                      p={{
-                        lg: "5px 80px",
-                        md: "10px 60px",
-                        sm: "10px 30px",
-                        xs: "5px 10px",
-                      }}
-                    >
-                      {partnerImages.map((item, index) => (
-                        <Link key={index} target="_blank" to={item.link}>
-                          <Stack mr={4} maxWidth="145px" maxHeight={40}>
-                            <img src={item.src} alt="" />
-                          </Stack>
-                        </Link>
-                      ))}
-                    </Stack>
-                  )}
 
                   <NavLink
                     className="nav-links"
@@ -388,49 +359,7 @@ const Navbar = () => {
                       }}
                     />
                   </Button>
-                  {openDropdownServices && (
-                    <Stack
-                      position="absolute"
-                      top="100%"
-                      width="100%"
-                      left={-16}
-                      boxShadow="0px 5px 10px 0px rgba(0,0,0,0.25)"
-                      backgroundColor="#fff"
-                      direction="row"
-                      flexWrap="wrap"
-                      sx={{ gap: 2 }}
-                      height={330}
-                      justifyContent="space-around"
-                      alignItems="center"
-                      p={{
-                        lg: "5px 80px",
-                        md: "10px 60px",
-                        sm: "10px 30px",
-                        xs: "5px 10px",
-                      }}
-                    >
-                      {services.map((item) => (
-                        <Stack
-                          flexWrap="wrap"
-                          direction="row"
-                          alignItems="center"
-                          key={item.id}
-                          width={400}
-                          maxHeight={120}
-                          spacing={2}
-                        >
-                          <img
-                            style={{
-                              borderRadius: "7px",
-                            }}
-                            src={item.img_src}
-                            alt=""
-                          />
-                          <Typography>{item.title}</Typography>
-                        </Stack>
-                      ))}
-                    </Stack>
-                  )}
+
                   <NavLink className="nav-links" to="contacts">
                     Contacts
                   </NavLink>
@@ -476,45 +405,6 @@ const Navbar = () => {
                 }}
               />
             </Button>
-            <Backdrop
-              sx={{
-                backgroundColor: "transparent",
-                color: "#000",
-                zIndex: (theme) => theme.zIndex.drawer + 1,
-                width: "100%",
-                height: "100%",
-                alignItems: "start",
-                top: "10%",
-                left: -16,
-              }}
-              open={openDropdown}
-              onClick={() => setOpenDropdown(false)}
-            >
-              <Stack
-                width="100%"
-                backgroundColor="#fff"
-                direction="row"
-                flexWrap="wrap"
-                boxShadow="0px 5px 10px 0px rgba(0,0,0,0.25)"
-                height={260}
-                justifyContent="start"
-                alignItems="center"
-                p={{
-                  lg: "5px 80px",
-                  md: "10px 60px",
-                  sm: "10px 30px",
-                  xs: "5px 10px",
-                }}
-              >
-                {partnerImages.map((item, index) => (
-                  <Link key={index} target="_blank" to={item.link}>
-                    <Stack mr={4} maxWidth="145px" maxHeight={40}>
-                      <img src={item.src} alt="" />
-                    </Stack>
-                  </Link>
-                ))}
-              </Stack>
-            </Backdrop>
 
             <NavLink
               className="nav-links"
@@ -553,45 +443,101 @@ const Navbar = () => {
                 }}
               />
             </Button>
-            <Backdrop
-              sx={{
-                backgroundColor: "transparent",
-                color: "#000",
-                zIndex: (theme) => theme.zIndex.drawer + 1,
-                width: "100%",
-                height: "100%",
-                alignItems: "start",
-                top: "10%",
-                left: -16,
+
+            <NavLink className="nav-links" to="/contacts">
+              Contacts
+            </NavLink>
+          </Stack>
+          <Backdrop
+            sx={{
+              backgroundColor: "transparent",
+              color: "#000",
+              zIndex: (theme) => theme.zIndex.drawer + 1,
+              width: "100%",
+              height: "100%",
+              alignItems: "start",
+              top: { lg: "10%", md: "12%", sm: "70px", xs: "58px" },
+            }}
+            open={openDropdown}
+            onClick={() => setOpenDropdown(false)}
+          >
+            <Stack
+              width="100%"
+              backgroundColor="#fff"
+              direction="row"
+              flexWrap="wrap"
+              boxShadow="0px 5px 10px 0px rgba(0,0,0,0.25)"
+              height={{ lg: 260, md: 260, sm: 260, xs: 400 }}
+              justifyContent={{
+                lg: "start",
+                md: "start",
+                sm: "start",
+                xs: "center",
               }}
-              open={openDropdownServices}
-              onClick={() => setOpenDropdownServices(false)}
+              alignItems="center"
+              p={{
+                lg: "5px 80px",
+                md: "10px 60px",
+                sm: "10px 30px",
+                xs: "5px 10px",
+              }}
             >
-              <Stack
-                width="100%"
-                backgroundColor="#fff"
-                direction="row"
-                flexWrap="wrap"
-                boxShadow="0px 5px 10px 0px rgba(0,0,0,0.25)"
-                height={300}
-                justifyContent="start"
-                alignItems="center"
-                p={{
-                  lg: "5px 80px",
-                  md: "10px 60px",
-                  sm: "10px 30px",
-                  xs: "5px 10px",
-                }}
-              >
-                {services.map((item) => (
+              {partnerImages.map((item, index) => (
+                <Link key={index} target="_blank" to={item.link}>
+                  <Stack mr={4} maxWidth="145px" maxHeight={40}>
+                    <img src={item.src} alt="" />
+                  </Stack>
+                </Link>
+              ))}
+            </Stack>
+          </Backdrop>
+          <Backdrop
+            sx={{
+              backgroundColor: "transparent",
+              color: "#000",
+              zIndex: (theme) => theme.zIndex.drawer + 1,
+              width: "100%",
+              height: "100%",
+              alignItems: "start",
+              top: { lg: "10%", md: "12%", sm: "70px", xs: "58px" },
+            }}
+            open={openDropdownServices}
+            onClick={() => setOpenDropdownServices(false)}
+          >
+            <Stack
+              width="100%"
+              backgroundColor="#fff"
+              direction="row"
+              flexWrap="wrap"
+              boxShadow="0px 5px 10px 0px rgba(0,0,0,0.25)"
+              height={300}
+              justifyContent={{
+                lg: "start",
+                md: "start",
+                sm: "space-between",
+                xs: "space-between",
+              }}
+              alignItems="center"
+              p={{
+                lg: "5px 80px",
+                md: "10px 60px",
+                sm: "10px 30px",
+                xs: "5px 10px",
+              }}
+            >
+              {services.map((item) => (
+                <Stack
+                  flexWrap="wrap"
+                  direction="row"
+                  alignItems="center"
+                  key={item.id}
+                  width={{ lg: 400, md: 375, md: 370, xs: 350 }}
+                  maxHeight={120}
+                  spacing={2}
+                >
                   <Stack
-                    flexWrap="wrap"
-                    direction="row"
-                    alignItems="center"
-                    key={item.id}
-                    width={400}
+                    maxWidth={{ lg: 120, md: 90, sm: 70, xs: 40 }}
                     maxHeight={120}
-                    spacing={2}
                   >
                     <img
                       style={{
@@ -600,16 +546,12 @@ const Navbar = () => {
                       src={item.img_src}
                       alt=""
                     />
-                    <Typography>{item.title}</Typography>
                   </Stack>
-                ))}
-              </Stack>
-            </Backdrop>
-
-            <NavLink className="nav-links" to="/contacts">
-              Contacts
-            </NavLink>
-          </Stack>
+                  <Typography>{item.title}</Typography>
+                </Stack>
+              ))}
+            </Stack>
+          </Backdrop>
         </Stack>
       </Stack>
     </Box>
