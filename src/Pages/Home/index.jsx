@@ -27,19 +27,20 @@ import "swiper/css/navigation";
 import TabButtons from "./Components";
 import Footer from "../Footer";
 import { TypeAnimation } from "react-type-animation";
+import { Trans, useTranslation } from "react-i18next";
 
 const Home = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  const { t, i18n } = useTranslation();
   const style = {
     position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "80%",
-    height: { lg: "690px", md: "580px", sm: "480px", xs: "80%" },
+    width: { lg: "80%", md: "80%", sm: "90%", xs: "90%" },
+    height: { lg: "690px", md: "580px", sm: "480px", xs: "85%" },
     bgcolor: "background.paper",
     boxShadow: 24,
     overflow: "scroll",
@@ -83,7 +84,7 @@ const Home = () => {
                 backgroundColor="#8B181B"
               >
                 <Typography
-                  fontSize={63}
+                  fontSize={{ lg: 63, md: 58, sm: 50, xs: 63 }}
                   lineHeight="93px"
                   fontFamily="Montserrat"
                   color="#fff"
@@ -149,7 +150,7 @@ const Home = () => {
                 backgroundColor="#3A3A3A"
               >
                 <Typography
-                  fontSize={63}
+                  fontSize={{ lg: 63, md: 58, sm: 50, xs: 63 }}
                   lineHeight="93px"
                   fontFamily="Montserrat"
                   color="#fff"
@@ -191,8 +192,12 @@ const Home = () => {
       </Stack>
       <Stack
         position="absolute"
-        top={{ lg: "420px", md: "230px", sm: "270px", xs: "190px" }}
-        left={{ lg: "20%", md: "10%", sm: "13%" }}
+        top={{ lg: "420px", md: "320px", sm: "270px", xs: "190px" }}
+        left={{
+          ...(i18n.language === "ru"
+            ? { lg: "20%", md: "10%", sm: "13%" }
+            : { lg: "28%", md: "20%", sm: "23%" }),
+        }}
         p="10px"
         backgroundColor="#2506074D"
         zIndex={100}
@@ -206,7 +211,7 @@ const Home = () => {
           textAlign={{ lg: "start", md: "start", sm: "center", xs: "center" }}
           fontFamily="Montserrat"
         >
-          Мы воплощаем фантазии в реальность
+          {t("mainText")}
         </Typography>
       </Stack>
       <Stack width="100%" pt="20px">
@@ -219,8 +224,7 @@ const Home = () => {
           p="20px 10px"
           color="#858585"
         >
-          Мы предлагаем вам уникальные и изысканные решения для создания вашей
-          идеальной кухни и оформления интерьера
+          {t("mainTextDesc")}
         </Typography>
         <Divider sx={{ background: "#D0D0D0" }} />
       </Stack>
@@ -251,7 +255,7 @@ const Home = () => {
             mb="15px"
             color="#3A3A3A"
           >
-            Европейские кухни
+            {t("europeKitchen")}
           </Typography>
           <Typography
             fontWeight={500}
@@ -260,13 +264,7 @@ const Home = () => {
             color="#858585"
             lineHeight="28px"
           >
-            Основа гармонии в разработке дизайн-проекта кухни — это знание
-            базовых стилей, их особенностей, того, как они сочетаются между
-            собой. Элегантная классика, уютный прованс, современный хай-тек,
-            пышный ампир и ар-деко — выбрать оформление интерьера не так просто,
-            как кажется. Чтобы упростить эту задачу, мы рассмотрим основные
-            популярные стили, а фото на сайте помогут вдохновиться интересными
-            идеями дизайна кухни.
+            {t("europeKitchenDesc")}
           </Typography>
         </Stack>
         <Stack
@@ -334,21 +332,19 @@ const Home = () => {
             color="#858585"
             lineHeight="28px"
           >
-            Вот уже более 120 лет качество техники Miele не вызывает сомнений.
-            Мы тестируем свою продукцию на долгий срок службы. Именно поэтому
-            потребители Miele остаются преданными своему выбору и рекомендуют
-            нашу продукцию другим. Для нас не существует никаких компромиссов,
-            если речь идёт о качестве и долговечности! Бытовая техника Miele
-            обеспечивает превосходные результаты при минимальном потреблении
-            электроэнергии. ....
+            {t("mieleDesc")}
           </Typography>
-          <Stack width="100%" alignItems="end" mt={2}>
+          <Stack width="100%" alignItems="start" mt={2}>
             <Button
               variant="outlined"
               sx={{
                 color: "#8C0014",
                 border: "1px solid #8C0014",
-                "&:hover": { border: "1px solid #8C0014" },
+                "&:hover": {
+                  border: "1px solid #8C0014",
+                  background: "#8C0014",
+                  color: "#fff",
+                },
                 p: "10px 20px",
                 fontSize: "14px",
                 textTransform: "revert",
@@ -356,7 +352,7 @@ const Home = () => {
               }}
               onClick={handleOpen}
             >
-              Узнать подробнeе
+              {t("moreBtn")}
             </Button>
             <Stack>
               <Modal
@@ -459,28 +455,10 @@ const Home = () => {
                       lineHeight="27px"
                       mt={2}
                     >
-                      Вот уже более 120 лет качество техники Miele не вызывает
-                      сомнений. Мы тестируем свою продукцию на долгий срок
-                      службы. Именно поэтому потребители Miele остаются
-                      преданными своему выбору и рекомендуют нашу продукцию
-                      другим. Для нас не существует никаких компромиссов, если
-                      речь идёт о качестве и долговечности! <br /> Бытовая
-                      техника Miele обеспечивает превосходные результаты при
-                      минимальном потреблении электроэнергии. Передовые
-                      технологии с инновационными характеристиками, которые
-                      предлагает исключительно Miele, гарантируют безупречный и
-                      бережный уход за бельём, домом и посудой, а также
-                      удовольствие от приготовления изысканных кулинарных
-                      шедевров. Это подтверждается победами в многочисленных
-                      тестах продукции, проводимых по всему миру.
-                      <br /> Во многих странах Miele является наиболее
-                      привлекательным брендом в своей отрасли. На внутреннем
-                      рынке Германии Miele была признана «Лучшим брендом» среди
-                      других немецких компаний. Такое признание говорит о
-                      многом: покупатели продукции Miele уделяют особое внимание
-                      качеству и очень требовательны к дизайну, удобству и
-                      экологичности бытовой техники. Покупая технику Miele, вы
-                      можете быть уверены в правильности своего выбора!
+                      <Trans
+                        i18nKey="mieleModalDesc"
+                        components={{ 1: <br /> }}
+                      />
                     </Typography>
                   </Stack>
                 </Box>
@@ -518,7 +496,7 @@ const Home = () => {
             mb="15px"
             color="#3A3A3A"
           >
-            Мягкие мебели
+            {t("furniture")}
           </Typography>
           <Typography
             fontWeight={500}
@@ -527,11 +505,7 @@ const Home = () => {
             color="#858585"
             lineHeight="28px"
           >
-            Мягкая мебель — это наш комфорт и удобство. В зависимости от
-            назначения особенностей мягкой мебели, она помогает нам расслабиться
-            и отдохнуть в уютной атмосфере или, напротив, сконцентрироваться и
-            максимально комфортно трудиться. Диваны, кресла, пуфы призваны
-            окружать нас удобством и быть нашими мягкими помощниками.
+            {t("furnitureDesc")}
           </Typography>
         </Stack>
         <Stack
@@ -598,11 +572,7 @@ const Home = () => {
             color="#858585"
             lineHeight="28px"
           >
-            Немецкий бренд Loewe производит телевизоры и аудиотехнику
-            премиум-класса. Каждый продукт этой марки – результат уникальных
-            разработок. Алмаз, который получил великолепную огранку: долговечные
-            материалы, дизайн вне времени, превосходное качество звука и
-            картинки. 
+            {t("loewe")}
           </Typography>
         </Stack>
       </Stack>
@@ -635,7 +605,7 @@ const Home = () => {
             mb="15px"
             color="#3A3A3A"
           >
-            Мелкая бытовая техника
+            {t("smallHouse")}
           </Typography>
           <Typography
             fontWeight={500}
@@ -644,10 +614,7 @@ const Home = () => {
             color="#858585"
             lineHeight="28px"
           >
-            Мелкая бытовая техника — это компактные переносные приборы для
-            приготовления пищи, ухода за вещами, а также поддержания здорового
-            микроклимата в помещении. Главное отличие мелкой бытовой техники от
-            крупной — габариты и мобильность.
+            {t("smallHouseDesc")}
           </Typography>
         </Stack>
         <Stack
@@ -705,7 +672,7 @@ const Home = () => {
             mb="15px"
             color="#3A3A3A"
           >
-            Гардеробная мебель
+            {t("garderobFurniture")}
           </Typography>
           <Typography
             fontWeight={500}
@@ -714,11 +681,7 @@ const Home = () => {
             color="#858585"
             lineHeight="28px"
           >
-            Гардеробная – это место, где можно аккуратно и рационально
-            разместить одежду, обувь, аксессуары, при этом они всегда будут
-            доступны, они не деформируются и не изветшают от неправильного
-            хранения. Сегодня особенно актуальны минималистичные гардеробные,
-            которые могут быть максимально функциональными.
+            {t("garderobFurnitureDesc")}
           </Typography>
         </Stack>
       </Stack>
@@ -731,7 +694,7 @@ const Home = () => {
         className="main-title"
         p="  20px 0 "
       >
-        Наш шоурум
+        {t("showroom")}
       </Typography>
       <Divider sx={{ background: "#D0D0D0" }} />
 
@@ -761,7 +724,7 @@ const Home = () => {
             <Stack
               sx={{
                 " &:hover": {
-                  opacity: "80%",
+                  transform: "scale(1.1)",
                 },
                 " &:hover .text": {
                   display: "block",
@@ -771,7 +734,7 @@ const Home = () => {
                 pr: { lg: "10px", md: "10px", sm: "10px", xs: "0" },
               }}
             >
-              <Typography
+              {/* <Typography
                 textAlign="center"
                 position="absolute"
                 color="#fff"
@@ -786,7 +749,7 @@ const Home = () => {
                 }}
               >
                 Диван
-              </Typography>
+              </Typography> */}
               <img
                 src="/images/main/main (9).png"
                 style={{ width: "100%", height: "100%" }}
@@ -798,7 +761,7 @@ const Home = () => {
             <Stack
               sx={{
                 " &:hover": {
-                  opacity: "80%",
+                  transform: "scale(1.1)",
                 },
                 " &:hover .text": {
                   display: "block",
@@ -808,7 +771,7 @@ const Home = () => {
                 transition: "all ease-in-out .5s ",
               }}
             >
-              <Typography
+              {/* <Typography
                 textAlign="center"
                 position="absolute"
                 color="#fff"
@@ -823,7 +786,7 @@ const Home = () => {
                 }}
               >
                 Диван
-              </Typography>
+              </Typography> */}
               <img
                 src="/images/main/main (10).png"
                 style={{ width: "100%", height: "100%" }}
@@ -835,7 +798,7 @@ const Home = () => {
             <Stack
               sx={{
                 " &:hover": {
-                  opacity: "80%",
+                  transform: "scale(1.1)",
                 },
                 " &:hover .text": {
                   display: "block",
@@ -845,7 +808,7 @@ const Home = () => {
                 transition: "all ease-in-out .5s ",
               }}
             >
-              <Typography
+              {/* <Typography
                 textAlign="center"
                 position="absolute"
                 color="#fff"
@@ -860,7 +823,7 @@ const Home = () => {
                 }}
               >
                 Диван
-              </Typography>
+              </Typography> */}
               <img
                 src="/images/main/main (11).png"
                 style={{ width: "100%", height: "100%" }}
@@ -868,12 +831,11 @@ const Home = () => {
               />
             </Stack>
           </SwiperSlide>
-
           <SwiperSlide>
             <Stack
               sx={{
                 " &:hover": {
-                  opacity: "80%",
+                  transform: "scale(1.1)",
                 },
                 " &:hover .text": {
                   display: "block",
@@ -884,7 +846,7 @@ const Home = () => {
                 height: "100%",
               }}
             >
-              <Typography
+              {/* <Typography
                 textAlign="center"
                 position="absolute"
                 color="#fff"
@@ -899,7 +861,7 @@ const Home = () => {
                 }}
               >
                 Диван
-              </Typography>
+              </Typography> */}
               <img
                 src="/images/main/main (12).png"
                 style={{ width: "100%", height: "100%" }}
@@ -911,7 +873,7 @@ const Home = () => {
             <Stack
               sx={{
                 " &:hover": {
-                  opacity: "80%",
+                  transform: "scale(1.1)",
                 },
                 " &:hover .text": {
                   display: "block",
@@ -922,7 +884,7 @@ const Home = () => {
                 height: "100%",
               }}
             >
-              <Typography
+              {/* <Typography
                 textAlign="center"
                 position="absolute"
                 color="#fff"
@@ -937,9 +899,9 @@ const Home = () => {
                 }}
               >
                 Диван
-              </Typography>
+              </Typography> */}
               <img
-                src="/images/main/main (12).png"
+                src="/images/main/main (13).png"
                 style={{ width: "100%", height: "100%" }}
                 alt=""
               />
@@ -956,7 +918,7 @@ const Home = () => {
         className="main-title"
         p="  20px 0 "
       >
-        Реализованные проекты
+        {t("ideas")}
       </Typography>
       <Divider sx={{ background: "#D0D0D0" }} />
       <TabButtons />

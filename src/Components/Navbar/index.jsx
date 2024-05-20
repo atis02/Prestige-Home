@@ -18,7 +18,9 @@ import { navData } from "./components/navData.mjs";
 import { Link, NavLink } from "react-router-dom";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Transition } from "react-transition-group";
+import Language from "../Language/Language";
+import { useTranslation } from "react-i18next";
+import { animateScroll as scroll } from "react-scroll";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -35,9 +37,9 @@ const Navbar = () => {
     setAge(event.target.value);
   };
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -58,7 +60,9 @@ const Navbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  const scrollToBottom = () => {
+    scroll.scrollToBottom();
+  };
   const partnerImages = [
     {
       link: "https://www.miele.com/en/com/index.htm",
@@ -114,32 +118,32 @@ const Navbar = () => {
     {
       id: 1,
       img_src: "/images/services/services (1).png",
-      title: "Конструкторское бюро",
+      title: t("byuro"),
     },
     {
       id: 2,
       img_src: "/images/services/services (2).png",
-      title: "Полноценный дизайн - проект",
+      title: t("design"),
     },
     {
       id: 3,
       img_src: "/images/services/services (3).png",
-      title: "Согласование проекта",
+      title: t("projectAgree"),
     },
     {
       id: 4,
       img_src: "/images/services/services (4).png",
-      title: "Размер вашего помещения",
+      title: t("sizePlace"),
     },
     {
       id: 5,
       img_src: "/images/services/services (5).png",
-      title: "Подбор необходимых материалов",
+      title: t("materials"),
     },
     {
       id: 6,
       img_src: "/images/services/services (6).png",
-      title: "Дизайн персонального проекта",
+      title: t("designPersonal"),
     },
   ];
   const handleDropdown = () => {
@@ -209,12 +213,18 @@ const Navbar = () => {
                   />
                 ),
                 sx: {
-                  borderRadius: "10px",
                   backgroundColor: "#fff",
-                  height: "48px",
+                  height: { lg: "48px", md: "48px", sm: "38px", xs: "38px" },
                   width: "auto",
                   fontWeight: "600",
+
                   p: "0 13px",
+                  borderRadius: {
+                    lg: "10px",
+                    md: "10px",
+                    sm: "100px",
+                    xs: "100px",
+                  },
                 },
               }}
               variant="outlined"
@@ -238,7 +248,7 @@ const Navbar = () => {
               <MenuIcon sx={{ color: "#000" }} />
             </IconButton>
 
-            {/* <Language /> */}
+            <Language />
           </Stack>
           <Drawer
             anchor="right"
@@ -247,8 +257,8 @@ const Navbar = () => {
             sx={{
               "& .MuiDrawer-paper": {
                 width: "40%",
-                // borderTopLeftRadius: "100%",
-                // borderBottomLeftRadius: "100%",
+                borderTopLeftRadius: "7%",
+                borderBottomLeftRadius: "7%",
               },
             }}
           >
@@ -292,7 +302,7 @@ const Navbar = () => {
                   spacing={2}
                 >
                   <NavLink className="nav-links" to="/">
-                    Home
+                    {t("home")}
                   </NavLink>
                   <Button
                     sx={{
@@ -360,26 +370,42 @@ const Navbar = () => {
                     />
                   </Button>
 
-                  <NavLink className="nav-links" to="contacts">
-                    Contacts
-                  </NavLink>
+                  <Button
+                    sx={{
+                      height: 34,
+                      mb: "10px",
+                      color: "#3A3A3A",
+                      fontSize: 18,
+                      fontFamily: "Montserrat",
+                      textTransform: "capitalize",
+                      p: "6px",
+                      borderRadius: 0,
+                    }}
+                    onClick={scrollToBottom}
+                  >
+                    {t("contacts")}
+                  </Button>
                 </Stack>
               </Stack>
             </Box>
           </Drawer>
           <Stack
             sx={{
-              display: { lg: "block", md: "block", sm: "none", xs: "none" },
-              minWidth: "550px",
+              display: { lg: "flex", md: "flex", sm: "none", xs: "none" },
+              minWidth: "650px",
             }}
             direction="row"
-            spacing={2}
+            justifyContent="center"
+            alignItems="center"
+            spacing={3}
           >
             <NavLink className="nav-links" to="/">
-              Home
+              {t("home")}
             </NavLink>
             <Button
               sx={{
+                mb: "10px",
+                height: 40,
                 color: "#3A3A3A",
                 fontSize: 18,
                 fontFamily: "Montserrat",
@@ -395,29 +421,24 @@ const Navbar = () => {
                 borderRadius: 0,
               }}
               onClick={handleDropdownPartners}
-
-              // onClick={handleDropdownPartners}
             >
-              Partners
-              <KeyboardArrowDownIcon
-                sx={{
-                  ...(openDropdown ? { transform: "rotate(180deg)" } : ""),
-                }}
-              />
+              {t("partners")}
             </Button>
 
             <NavLink
               className="nav-links"
               style={{
                 width: "auto",
-                minWidth: "100px",
+                minWidth: "50px",
               }}
               to="/about"
             >
-              About us
+              {t("about")}
             </NavLink>
             <Button
               sx={{
+                height: 40,
+                mb: "10px",
                 color: "#3A3A3A",
                 fontSize: 18,
                 fontFamily: "Montserrat",
@@ -429,24 +450,30 @@ const Navbar = () => {
                       fontWeight: 600,
                     }
                   : ""),
-                p: 0,
+                p: "6px",
                 borderRadius: 0,
               }}
               onClick={handleDropdown}
             >
-              Services
-              <KeyboardArrowDownIcon
-                sx={{
-                  ...(openDropdownServices
-                    ? { transform: "rotate(180deg)" }
-                    : ""),
-                }}
-              />
+              {t("services")}
             </Button>
 
-            <NavLink className="nav-links" to="/contacts">
-              Contacts
-            </NavLink>
+            <Button
+              sx={{
+                height: 34,
+                mb: "10px",
+                color: "#3A3A3A",
+                fontSize: 18,
+                fontFamily: "Montserrat",
+                textTransform: "capitalize",
+                p: "6px",
+                borderRadius: 0,
+              }}
+              onClick={scrollToBottom}
+            >
+              {t("contacts")}
+            </Button>
+            <Language />
           </Stack>
           <Backdrop
             sx={{
@@ -510,7 +537,7 @@ const Navbar = () => {
               direction="row"
               flexWrap="wrap"
               boxShadow="0px 5px 10px 0px rgba(0,0,0,0.25)"
-              height={300}
+              height={{ lg: 300, md: 300, sm: 500, xs: 300 }}
               justifyContent={{
                 lg: "start",
                 md: "start",
@@ -531,7 +558,7 @@ const Navbar = () => {
                   direction="row"
                   alignItems="center"
                   key={item.id}
-                  width={{ lg: 400, md: 375, md: 370, xs: 350 }}
+                  width={{ lg: 420, md: 375, sm: 370, xs: 350 }}
                   maxHeight={120}
                   spacing={2}
                 >
@@ -547,7 +574,14 @@ const Navbar = () => {
                       alt=""
                     />
                   </Stack>
-                  <Typography>{item.title}</Typography>
+                  <Typography
+                    fontFamily="Playfair display"
+                    color="#3a3a3a"
+                    fontSize={16}
+                    fontWeight={700}
+                  >
+                    {item.title}
+                  </Typography>
                 </Stack>
               ))}
             </Stack>

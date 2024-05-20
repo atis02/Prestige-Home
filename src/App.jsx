@@ -4,6 +4,7 @@ import Home from "./Pages/Home";
 import Navbar from "./Components/Navbar";
 import About from "./Pages/About us";
 import { useEffect } from "react";
+import NoPath from "./Components/NoPath/NoPath";
 
 function App() {
   useEffect(() => {
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="*" element={<NoPath />} />
       </Routes>
     </BrowserRouter>
   );

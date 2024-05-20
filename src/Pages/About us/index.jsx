@@ -1,15 +1,36 @@
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import React from "react";
 import Footer from "../Footer";
+import { Trans, useTranslation } from "react-i18next";
 
 const About = () => {
+  const { t } = useTranslation();
+
   const aboutImg = [
-    { img_src: "/images/main/main (1).png", title: "Флагманский шоурум" },
-    { img_src: "/images/main/main (1).png", title: "Лучшая цена" },
-    { img_src: "/images/main/main (1).png", title: "Высокое качество" },
-    { img_src: "/images/main/main (1).png", title: "Известные бренды" },
-    { img_src: "/images/main/main (1).png", title: "29 лет успешной работы" },
-    { img_src: "/images/main/main (1).png", title: "Профессиональная команда" },
+    {
+      img_src: "/images/services/about (1)-min.png",
+      title: t("aboutImgDesc1"),
+    },
+    {
+      img_src: "/images/services/about (2)-min.png",
+      title: t("aboutImgDesc2"),
+    },
+    {
+      img_src: "/images/services/about (3)-min.png",
+      title: t("aboutImgDesc3"),
+    },
+    {
+      img_src: "/images/services/about (4)-min.png",
+      title: t("aboutImgDesc4"),
+    },
+    {
+      img_src: "/images/services/about (5)-min.png",
+      title: t("aboutImgDesc5"),
+    },
+    {
+      img_src: "/images/services/about (6)-min.png",
+      title: t("aboutImgDesc6"),
+    },
   ];
   return (
     <Box>
@@ -31,7 +52,7 @@ const About = () => {
           fontFamily="Playfair Display"
           p="  20px 0 "
         >
-          About us
+          {t("about")}
         </Typography>
         <Stack direction="row" flexWrap="wrap" justifyContent="space-between">
           {aboutImg.map((item, index) => (
@@ -74,11 +95,19 @@ const About = () => {
             fontSize={{ lg: 18, md: 18, sm: 18, xs: 16 }}
             fontWeight={500}
           >
-            Купить немецкую кухню дешевле чем в Германии — ЛЕГКО! Приезжайте
-            к нам! Мы удобно расположились в центре столицы, рядом с Ленинским
-            проспектом.. Приезжайте, если интересуют кухни из Германии в Москве
-            под заказ! Официальный сайт лучшего шоурума с 29-летним опытом
-            успешной работы.
+            {t("aboutText")}
+
+            <span
+              style={{
+                fontFamily: "Montserrat",
+                fontWeight: "600",
+                fontSize: 18,
+                color: "#3a3a3a",
+              }}
+            >
+              “ Rysgally ”
+            </span>
+            {t("aboutText1")}
           </Typography>
           <Typography
             color="#3A3A3A"
@@ -86,10 +115,7 @@ const About = () => {
             fontSize={{ lg: 18, md: 18, sm: 18, xs: 16 }}
             fontWeight={500}
           >
-            В салоне можно оценить новинки фабрик — партнеров, высоко
-            зарекомендовавших марок. В дополнение к деталям, мы осуществляем
-            продажу посетителям всего диапазона встраиваемой бытовой техники
-            и дополнительных предметов комнаты.
+            {t("aboutText2")}
           </Typography>
           <Typography
             color="#3A3A3A"
@@ -97,97 +123,19 @@ const About = () => {
             fontSize={{ lg: 18, md: 18, sm: 18, xs: 16 }}
             fontWeight={500}
           >
-            Цените в немецкой кухонной мебели изысканность и оригинальное
-            исполнение? Желаете совершить покупку, выгодно вкладывая средства?
-            Хотите долгие годы радоваться удобству и надежностью? Кухни немецких
-            производителей по выгодным ценам — правильный выбор!
+            {t("aboutText3")}
           </Typography>
         </Stack>
         <Stack justifyContent="center" alignItems="center" mt="50px" mb="70px">
-          <Stack>
-            <Typography
-              fontSize={{ lg: 22, md: 22, sm: 20, xs: 18 }}
-              fontWeight={700}
-              mb="30px"
-              color="#3A3A3A"
-              fontFamily="Montserrat"
-              textAlign="center"
-            >
-              Приходите и покупайте дешевле, чем в Европе!!!
-            </Typography>
-            <Typography
-              textAlign="center"
-              fontSize={{ lg: 22, md: 22, sm: 20, xs: 18 }}
-              fontWeight={700}
-              fontFamily="Montserrat"
-              color="#3A3A3A"
-            >
-              Скидки{" "}
-              <span
-                style={{
-                  fontWeight: 400,
-                  fontFamily: "Montserrat",
-                  color: "#858585",
-                }}
-              >
-                 - до 55% на экспо!
-              </span>
-            </Typography>
-            <Typography
-              textAlign="center"
-              fontSize={{ lg: 22, md: 22, sm: 20, xs: 18 }}
-              fontWeight={700}
-              fontFamily="Montserrat"
-              color="#3A3A3A"
-            >
-              Скидки{" "}
-              <span
-                style={{
-                  fontWeight: 400,
-                  fontFamily: "Montserrat",
-                  color: "#858585",
-                }}
-              >
-                 - до 35% на мебель под заказ.
-              </span>
-            </Typography>
-            <Typography
-              textAlign="center"
-              fontSize={{ lg: 22, md: 22, sm: 20, xs: 18 }}
-              fontWeight={700}
-              fontFamily="Montserrat"
-              color="#3A3A3A"
-            >
-              Фирменная гарантия{" "}
-              <span
-                style={{
-                  fontWeight: 400,
-                  fontFamily: "Montserrat",
-                  color: "#858585",
-                }}
-              >
-                 от производителей на 2 года.
-              </span>
-            </Typography>
-            <Typography
-              textAlign="center"
-              fontSize={{ lg: 22, md: 22, sm: 20, xs: 18 }}
-              fontWeight={700}
-              fontFamily="Montserrat"
-              color="#3A3A3A"
-            >
-              Бесплатный {" "}
-              <span
-                style={{
-                  fontWeight: 400,
-                  fontFamily: "Montserrat",
-                  color: "#858585",
-                }}
-              >
-                проект и сборка.
-              </span>
-            </Typography>
-          </Stack>
+          <Typography
+            fontFamily="Montserrat"
+            fontWeight={600}
+            fontSize={22}
+            color="#3a3a3a"
+            textAlign="center"
+          >
+            <Trans i18nKey="aboutText4" components={{ 1: <br /> }} />
+          </Typography>
         </Stack>
       </Stack>
 

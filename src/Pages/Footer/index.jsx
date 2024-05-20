@@ -1,11 +1,15 @@
 import { Box, Divider, Stack, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Img } from "react-image";
 import { Link } from "react-router-dom";
+import { animateScroll as scroll } from "react-scroll";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
-    <Box id="Footer">
+    <Box id="contacts">
       <Stack
         p={{
           lg: "20px 80px",
@@ -50,7 +54,7 @@ const Footer = () => {
               fontWeight={400}
               mb={{ lg: 0, md: 0, sm: 0, xs: 2 }}
             >
-              15 этап, здание Рысгаллы, г. Aшгабад, Туркменистан
+              {t("footerDest")}
             </Typography>
           </Stack>
           <Stack width={20} height={20} direction="row" spacing={3}>
@@ -83,6 +87,9 @@ const Footer = () => {
             </Typography>
             <Typography fontWeight={300} fontSize={18} fontFamily="Montserrat">
               prestigehome_tm
+            </Typography>
+            <Typography fontWeight={300} fontSize={18} fontFamily="Montserrat">
+              miele_turkmenistan
             </Typography>
           </Stack>
           <Stack>

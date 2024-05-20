@@ -31,12 +31,12 @@ import {
   neoSwiper,
   sowrSwiper,
 } from "./swiperData.mjs";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import { useTranslation } from "react-i18next";
 
 const TabButtons = () => {
   const [value, setValue] = useState(0);
   const [checked, setChecked] = useState(false);
-
+  const { t } = useTranslation();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -136,7 +136,7 @@ const TabButtons = () => {
                       }),
                 }}
               >
-                Нео - классика
+                {t("classic")}
               </Typography>
             }
             {...a11yProps(0)}
@@ -153,6 +153,7 @@ const TabButtons = () => {
               borderImageSlice: "1",
               borderRadius: 0,
               textTransform: "capitalize",
+
               transition: "all ease-in-out 0.4s",
               "&:hover": {
                 borderImage: "linear-gradient(#8C0014 0%,#3A3A3A 100%)30 ",
@@ -185,7 +186,7 @@ const TabButtons = () => {
                       }),
                 }}
               >
-                Лофт
+                {t("neoClassical")}
               </Typography>
             }
             {...a11yProps(1)}
@@ -202,7 +203,6 @@ const TabButtons = () => {
               borderImageSlice: "1",
               borderRadius: 0,
               textTransform: "capitalize",
-
               transition: "all ease-in-out 0.4s",
               "&:hover": {
                 borderImage: "linear-gradient(#8C0014 0%,#3A3A3A 100%)30 ",
@@ -235,7 +235,7 @@ const TabButtons = () => {
                       }),
                 }}
               >
-                Современный
+                {t("loft")}
               </Typography>
             }
             {...a11yProps(2)}
@@ -285,7 +285,7 @@ const TabButtons = () => {
                       }),
                 }}
               >
-                Модерн
+                {t("modern")}
               </Typography>
             }
             {...a11yProps(3)}
@@ -316,7 +316,7 @@ const TabButtons = () => {
           />
         </Tabs>
       </Stack>
-      <CustomTabPanel value={value} index={0}>
+      <CustomTabPanel value={value} index={1}>
         <Stack
           direction={{ lg: "row", md: "row", sm: "column", xs: "column" }}
           alignItems="center"
@@ -351,12 +351,10 @@ const TabButtons = () => {
                 xs: "center",
               }}
             >
-              ПРОФЕССИОНАЛЬНЫЕ КОНСУЛЬТАЦИИ
+              {t("neoClassicalKtichen")}
             </Typography>
             <Typography color="#858585" fontFamily="Montserrat" fontSize={18}>
-              Первое, что мы хотим предложить Вам – это идею! Идею о том, что у
-              любого помещения и пространства может быть свой уникальный климат,
-              который близок хозяевам и всецело дополняет их образ.
+              {t("neoClassicalKtichenDesc")}
             </Typography>
             <Stack
               direction={{ lg: "row", md: "row", sm: "row", xs: "column" }}
@@ -381,33 +379,14 @@ const TabButtons = () => {
                 {neoSwiper.map((item) => (
                   <SwiperSlide key={item.id}>
                     <Stack
-                      maxWidth={{ lg: 300, md: 300, sm: 300, xs: "100%" }}
-                      maxHeight={{ lg: 380, md: 350, sm: 350, xs: "100%" }}
+                      maxWidth={{ lg: 280, md: 210, sm: 260, xs: "100%" }}
+                      maxHeight={{ lg: 280, md: 210, sm: 350, xs: "100%" }}
                     >
                       <Img
                         src={item.image}
                         style={{ width: "auto", height: "auto" }}
                         alt=""
                       />
-
-                      <Typography
-                        color="#8B181B"
-                        fontFamily="Playfair Display"
-                        fontWeight={700}
-                        fontSize={16}
-                        mt="10px"
-                      >
-                        {item.title}
-                      </Typography>
-                      <Typography
-                        color="#858585"
-                        fontFamily="Montserrat"
-                        fontSize={14}
-                        fontWeight={500}
-                        mt="6px"
-                      >
-                        {item.description}
-                      </Typography>
                     </Stack>
                   </SwiperSlide>
                 ))}
@@ -417,7 +396,7 @@ const TabButtons = () => {
         </Stack>
       </CustomTabPanel>
 
-      <CustomTabPanel value={value} index={1}>
+      <CustomTabPanel value={value} index={2}>
         <Stack
           direction={{ lg: "row", md: "row", sm: "column", xs: "column" }}
           alignItems="center"
@@ -452,12 +431,10 @@ const TabButtons = () => {
                 xs: "center",
               }}
             >
-              ПРОФЕССИОНАЛЬНЫЕ КОНСУЛЬТАЦИИ
+              {t("loftStyle")}
             </Typography>
             <Typography color="#858585" fontFamily="Montserrat" fontSize={18}>
-              Первое, что мы хотим предложить Вам – это идею! Идею о том, что у
-              любого помещения и пространства может быть свой уникальный климат,
-              который близок хозяевам и всецело дополняет их образ.
+              {t("loftStyleDesc")}
             </Typography>
             <Stack
               direction={{ lg: "row", md: "row", sm: "row", xs: "column" }}
@@ -482,33 +459,14 @@ const TabButtons = () => {
                 {loftSwiper.map((item) => (
                   <SwiperSlide key={item.id}>
                     <Stack
-                      maxWidth={{ lg: 300, md: 300, sm: 300, xs: "100%" }}
-                      maxHeight={{ lg: 380, md: 350, sm: 350, xs: "100%" }}
+                      maxWidth={{ lg: 280, md: 210, sm: 260, xs: "100%" }}
+                      maxHeight={{ lg: 280, md: 210, sm: 350, xs: "100%" }}
                     >
                       <Img
                         src={item.image}
                         style={{ width: "auto", height: "auto" }}
                         alt=""
                       />
-
-                      <Typography
-                        color="#8B181B"
-                        fontFamily="Playfair Display"
-                        fontWeight={700}
-                        fontSize={16}
-                        mt="10px"
-                      >
-                        {item.title}
-                      </Typography>
-                      <Typography
-                        color="#858585"
-                        fontFamily="Montserrat"
-                        fontSize={14}
-                        fontWeight={500}
-                        mt="6px"
-                      >
-                        {item.description}
-                      </Typography>
                     </Stack>
                   </SwiperSlide>
                 ))}
@@ -517,7 +475,7 @@ const TabButtons = () => {
           </Stack>
         </Stack>
       </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
+      <CustomTabPanel value={value} index={0}>
         <Stack
           direction={{ lg: "row", md: "row", sm: "column", xs: "column" }}
           alignItems="center"
@@ -552,12 +510,10 @@ const TabButtons = () => {
                 xs: "center",
               }}
             >
-              ПРОФЕССИОНАЛЬНЫЕ КОНСУЛЬТАЦИИ
+              {t("classicKitchen")}
             </Typography>
             <Typography color="#858585" fontFamily="Montserrat" fontSize={18}>
-              Первое, что мы хотим предложить Вам – это идею! Идею о том, что у
-              любого помещения и пространства может быть свой уникальный климат,
-              который близок хозяевам и всецело дополняет их образ.
+              {t("classicKitchenDesc")}
             </Typography>
             <Stack
               direction={{ lg: "row", md: "row", sm: "row", xs: "column" }}
@@ -582,33 +538,14 @@ const TabButtons = () => {
                 {sowrSwiper.map((item) => (
                   <SwiperSlide key={item.id}>
                     <Stack
-                      maxWidth={{ lg: 300, md: 300, sm: 300, xs: "100%" }}
-                      maxHeight={{ lg: 380, md: 350, sm: 350, xs: "100%" }}
+                      maxWidth={{ lg: 280, md: 210, sm: 260, xs: "100%" }}
+                      maxHeight={{ lg: 280, md: 210, sm: 350, xs: "100%" }}
                     >
                       <Img
                         src={item.image}
                         style={{ width: "auto", height: "auto" }}
                         alt=""
                       />
-
-                      <Typography
-                        color="#8B181B"
-                        fontFamily="Playfair Display"
-                        fontWeight={700}
-                        fontSize={16}
-                        mt="10px"
-                      >
-                        {item.title}
-                      </Typography>
-                      <Typography
-                        color="#858585"
-                        fontFamily="Montserrat"
-                        fontSize={14}
-                        fontWeight={500}
-                        mt="6px"
-                      >
-                        {item.description}
-                      </Typography>
                     </Stack>
                   </SwiperSlide>
                 ))}
@@ -630,7 +567,7 @@ const TabButtons = () => {
             maxHeight={600}
           >
             <Img
-              src="/images/modern/modern (1).png"
+              src="/images/modern/Rectangle 9.png"
               style={{ width: "auto", height: "auto" }}
               alt=""
             />
@@ -652,12 +589,10 @@ const TabButtons = () => {
                 xs: "center",
               }}
             >
-              ПРОФЕССИОНАЛЬНЫЕ КОНСУЛЬТАЦИИ
+              {t("modernStyle")}
             </Typography>
             <Typography color="#858585" fontFamily="Montserrat" fontSize={18}>
-              Первое, что мы хотим предложить Вам – это идею! Идею о том, что у
-              любого помещения и пространства может быть свой уникальный климат,
-              который близок хозяевам и всецело дополняет их образ.
+              {t("modernStyleDesc")}
             </Typography>
             <Stack
               direction={{ lg: "row", md: "row", sm: "row", xs: "column" }}
@@ -682,32 +617,14 @@ const TabButtons = () => {
                 {modernSwiper.map((item) => (
                   <SwiperSlide key={item.id}>
                     <Stack
-                      maxWidth={{ lg: 300, md: 300, sm: 300, xs: "100%" }}
-                      maxHeight={{ lg: 380, md: 350, sm: 350, xs: "100%" }}
+                      maxWidth={{ lg: 280, md: 210, sm: 260, xs: "100%" }}
+                      maxHeight={{ lg: 280, md: 210, sm: 350, xs: "100%" }}
                     >
                       <Img
                         src={item.image}
                         style={{ width: "auto", height: "auto" }}
                         alt=""
                       />
-                      <Typography
-                        color="#8B181B"
-                        fontFamily="Playfair Display"
-                        fontWeight={700}
-                        fontSize={16}
-                        mt="10px"
-                      >
-                        {item.title}
-                      </Typography>
-                      <Typography
-                        color="#858585"
-                        fontFamily="Montserrat"
-                        fontSize={14}
-                        fontWeight={500}
-                        mt="6px"
-                      >
-                        {item.description}
-                      </Typography>
                     </Stack>
                   </SwiperSlide>
                 ))}
