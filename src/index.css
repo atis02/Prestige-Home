@@ -6,6 +6,10 @@
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
 }
+@font-face {
+  font-family: Montserrat;
+  src: url(/Montserrat-VariableFont_wght.ttf);
+}
 ::-webkit-scrollbar-thumb {
   background:#8B181B;
 }
