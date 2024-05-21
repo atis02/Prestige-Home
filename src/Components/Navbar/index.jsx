@@ -453,11 +453,12 @@ const Navbar = () => {
                   boxShadow="0px 5px 10px 0px rgba(0,0,0,0.25)"
                   height={{ lg: 260, md: 260, sm: 260, xs: 400 }}
                   justifyContent={{
-                    lg: "space-between",
-                    md: "space-between",
-                    sm: "space-between",
+                    lg: "start",
+                    md: "start",
+                    sm: "start",
                     xs: "center",
                   }}
+                  sx={{ gap: "0 72px" }}
                   alignItems="center"
                   p={{
                     lg: "5px 80px",
@@ -468,7 +469,7 @@ const Navbar = () => {
                 >
                   {partnerImages.map((item, index) => (
                     <Link key={index} target="_blank" to={item.link}>
-                      <Stack mr={4} maxWidth="145px" maxHeight={40}>
+                      <Stack mr={4} width="100px" maxHeight={50}>
                         <img src={item.src} alt="" />
                       </Stack>
                     </Link>
