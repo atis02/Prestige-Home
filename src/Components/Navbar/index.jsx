@@ -28,7 +28,9 @@ const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(false);
   const open = Boolean(anchorEl);
   const [openDropdown, setOpenDropdown] = useState(false);
+  const [openDropdown2, setOpenDropdown2] = useState(false);
   const [openDropdownServices, setOpenDropdownServices] = useState(false);
+  const [openDropdownServices2, setOpenDropdownServices2] = useState(false);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -320,7 +322,7 @@ const Navbar = () => {
                       p: 0,
                       borderRadius: 0,
                     }}
-                    onClick={handleDropdownPartners}
+                    onClick={() => setOpenDropdown2(!openDropdown2)}
                   >
                     Partners
                     <KeyboardArrowDownIcon
@@ -348,7 +350,7 @@ const Navbar = () => {
                       fontSize: 18,
                       fontFamily: "Montserrat",
                       textTransform: "capitalize",
-                      ...(openDropdownServices
+                      ...(openDropdownServices2
                         ? {
                             borderBottom: "1px solid #8B181B",
                             color: "#8B181B",
@@ -358,12 +360,14 @@ const Navbar = () => {
                       p: 0,
                       borderRadius: 0,
                     }}
-                    onClick={handleDropdown}
+                    onClick={() =>
+                      setOpenDropdownServices2(!openDropdownServices2)
+                    }
                   >
                     Services
                     <KeyboardArrowDownIcon
                       sx={{
-                        ...(openDropdownServices
+                        ...(openDropdownServices2
                           ? { transform: "rotate(180deg)" }
                           : ""),
                       }}
@@ -402,6 +406,7 @@ const Navbar = () => {
             <NavLink className="nav-links" to="/">
               {t("home")}
             </NavLink>
+
             <Button
               sx={{
                 mb: "10px",
@@ -417,12 +422,59 @@ const Navbar = () => {
                       fontWeight: 600,
                     }
                   : ""),
+
                 p: 0,
                 borderRadius: 0,
               }}
               onClick={handleDropdownPartners}
+              onMouseEnter={() => setOpenDropdown(true)}
+              onMouseLeave={() => setOpenDropdown(false)}
             >
               {t("partners")}
+              <Backdrop
+                sx={{
+                  backgroundColor: "transparent",
+                  color: "#000",
+                  zIndex: (theme) => theme.zIndex.drawer + 1,
+                  width: "100%",
+                  height: "100%",
+                  alignItems: "start",
+                  top: { lg: "10%", md: "12%", sm: "70px", xs: "58px" },
+                }}
+                className="partners"
+                open={openDropdown}
+                onClick={() => setOpenDropdown(false)}
+              >
+                <Stack
+                  width="100%"
+                  backgroundColor="#fff"
+                  direction="row"
+                  flexWrap="wrap"
+                  boxShadow="0px 5px 10px 0px rgba(0,0,0,0.25)"
+                  height={{ lg: 260, md: 260, sm: 260, xs: 400 }}
+                  justifyContent={{
+                    lg: "space-between",
+                    md: "space-between",
+                    sm: "space-between",
+                    xs: "center",
+                  }}
+                  alignItems="center"
+                  p={{
+                    lg: "5px 80px",
+                    md: "10px 60px",
+                    sm: "10px 30px",
+                    xs: "5px 10px",
+                  }}
+                >
+                  {partnerImages.map((item, index) => (
+                    <Link key={index} target="_blank" to={item.link}>
+                      <Stack mr={4} maxWidth="145px" maxHeight={40}>
+                        <img src={item.src} alt="" />
+                      </Stack>
+                    </Link>
+                  ))}
+                </Stack>
+              </Backdrop>
             </Button>
 
             <NavLink
@@ -454,8 +506,79 @@ const Navbar = () => {
                 borderRadius: 0,
               }}
               onClick={handleDropdown}
+              onMouseEnter={() => setOpenDropdownServices(true)}
+              onMouseLeave={() => setOpenDropdownServices(false)}
             >
               {t("services")}
+
+              <Backdrop
+                sx={{
+                  backgroundColor: "transparent",
+                  color: "#000",
+                  zIndex: (theme) => theme.zIndex.drawer + 1,
+                  width: "100%",
+                  height: "100%",
+                  alignItems: "start",
+                  top: { lg: "10%", md: "12%", sm: "70px", xs: "58px" },
+                }}
+                open={openDropdownServices}
+                onClick={() => setOpenDropdownServices(false)}
+              >
+                <Stack
+                  width="100%"
+                  backgroundColor="#fff"
+                  direction="row"
+                  flexWrap="wrap"
+                  boxShadow="0px 5px 10px 0px rgba(0,0,0,0.25)"
+                  height={{ lg: 300, md: 300, sm: 500, xs: 300 }}
+                  justifyContent={{
+                    lg: "space-between",
+                    md: "start",
+                    sm: "space-between",
+                    xs: "space-between",
+                  }}
+                  alignItems="center"
+                  p={{
+                    lg: "5px 80px",
+                    md: "10px 60px",
+                    sm: "10px 30px",
+                    xs: "5px 10px",
+                  }}
+                >
+                  {services.map((item) => (
+                    <Stack
+                      flexWrap="wrap"
+                      direction="row"
+                      alignItems="center"
+                      key={item.id}
+                      width={{ lg: 420, md: 375, sm: 370, xs: 350 }}
+                      maxHeight={120}
+                      spacing={2}
+                    >
+                      <Stack
+                        maxWidth={{ lg: 120, md: 90, sm: 70, xs: 40 }}
+                        maxHeight={120}
+                      >
+                        <img
+                          style={{
+                            borderRadius: "7px",
+                          }}
+                          src={item.img_src}
+                          alt=""
+                        />
+                      </Stack>
+                      <Typography
+                        fontFamily="Playfair display"
+                        color="#3a3a3a"
+                        fontSize={16}
+                        fontWeight={800}
+                      >
+                        {item.title}
+                      </Typography>
+                    </Stack>
+                  ))}
+                </Stack>
+              </Backdrop>
             </Button>
 
             <Button
@@ -485,8 +608,9 @@ const Navbar = () => {
               alignItems: "start",
               top: { lg: "10%", md: "12%", sm: "70px", xs: "58px" },
             }}
-            open={openDropdown}
-            onClick={() => setOpenDropdown(false)}
+            className="partners"
+            open={openDropdown2}
+            onClick={() => setOpenDropdown2(false)}
           >
             <Stack
               width="100%"
@@ -496,9 +620,9 @@ const Navbar = () => {
               boxShadow="0px 5px 10px 0px rgba(0,0,0,0.25)"
               height={{ lg: 260, md: 260, sm: 260, xs: 400 }}
               justifyContent={{
-                lg: "start",
-                md: "start",
-                sm: "start",
+                lg: "space-between",
+                md: "space-between",
+                sm: "space-between",
                 xs: "center",
               }}
               alignItems="center"
@@ -528,8 +652,8 @@ const Navbar = () => {
               alignItems: "start",
               top: { lg: "10%", md: "12%", sm: "70px", xs: "58px" },
             }}
-            open={openDropdownServices}
-            onClick={() => setOpenDropdownServices(false)}
+            open={openDropdownServices2}
+            onClick={() => setOpenDropdownServices2(false)}
           >
             <Stack
               width="100%"
@@ -539,7 +663,7 @@ const Navbar = () => {
               boxShadow="0px 5px 10px 0px rgba(0,0,0,0.25)"
               height={{ lg: 300, md: 300, sm: 500, xs: 300 }}
               justifyContent={{
-                lg: "start",
+                lg: "space-between",
                 md: "start",
                 sm: "space-between",
                 xs: "space-between",
@@ -578,7 +702,7 @@ const Navbar = () => {
                     fontFamily="Playfair display"
                     color="#3a3a3a"
                     fontSize={16}
-                    fontWeight={700}
+                    fontWeight={800}
                   >
                     {item.title}
                   </Typography>

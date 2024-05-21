@@ -10,8 +10,9 @@ const resources = {
       services: "Services",
       contacts: "Contacts",
       mainText: "We turn fantasies into reality",
-      mainTextDesc:
-        "The Prestige Home team offers you unique and sophisticated solutions to create your ideal kitchen and interior design",
+      mainTextDesc: "The ",
+      mainTextDesc2:
+        " team offers you unique and sophisticated solutions to create your ideal kitchen and interior design",
       europeKitchen: "European Kitchen",
       europeKitchenDesc:
         "The basis of harmony in the development of a kitchen design project is knowledge of basic styles, their features, and how they fit together. Elegant classics, cozy Provence, modern high-tech, lush Empire style, and Art Deco. Choosing an interior design is not as easy as it seems. To make this task easier, we will look at the main popular styles. The photos on the site will help you get inspired by interesting kitchen design ideas.",
@@ -83,8 +84,9 @@ const resources = {
       services: "Услуги",
       contacts: "Контакты",
       mainText: "Мы воплощаем фантазии в реальность",
-      mainTextDesc:
-        "Мы предлагаем вам уникальные и изысканные решения для создания вашей идеальной кухни и оформления интерьера",
+      mainTextDesc: "Команда ",
+      mainTextDesc2:
+        " предлагает вам уникальные и изысканные решения для создания вашей идеальной кухни и оформления интерьера",
       europeKitchen: "Европейские кухни",
       europeKitchenDesc:
         "Основа гармонии в разработке дизайн-проекта кухни — это знание базовых стилей, их особенностей, того, как они сочетаются между собой. Элегантная классика, уютный прованс, современный хай-тек, пышный ампир и ар-деко — выбрать оформление интерьера не так просто, как кажется. Чтобы упростить эту задачу, мы рассмотрим основные популярные стили, а фото на сайте помогут вдохновиться интересными идеями дизайна кухни.",

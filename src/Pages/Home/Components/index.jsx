@@ -13,13 +13,7 @@ import {
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Img } from "react-image";
-import {
-  Navigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-  Autoplay,
-} from "swiper/modules";
+import { Navigation, Scrollbar, A11y, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";

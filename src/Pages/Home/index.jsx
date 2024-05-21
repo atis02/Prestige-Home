@@ -12,13 +12,7 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { Img } from "react-image";
-import {
-  Navigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-  Autoplay,
-} from "swiper/modules";
+import { Navigation, Scrollbar, A11y, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -26,8 +20,8 @@ import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 import TabButtons from "./Components";
 import Footer from "../Footer";
-import { TypeAnimation } from "react-type-animation";
 import { Trans, useTranslation } from "react-i18next";
+import { TypeAnimation } from "react-type-animation";
 
 const Home = () => {
   const [open, setOpen] = useState(false);
@@ -225,6 +219,10 @@ const Home = () => {
           color="#858585"
         >
           {t("mainTextDesc")}
+          <span style={{ color: "#8B181B", fontWeight: 600 }}>
+            Prestige Home
+          </span>
+          {t("mainTextDesc2")}
         </Typography>
         <Divider sx={{ background: "#D0D0D0" }} />
       </Stack>
@@ -250,7 +248,7 @@ const Home = () => {
           <Typography
             fontFamily="Playfair Display"
             fontSize={22}
-            fontWeight={500}
+            fontWeight={600}
             textAlign={{ lg: "end", md: "end", sm: "center", xs: "center" }}
             mb="15px"
             color="#3A3A3A"
@@ -318,7 +316,7 @@ const Home = () => {
           <Typography
             fontFamily="Playfair Display"
             fontSize={22}
-            fontWeight={500}
+            fontWeight={600}
             textAlign={{ lg: "start", md: "start", sm: "center", xs: "center" }}
             mb="15px"
             color="#3A3A3A"
@@ -491,7 +489,7 @@ const Home = () => {
           <Typography
             fontFamily="Playfair Display"
             fontSize={22}
-            fontWeight={500}
+            fontWeight={600}
             textAlign={{ lg: "end", md: "end", sm: "center", xs: "center" }}
             mb="15px"
             color="#3A3A3A"
@@ -558,7 +556,7 @@ const Home = () => {
           <Typography
             fontFamily="Playfair Display"
             fontSize={22}
-            fontWeight={500}
+            fontWeight={600}
             textAlign={{ lg: "start", md: "start", sm: "center", xs: "center" }}
             mb="15px"
             color="#3A3A3A"
@@ -600,7 +598,7 @@ const Home = () => {
           <Typography
             fontFamily="Playfair Display"
             fontSize={22}
-            fontWeight={500}
+            fontWeight={600}
             textAlign={{ lg: "end", md: "end", sm: "center", xs: "center" }}
             mb="15px"
             color="#3A3A3A"
@@ -667,7 +665,7 @@ const Home = () => {
           <Typography
             fontFamily="Playfair Display"
             fontSize={22}
-            fontWeight={500}
+            fontWeight={600}
             textAlign={{ lg: "start", md: "start", sm: "center", xs: "center" }}
             mb="15px"
             color="#3A3A3A"

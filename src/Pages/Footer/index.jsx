@@ -1,9 +1,8 @@
 import { Box, Divider, Stack, Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { Img } from "react-image";
 import { Link } from "react-router-dom";
-import { animateScroll as scroll } from "react-scroll";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -20,7 +19,6 @@ const Footer = () => {
         mt="10px"
         mb="10px"
         direction="row"
-        // direction={{ lg: "row", md: "row", sm: "column", xs: "column" }}
         alignItems={{ lg: "center", md: "center", sm: "start", xs: "start" }}
         justifyContent="space-between"
         flexWrap="wrap"
@@ -52,7 +50,7 @@ const Footer = () => {
               fontSize={16}
               lineHeight="24px"
               fontWeight={400}
-              mb={{ lg: 0, md: 0, sm: 0, xs: 2 }}
+              mb={2}
             >
               {t("footerDest")}
             </Typography>

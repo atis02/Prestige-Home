@@ -54,7 +54,12 @@ const About = () => {
         >
           {t("about")}
         </Typography>
-        <Stack direction="row" flexWrap="wrap" justifyContent="space-between">
+        <Stack
+          direction="row"
+          mt="30px"
+          flexWrap="wrap"
+          justifyContent="space-between"
+        >
           {aboutImg.map((item, index) => (
             <Stack
               key={index}
@@ -79,7 +84,7 @@ const About = () => {
                 pb={{ lg: 0, md: 0, sm: 0, xs: 3 }}
                 fontFamily="Playfair Display"
                 fontSize={{ lg: 18, md: 18, sm: 18, xs: 16 }}
-                fontWeight={500}
+                fontWeight={700}
                 color="#3A3A3A"
                 textAlign="center"
               >
@@ -128,8 +133,8 @@ const About = () => {
         </Stack>
         <Stack justifyContent="center" alignItems="center" mt="50px" mb="70px">
           <Typography
-            fontFamily="Montserrat"
-            fontWeight={600}
+            fontFamily="Playfair Display"
+            fontWeight={700}
             fontSize={22}
             color="#3a3a3a"
             textAlign="center"
