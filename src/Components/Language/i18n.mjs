@@ -8,6 +8,7 @@ const resources = {
       partners: "Partners",
       about: "About us",
       services: "Services",
+      search: "Search",
       contacts: "Contacts",
       mainText: "We turn fantasies into reality",
       mainTextDesc: "The ",
@@ -83,6 +84,7 @@ const resources = {
       about: "О нас",
       services: "Услуги",
       contacts: "Контакты",
+      search: "Поиск",
       mainText: "Мы воплощаем фантазии в реальность",
       mainTextDesc: "Команда ",
       mainTextDesc2:

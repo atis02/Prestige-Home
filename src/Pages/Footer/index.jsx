@@ -141,7 +141,7 @@ const Footer = () => {
               color: "#000",
             }}
           >
-            <li>Home</li>
+            <li>{t("home")}</li>
           </Link>
           <Link
             to="/"
@@ -154,7 +154,7 @@ const Footer = () => {
               color: "#000",
             }}
           >
-            <li>Services</li>
+            <li>{t("services")}</li>
           </Link>
           <Link
             to="/"
@@ -167,7 +167,7 @@ const Footer = () => {
               color: "#000",
             }}
           >
-            <li>Partners</li>
+            <li>{t("partners")}</li>
           </Link>
           <Link
             to="/about"
@@ -180,7 +180,7 @@ const Footer = () => {
               color: "#000",
             }}
           >
-            <li>About us</li>
+            <li>{t("about")}</li>
           </Link>
           <Link
             to="/"
@@ -193,7 +193,7 @@ const Footer = () => {
               color: "#000",
             }}
           >
-            <li>Contacts</li>
+            <li>{t("contacts")}</li>
           </Link>
         </Stack>
         <Stack width={420} justifyContent="center">

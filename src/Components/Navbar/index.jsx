@@ -199,7 +199,7 @@ const Navbar = () => {
           <Stack width={{ lg: "60%", md: "60%", sm: "100%", xs: "100%" }}>
             <TextField
               id="input-with-icon-textfield"
-              placeholder="Search"
+              placeholder={t("search")}
               fullWidth
               sx={{
                 "&:placeholder": {

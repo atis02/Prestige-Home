@@ -17,7 +17,10 @@
   width: 8px;
   background-color: transparent;
 }
-
+.tabText{
+  transition: all ease 0.4s;
+  -webkit-transition: background-image all ease 0.5s;
+}
 .nav-links{
   text-decoration: none;
   color: #3A3A3A;

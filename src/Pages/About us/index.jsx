@@ -133,7 +133,7 @@ const About = () => {
         </Stack>
         <Stack justifyContent="center" alignItems="center" mt="50px" mb="70px">
           <Typography
-            fontFamily="Playfair Display"
+            fontFamily="Montserrat"
             fontWeight={700}
             fontSize={22}
             color="#3a3a3a"

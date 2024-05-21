@@ -112,6 +112,7 @@ const TabButtons = () => {
           <Tab
             label={
               <Typography
+                className="tabText"
                 sx={{
                   ...(value === 0
                     ? {
@@ -147,14 +148,20 @@ const TabButtons = () => {
               borderImageSlice: "1",
               borderRadius: 0,
               textTransform: "capitalize",
-
-              transition: "all ease-in-out 0.4s",
+              transition: "all ease 0.4s",
               "&:hover": {
                 borderImage: "linear-gradient(#8C0014 0%,#3A3A3A 100%)30 ",
+                backgroundImage: `linear-gradient(to right, #3A3A3AE5, #8C0014  )`,
+                transform: "scale(1.15)",
                 borderWidth: "2px",
                 borderRadius: 0,
                 borderImageSlice: "1",
                 borderStyle: "solid",
+              },
+              "&:hover .tabText": {
+                background: "linear-gradient(to right,  #fff, #fff)",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
               },
               m: "10px",
             }}
@@ -162,6 +169,7 @@ const TabButtons = () => {
           <Tab
             label={
               <Typography
+                className="tabText2"
                 sx={{
                   ...(value === 1
                     ? {
@@ -204,6 +212,13 @@ const TabButtons = () => {
                 borderRadius: 0,
                 borderImageSlice: "1",
                 borderStyle: "solid",
+                backgroundImage: `linear-gradient(to right, #3A3A3AE5, #8C0014  )`,
+                transform: "scale(1.15)",
+              },
+              "&:hover .tabText2": {
+                background: "linear-gradient(to right,  #fff, #fff)",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
               },
               m: "10px",
             }}
@@ -211,6 +226,7 @@ const TabButtons = () => {
           <Tab
             label={
               <Typography
+                className="tabText3"
                 sx={{
                   ...(value === 2
                     ? {
@@ -254,6 +270,13 @@ const TabButtons = () => {
                 borderRadius: 0,
                 borderImageSlice: "1",
                 borderStyle: "solid",
+                backgroundImage: `linear-gradient(to right, #3A3A3AE5, #8C0014  )`,
+                transform: "scale(1.15)",
+              },
+              "&:hover .tabText3": {
+                background: "linear-gradient(to right,  #fff, #fff)",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
               },
               m: "10px",
             }}
@@ -261,6 +284,7 @@ const TabButtons = () => {
           <Tab
             label={
               <Typography
+                className="tabText4"
                 sx={{
                   ...(value === 3
                     ? {
@@ -304,6 +328,13 @@ const TabButtons = () => {
                 borderRadius: 0,
                 borderImageSlice: "1",
                 borderStyle: "solid",
+                backgroundImage: `linear-gradient(to right, #3A3A3AE5, #8C0014  )`,
+                transform: "scale(1.15)",
+              },
+              "&:hover .tabText4": {
+                background: "linear-gradient(to right,  #fff, #fff)",
+                backgroundClip: "text",
+                WebkitTextFillColor: "transparent",
               },
               m: "10px",
             }}
@@ -375,10 +406,17 @@ const TabButtons = () => {
                     <Stack
                       maxWidth={{ lg: 280, md: 210, sm: 260, xs: "100%" }}
                       maxHeight={{ lg: 280, md: 210, sm: 350, xs: "100%" }}
+                      sx={{
+                        transition: "all ease 0.5s",
+                        ":hover": { transform: "scale(1.15)" },
+                      }}
                     >
                       <Img
                         src={item.image}
-                        style={{ width: "auto", height: "auto" }}
+                        style={{
+                          width: "auto",
+                          height: "auto",
+                        }}
                         alt=""
                       />
                     </Stack>
@@ -455,6 +493,10 @@ const TabButtons = () => {
                     <Stack
                       maxWidth={{ lg: 280, md: 210, sm: 260, xs: "100%" }}
                       maxHeight={{ lg: 280, md: 210, sm: 350, xs: "100%" }}
+                      sx={{
+                        transition: "all ease 0.5s",
+                        ":hover": { transform: "scale(1.15)" },
+                      }}
                     >
                       <Img
                         src={item.image}
@@ -534,6 +576,10 @@ const TabButtons = () => {
                     <Stack
                       maxWidth={{ lg: 280, md: 210, sm: 260, xs: "100%" }}
                       maxHeight={{ lg: 280, md: 210, sm: 350, xs: "100%" }}
+                      sx={{
+                        transition: "all ease 0.5s",
+                        ":hover": { transform: "scale(1.15)" },
+                      }}
                     >
                       <Img
                         src={item.image}
@@ -613,6 +659,10 @@ const TabButtons = () => {
                     <Stack
                       maxWidth={{ lg: 280, md: 210, sm: 260, xs: "100%" }}
                       maxHeight={{ lg: 280, md: 210, sm: 350, xs: "100%" }}
+                      sx={{
+                        transition: "all ease 0.5s",
+                        ":hover": { transform: "scale(1.15)" },
+                      }}
                     >
                       <Img
                         src={item.image}
