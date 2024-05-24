@@ -30,6 +30,14 @@
   line-height: 27px;
   font-weight: 500;
 }
+.nav-linksDrawer{
+  text-decoration: none;
+  color: #3A3A3A;
+  font-family: Montserrat;
+  font-size: 18px;
+  line-height: 27px;
+  font-weight: 500;
+}
 .active{
   font-weight: 600;
   color: #8B181B;

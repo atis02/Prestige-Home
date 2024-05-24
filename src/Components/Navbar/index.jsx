@@ -1,10 +1,12 @@
 import {
+  Autocomplete,
   Backdrop,
   Box,
   Button,
   Drawer,
   Grow,
   IconButton,
+  InputLabel,
   MenuItem,
   Stack,
   TextField,
@@ -21,6 +23,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Language from "../Language/Language";
 import { useTranslation } from "react-i18next";
 import { animateScroll as scroll } from "react-scroll";
+import { RuLangResources, resources } from "../Language/Text.mjs";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import ScrollIntoView from "react-scroll-into-view";
+import smoothScrollIntoView from "smooth-scroll-into-view-if-needed";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -31,7 +38,19 @@ const Navbar = () => {
   const [openDropdown2, setOpenDropdown2] = useState(false);
   const [openDropdownServices, setOpenDropdownServices] = useState(false);
   const [openDropdownServices2, setOpenDropdownServices2] = useState(false);
-
+  const [searchTerm, setSearchTerm] = useState("");
+  AOS.init({
+    duration: 1500,
+    offset: 0,
+  });
+  const node = document.getElementById("contacts");
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value.toLowerCase());
+  };
+  const focusAndHighlight = (element) => {
+    element.focus();
+    element.style.backgroundColor = "green";
+  };
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
@@ -41,7 +60,7 @@ const Navbar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -64,6 +83,7 @@ const Navbar = () => {
   };
   const scrollToBottom = () => {
     scroll.scrollToBottom();
+    setMobileMenuOpen(false);
   };
   const partnerImages = [
     {
@@ -87,7 +107,11 @@ const Navbar = () => {
       src: "/images/partners/Vector-4.png",
     },
     { link: "https://kuvings.com/", src: "/images/partners/Vector-5.png" },
-    { link: "https://nivona.com/", src: "/images/partners/Vector-6.png" },
+    {
+      id: 1,
+      link: "https://nivona.com/",
+      src: "/images/partners/Vector-6.png",
+    },
     { link: "https://www.dyson.com/en", src: "/images/partners/Vector-7.png" },
     {
       link: "https://www.loewe.com/usa/en/home",
@@ -156,6 +180,16 @@ const Navbar = () => {
     setOpenDropdown(!openDropdown);
     setOpenDropdownServices(false);
   };
+  const handleDropdownPartnersMobile = () => {
+    setOpenDropdown2(!openDropdown2);
+    setOpenDropdownServices2(false);
+    setMobileMenuOpen(false);
+  };
+  const handleDropdownServicesMobile = () => {
+    setOpenDropdownServices2(!openDropdownServices2);
+    setOpenDropdown2(false);
+    setMobileMenuOpen(false);
+  };
   return (
     <Box
       position="sticky"
@@ -197,39 +231,66 @@ const Navbar = () => {
           sx={{ gap: "20px" }}
         >
           <Stack width={{ lg: "60%", md: "60%", sm: "100%", xs: "100%" }}>
-            <TextField
-              id="input-with-icon-textfield"
-              placeholder={t("search")}
-              fullWidth
+            <Autocomplete
+              disableClearable
+              id="free-solo-demo"
+              freeSolo
+              options={
+                i18n.language == "en"
+                  ? resources.map((elem) => elem.text)
+                  : RuLangResources.map((elem) => elem.text)
+              }
+              filterSelectedOptions
+              onChange={handleSearch}
               sx={{
-                "&:placeholder": {
-                  color: "#858585",
+                "& .MuiOutlinedInput-root": {
+                  padding: "0 15px !important",
                 },
               }}
-              InputProps={{
-                startAdornment: (
-                  <Img
-                    style={{ width: 23, height: 23 }}
-                    src="/images/main/Shape.png"
-                    alt=""
-                  />
-                ),
-                sx: {
-                  backgroundColor: "#fff",
-                  height: { lg: "48px", md: "48px", sm: "38px", xs: "38px" },
-                  width: "auto",
-                  fontWeight: "600",
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  fullWidth
+                  name="user_name"
+                  id="outlined-basic"
+                  autoComplete="off"
+                  placeholder={t("search")}
+                  variant="outlined"
+                  InputProps={{
+                    ...params.InputProps,
+                    style: {
+                      color: "#3a3a3a",
+                      gap: "10px",
+                    },
 
-                  p: "0 13px",
-                  borderRadius: {
-                    lg: "10px",
-                    md: "10px",
-                    sm: "100px",
-                    xs: "100px",
-                  },
-                },
-              }}
-              variant="outlined"
+                    startAdornment: (
+                      <Img
+                        style={{ width: 23, height: 23 }}
+                        src="/images/main/Shape.png"
+                        alt=""
+                      />
+                    ),
+                    sx: {
+                      backgroundColor: "#fff",
+                      height: {
+                        lg: "48px",
+                        md: "48px",
+                        sm: "38px",
+                        xs: "38px",
+                      },
+                      width: "auto",
+                      fontWeight: "600",
+
+                      borderRadius: {
+                        lg: "10px",
+                        md: "10px",
+                        sm: "100px",
+                        xs: "100px",
+                      },
+                    },
+                  }}
+                />
+              )}
             />
           </Stack>
           <Stack
@@ -277,10 +338,10 @@ const Navbar = () => {
                 spacing={2}
                 direction="column"
                 height="35px"
-                alignItems="center"
+                alignItems="start"
               >
                 <Button
-                  sx={{ color: "currentColor" }}
+                  sx={{ color: "currentColor", pl: 7 }}
                   onClick={toggleMobileMenu}
                 >
                   <svg
@@ -298,21 +359,31 @@ const Navbar = () => {
                 </Button>
                 <Stack
                   direction="column"
-                  alignItems="center"
+                  alignItems="start"
+                  pl={3}
                   width={150}
                   justifyContent="center"
                   spacing={2}
                 >
-                  <NavLink className="nav-links" to="/">
+                  <NavLink
+                    className="nav-linksDrawer"
+                    to="/"
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      setOpenDropdown2(false);
+                      setOpenDropdownServices2(false);
+                    }}
+                  >
                     {t("home")}
                   </NavLink>
                   <Button
+                    id="Partners"
                     sx={{
                       color: "#3A3A3A",
                       fontSize: 18,
                       fontFamily: "Montserrat",
                       textTransform: "capitalize",
-                      ...(openDropdown
+                      ...(openDropdown2
                         ? {
                             borderBottom: "1px solid #8B181B",
                             color: "#8B181B",
@@ -322,12 +393,12 @@ const Navbar = () => {
                       p: 0,
                       borderRadius: 0,
                     }}
-                    onClick={() => setOpenDropdown2(!openDropdown2)}
+                    onClick={handleDropdownPartnersMobile}
                   >
                     Partners
                     <KeyboardArrowDownIcon
                       sx={{
-                        ...(openDropdown
+                        ...(openDropdown2
                           ? { transform: "rotate(180deg)" }
                           : ""),
                       }}
@@ -335,16 +406,22 @@ const Navbar = () => {
                   </Button>
 
                   <NavLink
-                    className="nav-links"
+                    className="nav-linksDrawer"
                     style={{
                       width: "auto",
                       minWidth: "100px",
                     }}
                     to="about"
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      setOpenDropdown2(false);
+                      setOpenDropdownServices2(false);
+                    }}
                   >
                     About us
                   </NavLink>
                   <Button
+                    id="Services"
                     sx={{
                       color: "#3A3A3A",
                       fontSize: 18,
@@ -360,9 +437,7 @@ const Navbar = () => {
                       p: 0,
                       borderRadius: 0,
                     }}
-                    onClick={() =>
-                      setOpenDropdownServices2(!openDropdownServices2)
-                    }
+                    onClick={handleDropdownServicesMobile}
                   >
                     Services
                     <KeyboardArrowDownIcon
@@ -374,21 +449,27 @@ const Navbar = () => {
                     />
                   </Button>
 
-                  <Button
-                    sx={{
-                      height: 34,
-                      mb: "10px",
-                      color: "#3A3A3A",
-                      fontSize: 18,
-                      fontFamily: "Montserrat",
-                      textTransform: "capitalize",
-                      p: "6px",
-                      borderRadius: 0,
-                    }}
-                    onClick={scrollToBottom}
-                  >
-                    {t("contacts")}
-                  </Button>
+                  <ScrollIntoView smooth={true} selector="#contacts">
+                    <Button
+                      sx={{
+                        height: 34,
+                        mb: "10px",
+                        color: "#3A3A3A",
+                        fontSize: 18,
+                        fontFamily: "Montserrat",
+                        textTransform: "capitalize",
+                        p: "6px",
+                        borderRadius: 0,
+                      }}
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        setOpenDropdown2(false);
+                        setOpenDropdownServices2(false);
+                      }}
+                    >
+                      {t("contacts")}
+                    </Button>
+                  </ScrollIntoView>
                 </Stack>
               </Stack>
             </Box>
@@ -437,7 +518,7 @@ const Navbar = () => {
                   color: "#000",
                   zIndex: (theme) => theme.zIndex.drawer + 1,
                   width: "100%",
-                  height: "100%",
+                  height: "30%",
                   alignItems: "start",
                   top: { lg: "10%", md: "12%", sm: "70px", xs: "58px" },
                 }}
@@ -453,12 +534,12 @@ const Navbar = () => {
                   boxShadow="0px 5px 10px 0px rgba(0,0,0,0.25)"
                   height={{ lg: 260, md: 260, sm: 260, xs: 400 }}
                   justifyContent={{
-                    lg: "start",
+                    lg: "center",
                     md: "start",
                     sm: "start",
                     xs: "center",
                   }}
-                  sx={{ gap: "0 72px" }}
+                  sx={{ gap: "0 42px" }}
                   alignItems="center"
                   p={{
                     lg: "5px 80px",
@@ -469,7 +550,7 @@ const Navbar = () => {
                 >
                   {partnerImages.map((item, index) => (
                     <Link key={index} target="_blank" to={item.link}>
-                      <Stack mr={4} width="100px" maxHeight={50}>
+                      <Stack mr={4} width="120px" maxHeight={60}>
                         <img src={item.src} alt="" />
                       </Stack>
                     </Link>
@@ -518,7 +599,7 @@ const Navbar = () => {
                   color: "#000",
                   zIndex: (theme) => theme.zIndex.drawer + 1,
                   width: "100%",
-                  height: "100%",
+                  height: "30%",
                   alignItems: "start",
                   top: { lg: "10%", md: "12%", sm: "70px", xs: "58px" },
                 }}
@@ -581,7 +662,6 @@ const Navbar = () => {
                 </Stack>
               </Backdrop>
             </Button>
-
             <Button
               sx={{
                 height: 34,
@@ -607,7 +687,7 @@ const Navbar = () => {
               width: "100%",
               height: "100%",
               alignItems: "start",
-              top: { lg: "10%", md: "12%", sm: "70px", xs: "58px" },
+              top: { lg: "10%", md: "12%", sm: "70px", xs: "55px" },
             }}
             className="partners"
             open={openDropdown2}
@@ -619,13 +699,8 @@ const Navbar = () => {
               direction="row"
               flexWrap="wrap"
               boxShadow="0px 5px 10px 0px rgba(0,0,0,0.25)"
-              height={{ lg: 260, md: 260, sm: 260, xs: 400 }}
-              justifyContent={{
-                lg: "space-between",
-                md: "space-between",
-                sm: "space-between",
-                xs: "center",
-              }}
+              height={{ lg: 260, md: 260, sm: 260, xs: 250 }}
+              justifyContent="space-between"
               alignItems="center"
               p={{
                 lg: "5px 80px",
@@ -635,8 +710,18 @@ const Navbar = () => {
               }}
             >
               {partnerImages.map((item, index) => (
-                <Link key={index} target="_blank" to={item.link}>
-                  <Stack mr={4} maxWidth="145px" maxHeight={40}>
+                <Link
+                  key={index}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "10px",
+                  }}
+                  target="_blank"
+                  to={item.link}
+                >
+                  <Stack maxWidth="85px" justifyContent="center" height={40}>
                     <img src={item.src} alt="" />
                   </Stack>
                 </Link>
@@ -651,7 +736,7 @@ const Navbar = () => {
               width: "100%",
               height: "100%",
               alignItems: "start",
-              top: { lg: "10%", md: "12%", sm: "70px", xs: "58px" },
+              top: { lg: "10%", md: "12%", sm: "70px", xs: "55px" },
             }}
             open={openDropdownServices2}
             onClick={() => setOpenDropdownServices2(false)}

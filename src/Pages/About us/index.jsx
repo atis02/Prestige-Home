@@ -1,10 +1,13 @@
 import { Box, Divider, Stack, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../Footer";
 import { Trans, useTranslation } from "react-i18next";
 
 const About = () => {
   const { t } = useTranslation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const aboutImg = [
     {
@@ -135,7 +138,7 @@ const About = () => {
           <Typography
             fontFamily="Montserrat"
             fontWeight={700}
-            fontSize={22}
+            fontSize={{ lg: 22, md: 22, sm: 20, xs: 18 }}
             color="#3a3a3a"
             textAlign="center"
           >

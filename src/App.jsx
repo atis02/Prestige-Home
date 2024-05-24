@@ -5,8 +5,10 @@ import Navbar from "./Components/Navbar";
 import About from "./Pages/About us";
 import { useEffect } from "react";
 import NoPath from "./Components/NoPath/NoPath";
+import AOS from "aos";
 
 function App() {
+  AOS.init();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

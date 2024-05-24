@@ -110,6 +110,7 @@ const TabButtons = () => {
           }}
         >
           <Tab
+            id="Classic"
             label={
               <Typography
                 className="tabText"
@@ -167,6 +168,7 @@ const TabButtons = () => {
             }}
           />
           <Tab
+            id="Neo"
             label={
               <Typography
                 className="tabText2"
@@ -224,6 +226,7 @@ const TabButtons = () => {
             }}
           />
           <Tab
+            id="Loft"
             label={
               <Typography
                 className="tabText3"
@@ -282,6 +285,7 @@ const TabButtons = () => {
             }}
           />
           <Tab
+            id="Modern"
             label={
               <Typography
                 className="tabText4"
@@ -378,7 +382,12 @@ const TabButtons = () => {
             >
               {t("neoClassicalKtichen")}
             </Typography>
-            <Typography color="#858585" fontFamily="Montserrat" fontSize={18}>
+            <Typography
+              color="#858585"
+              fontFamily="Montserrat"
+              fontWeight={500}
+              fontSize={16}
+            >
               {t("neoClassicalKtichenDesc")}
             </Typography>
             <Stack
@@ -465,7 +474,12 @@ const TabButtons = () => {
             >
               {t("loftStyle")}
             </Typography>
-            <Typography color="#858585" fontFamily="Montserrat" fontSize={18}>
+            <Typography
+              color="#858585"
+              fontFamily="Montserrat"
+              fontWeight={500}
+              fontSize={16}
+            >
               {t("loftStyleDesc")}
             </Typography>
             <Stack
@@ -548,7 +562,12 @@ const TabButtons = () => {
             >
               {t("classicKitchen")}
             </Typography>
-            <Typography color="#858585" fontFamily="Montserrat" fontSize={18}>
+            <Typography
+              color="#858585"
+              fontFamily="Montserrat"
+              fontWeight={500}
+              fontSize={16}
+            >
               {t("classicKitchenDesc")}
             </Typography>
             <Stack
@@ -631,7 +650,12 @@ const TabButtons = () => {
             >
               {t("modernStyle")}
             </Typography>
-            <Typography color="#858585" fontFamily="Montserrat" fontSize={18}>
+            <Typography
+              color="#858585"
+              fontWeight={500}
+              fontFamily="Montserrat"
+              fontSize={16}
+            >
               {t("modernStyleDesc")}
             </Typography>
             <Stack
@@ -677,6 +701,7 @@ const TabButtons = () => {
           </Stack>
         </Stack>
       </CustomTabPanel>
+      {/* <Stack id="contacts"></Stack> */}
     </Stack>
   );
 };

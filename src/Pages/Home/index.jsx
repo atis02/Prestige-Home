@@ -10,7 +10,7 @@ import {
   Modal,
   IconButton,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Img } from "react-image";
 import { Navigation, Scrollbar, A11y, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
@@ -22,6 +22,8 @@ import TabButtons from "./Components";
 import Footer from "../Footer";
 import { Trans, useTranslation } from "react-i18next";
 import { TypeAnimation } from "react-type-animation";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Home = () => {
   const [open, setOpen] = useState(false);
@@ -43,10 +45,20 @@ const Home = () => {
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
+  AOS.init({
+    duration: 1500,
+    offset: 0,
+  });
   return (
     <Box>
-      <Stack direction={{ lg: "row", md: "row", sm: "row", xs: "column" }}>
+      <Stack
+        id="Home"
+        direction={{ lg: "row", md: "row", sm: "row", xs: "column" }}
+      >
         <Stack
           width={{ lg: "50%", md: "50%", sm: "50%", xs: "100%" }}
           height={{ lg: 500, md: 400, sm: 330, xs: "45vh" }}
@@ -85,6 +97,9 @@ const Home = () => {
                   fontWeight={600}
                   textAlign={{ lg: "end", md: "end", sm: "end", xs: "center" }}
                   mr={{ lg: "20px", md: "20px", sm: "20px", xs: 0 }}
+                  data-aos="fade-right"
+                  data-aos-once="true"
+                  data-aos-delay="1000"
                 >
                   Prestige
                 </Typography>
@@ -156,6 +171,9 @@ const Home = () => {
                     sm: "start",
                     xs: "center",
                   }}
+                  data-aos="fade-left"
+                  data-aos-once="true"
+                  data-aos-delay="1000"
                 >
                   Home
                 </Typography>
@@ -244,7 +262,7 @@ const Home = () => {
         alignItems="center"
         sx={{ gap: "30px" }}
       >
-        <Stack>
+        <Stack id="European">
           <Typography
             fontFamily="Playfair Display"
             fontSize={22}
@@ -257,7 +275,7 @@ const Home = () => {
           </Typography>
           <Typography
             fontWeight={500}
-            fontSize={16}
+            fontSize={15}
             fontFamily="Montserrat"
             color="#858585"
             lineHeight="28px"
@@ -312,7 +330,7 @@ const Home = () => {
             }}
           />
         </Stack>
-        <Stack>
+        <Stack id="Miele">
           <Typography
             fontFamily="Playfair Display"
             fontSize={22}
@@ -360,6 +378,35 @@ const Home = () => {
                 aria-describedby="modal-modal-description"
               >
                 <Box sx={style}>
+                  <Stack
+                    sx={{
+                      position: "absolute",
+                      zIndex: 1000,
+                      top: 10,
+                      right: 0,
+                    }}
+                  >
+                    <IconButton
+                      sx={{
+                        position: "sticky",
+                        zIndex: 10000,
+                        top: 0,
+                        right: 0,
+                        alignItems: "end",
+                        justifyContent: "flex-end",
+                      }}
+                      onClick={handleClose}
+                    >
+                      <img
+                        src="/images/main/Vector-3.png"
+                        style={{
+                          width: 24,
+                          height: 24,
+                        }}
+                        alt=""
+                      />
+                    </IconButton>
+                  </Stack>
                   <Stack direction="row" justifyContent="space-between">
                     <Typography
                       className="modal-title"
@@ -370,15 +417,6 @@ const Home = () => {
                     >
                       Miele
                     </Typography>
-                    <Stack>
-                      <IconButton onClick={handleClose}>
-                        <img
-                          src="/images/main/Vector-3.png"
-                          style={{ width: 24, height: 24 }}
-                          alt=""
-                        />
-                      </IconButton>
-                    </Stack>
                   </Stack>
                   <Stack
                     direction={{
@@ -485,13 +523,14 @@ const Home = () => {
         alignItems="center"
         sx={{ gap: "30px" }}
       >
-        <Stack>
+        <Stack id="Upholstered">
           <Typography
             fontFamily="Playfair Display"
             fontSize={22}
             fontWeight={600}
             textAlign={{ lg: "end", md: "end", sm: "center", xs: "center" }}
             mb="15px"
+            mr={2.7}
             color="#3A3A3A"
           >
             {t("furniture")}
@@ -552,7 +591,7 @@ const Home = () => {
             }}
           />
         </Stack>
-        <Stack>
+        <Stack id="Loewe">
           <Typography
             fontFamily="Playfair Display"
             fontSize={22}
@@ -594,7 +633,7 @@ const Home = () => {
         alignItems="center"
         sx={{ gap: "30px" }}
       >
-        <Stack>
+        <Stack id="Small">
           <Typography
             fontFamily="Playfair Display"
             fontSize={22}
@@ -607,7 +646,7 @@ const Home = () => {
           </Typography>
           <Typography
             fontWeight={500}
-            fontSize={16}
+            fontSize={15}
             fontFamily="Montserrat"
             color="#858585"
             lineHeight="28px"
@@ -661,7 +700,7 @@ const Home = () => {
             }}
           />
         </Stack>
-        <Stack>
+        <Stack id="Wardrobe">
           <Typography
             fontFamily="Playfair Display"
             fontSize={22}
@@ -691,6 +730,7 @@ const Home = () => {
         textAlign="center"
         className="main-title"
         p="  20px 0 "
+        id="Showroom"
       >
         {t("showroom")}
       </Typography>
@@ -915,6 +955,7 @@ const Home = () => {
         textAlign="center"
         className="main-title"
         p="  20px 0 "
+        id="Ideas"
       >
         {t("ideas")}
       </Typography>
