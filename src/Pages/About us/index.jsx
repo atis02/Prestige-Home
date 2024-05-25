@@ -1,14 +1,24 @@
-import { Box, Divider, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Divider,
+  Stack,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import React, { useEffect } from "react";
 import Footer from "../Footer";
 import { Trans, useTranslation } from "react-i18next";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const About = () => {
   const { t } = useTranslation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const aboutImg = [
     {
       img_src: "/images/services/about (1)-min.png",
@@ -35,6 +45,10 @@ const About = () => {
       title: t("aboutImgDesc6"),
     },
   ];
+  AOS.init({
+    duration: 2500,
+    offset: 0,
+  });
   return (
     <Box>
       <Stack
@@ -54,6 +68,9 @@ const About = () => {
           className="main-title"
           fontFamily="Playfair Display"
           p="  20px 0 "
+          data-aos={isMobile ? "fade-down" : "fade-up"}
+          data-aos-once="true"
+          data-aos-delay="800"
         >
           {t("about")}
         </Typography>
@@ -71,6 +88,9 @@ const About = () => {
               direction="column"
               alignItems="center"
               spacing={1}
+              data-aos={isMobile ? "fade-down" : "fade-up"}
+              data-aos-once="true"
+              data-aos-delay="1200"
             >
               <Stack>
                 <img
@@ -102,6 +122,9 @@ const About = () => {
             fontFamily="Montserrat"
             fontSize={{ lg: 18, md: 18, sm: 18, xs: 16 }}
             fontWeight={500}
+            data-aos={isMobile ? "fade-down" : "fade-up"}
+            data-aos-once="true"
+            data-aos-delay="1000"
           >
             {t("aboutText")}
 
@@ -122,6 +145,9 @@ const About = () => {
             fontFamily="Montserrat"
             fontSize={{ lg: 18, md: 18, sm: 18, xs: 16 }}
             fontWeight={500}
+            data-aos={isMobile ? "fade-down" : "fade-up"}
+            data-aos-once="true"
+            data-aos-delay="1200"
           >
             {t("aboutText2")}
           </Typography>
@@ -130,6 +156,9 @@ const About = () => {
             fontFamily="Montserrat"
             fontSize={{ lg: 18, md: 18, sm: 18, xs: 16 }}
             fontWeight={500}
+            data-aos={isMobile ? "fade-down" : "fade-up"}
+            data-aos-once="true"
+            data-aos-delay="1300"
           >
             {t("aboutText3")}
           </Typography>
@@ -141,6 +170,9 @@ const About = () => {
             fontSize={{ lg: 22, md: 22, sm: 20, xs: 18 }}
             color="#3a3a3a"
             textAlign="center"
+            data-aos={isMobile ? "fade-down" : "fade-up"}
+            data-aos-once="true"
+            data-aos-delay="1300"
           >
             <Trans i18nKey="aboutText4" components={{ 1: <br /> }} />
           </Typography>

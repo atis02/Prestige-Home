@@ -50,7 +50,7 @@ const Home = () => {
   }, []);
 
   AOS.init({
-    duration: 1500,
+    duration: 2500,
     offset: 0,
   });
   return (
@@ -99,7 +99,7 @@ const Home = () => {
                   mr={{ lg: "20px", md: "20px", sm: "20px", xs: 0 }}
                   data-aos="fade-right"
                   data-aos-once="true"
-                  data-aos-delay="1000"
+                  data-aos-delay="700"
                 >
                   Prestige
                 </Typography>
@@ -173,7 +173,7 @@ const Home = () => {
                   }}
                   data-aos="fade-left"
                   data-aos-once="true"
-                  data-aos-delay="1000"
+                  data-aos-delay="700"
                 >
                   Home
                 </Typography>
@@ -214,6 +214,9 @@ const Home = () => {
         backgroundColor="#2506074D"
         zIndex={100}
         sx={{ display: { lg: "block", md: "block", sm: "block", xs: "none" } }}
+        data-aos="fade-up"
+        data-aos-once="true"
+        data-aos-delay="1000"
       >
         <Typography
           color="#fff"
@@ -226,7 +229,13 @@ const Home = () => {
           {t("mainText")}
         </Typography>
       </Stack>
-      <Stack width="100%" pt="20px">
+      <Stack
+        width="100%"
+        pt="20px"
+        data-aos="fade-up"
+        data-aos-once="true"
+        data-aos-delay="1000"
+      >
         <Divider sx={{ background: "#D0D0D0" }} />
         <Typography
           fontFamily="Montserrat"
@@ -251,8 +260,8 @@ const Home = () => {
           sm: "10px 30px",
           xs: "15px 15px",
         }}
-        width="99.5vw"
-        direction={{ lg: "row", md: "row", sm: "row", xs: "column" }}
+        width="97.5vw"
+        direction={{ lg: "row", md: "row", sm: "row", xs: "column-reverse" }}
         justifyContent={{
           lg: "space-between",
           md: "space-between",
@@ -260,9 +269,15 @@ const Home = () => {
           xs: "center",
         }}
         alignItems="center"
-        sx={{ gap: "30px" }}
+        sx={{ gap: { lg: "30px", md: "30px", sm: "15px", xs: "10px" } }}
+        mb={{ lg: 0, md: 0, sm: 0, xs: 3 }}
       >
-        <Stack id="European">
+        <Stack
+          id="European"
+          data-aos={isMobile ? "fade-down" : "fade-right"}
+          data-aos-once="true"
+          data-aos-delay="1000"
+        >
           <Typography
             fontFamily="Playfair Display"
             fontSize={22}
@@ -286,6 +301,9 @@ const Home = () => {
         <Stack
           maxWidth={{ lg: "50%", md: "50%", sm: "50%", xs: "100%" }}
           height={{ lg: 360, md: 300, sm: 300, xs: 250 }}
+          data-aos={isMobile ? "fade-down" : "fade-left"}
+          data-aos-once="true"
+          data-aos-delay="1000"
         >
           <img
             src="/images/main/main (3).png"
@@ -306,7 +324,7 @@ const Home = () => {
           sm: "10px 30px",
           xs: "15px 15px",
         }}
-        width="99.5"
+        width="97.5vw"
         direction={{ lg: "row", md: "row", sm: "row", xs: "column" }}
         justifyContent={{
           lg: "space-between",
@@ -315,11 +333,15 @@ const Home = () => {
           xs: "center",
         }}
         alignItems="center"
-        sx={{ gap: "30px" }}
+        mb={{ lg: 0, md: 0, sm: 0, xs: 3 }}
+        sx={{ gap: { lg: "30px", md: "30px", sm: "15px", xs: "10px" } }}
       >
         <Stack
           maxWidth={{ lg: "50%", md: "50%", sm: "50%", xs: "100%" }}
           height={{ lg: 360, md: 300, sm: 300, xs: 250 }}
+          data-aos={isMobile ? "fade-down" : "fade-right"}
+          data-aos-once="true"
+          data-aos-delay="1000"
         >
           <img
             src="/images/main/Rectangle 7 (8).png"
@@ -330,7 +352,12 @@ const Home = () => {
             }}
           />
         </Stack>
-        <Stack id="Miele">
+        <Stack
+          id="Miele"
+          data-aos={isMobile ? "fade-down" : "fade-left"}
+          data-aos-once="true"
+          data-aos-delay="1000"
+        >
           <Typography
             fontFamily="Playfair Display"
             fontSize={22}
@@ -512,8 +539,8 @@ const Home = () => {
           sm: "10px 30px",
           xs: "15px 15px",
         }}
-        width="99.5"
-        direction={{ lg: "row", md: "row", sm: "row", xs: "column" }}
+        width="97.5vw"
+        direction={{ lg: "row", md: "row", sm: "row", xs: "column-reverse" }}
         justifyContent={{
           lg: "space-between",
           md: "space-between",
@@ -521,9 +548,15 @@ const Home = () => {
           xs: "center",
         }}
         alignItems="center"
-        sx={{ gap: "30px" }}
+        mb={{ lg: 0, md: 0, sm: 0, xs: 3 }}
+        sx={{ gap: { lg: "30px", md: "30px", sm: "15px", xs: "10px" } }}
       >
-        <Stack id="Upholstered">
+        <Stack
+          id="Upholstered"
+          data-aos={isMobile ? "fade-down" : "fade-right"}
+          data-aos-once="true"
+          data-aos-delay="1000"
+        >
           <Typography
             fontFamily="Playfair Display"
             fontSize={22}
@@ -546,6 +579,9 @@ const Home = () => {
           </Typography>
         </Stack>
         <Stack
+          data-aos={isMobile ? "fade-down" : "fade-left"}
+          data-aos-once="true"
+          data-aos-delay="1000"
           maxWidth={{ lg: "50%", md: "50%", sm: "50%", xs: "100%" }}
           height={{ lg: 360, md: 300, sm: 300, xs: 250 }}
         >
@@ -567,7 +603,7 @@ const Home = () => {
           sm: "10px 30px",
           xs: "15px 15px",
         }}
-        width="99.5"
+        width="97.5vw"
         direction={{ lg: "row", md: "row", sm: "row", xs: "column" }}
         justifyContent={{
           lg: "space-between",
@@ -576,11 +612,15 @@ const Home = () => {
           xs: "center",
         }}
         alignItems="center"
-        sx={{ gap: "30px" }}
+        mb={{ lg: 0, md: 0, sm: 0, xs: 3 }}
+        sx={{ gap: { lg: "30px", md: "30px", sm: "15px", xs: "10px" } }}
       >
         <Stack
           maxWidth={{ lg: "50%", md: "50%", sm: "50%", xs: "100%" }}
           height={{ lg: 360, md: 300, sm: 300, xs: 250 }}
+          data-aos={isMobile ? "fade-down" : "fade-right"}
+          data-aos-once="true"
+          data-aos-delay="1000"
         >
           <img
             src="/images/main/main (7).png"
@@ -591,7 +631,12 @@ const Home = () => {
             }}
           />
         </Stack>
-        <Stack id="Loewe">
+        <Stack
+          id="Loewe"
+          data-aos={isMobile ? "fade-down" : "fade-left"}
+          data-aos-once="true"
+          data-aos-delay="800"
+        >
           <Typography
             fontFamily="Playfair Display"
             fontSize={22}
@@ -622,8 +667,8 @@ const Home = () => {
           sm: "10px 30px",
           xs: "15px 15px",
         }}
-        width="99.5"
-        direction={{ lg: "row", md: "row", sm: "row", xs: "column" }}
+        width="97.5vw"
+        direction={{ lg: "row", md: "row", sm: "row", xs: "column-reverse" }}
         justifyContent={{
           lg: "space-between",
           md: "space-between",
@@ -631,9 +676,15 @@ const Home = () => {
           xs: "center",
         }}
         alignItems="center"
-        sx={{ gap: "30px" }}
+        mb={{ lg: 0, md: 0, sm: 0, xs: 3 }}
+        sx={{ gap: { lg: "30px", md: "30px", sm: "15px", xs: "10px" } }}
       >
-        <Stack id="Small">
+        <Stack
+          id="Small"
+          data-aos={isMobile ? "fade-down" : "fade-right"}
+          data-aos-once="true"
+          data-aos-delay="800"
+        >
           <Typography
             fontFamily="Playfair Display"
             fontSize={22}
@@ -657,6 +708,9 @@ const Home = () => {
         <Stack
           maxWidth={{ lg: "50%", md: "50%", sm: "50%", xs: "100%" }}
           height={{ lg: 360, md: 300, sm: 300, xs: 250 }}
+          data-aos={isMobile ? "fade-down" : "fade-left"}
+          data-aos-once="true"
+          data-aos-delay="1000"
         >
           <img
             src="/images/main/main (5).png"
@@ -676,7 +730,7 @@ const Home = () => {
           sm: "10px 30px",
           xs: "15px 15px",
         }}
-        width="99.5"
+        width="97.5vw"
         direction={{ lg: "row", md: "row", sm: "row", xs: "column" }}
         justifyContent={{
           lg: "space-between",
@@ -685,9 +739,13 @@ const Home = () => {
           xs: "center",
         }}
         alignItems="center"
-        sx={{ gap: "30px" }}
+        mb={{ lg: 0, md: 0, sm: 0, xs: 3 }}
+        sx={{ gap: { lg: "30px", md: "30px", sm: "15px", xs: "10px" } }}
       >
         <Stack
+          data-aos={isMobile ? "fade-down" : "fade-right"}
+          data-aos-once="true"
+          data-aos-delay="1000"
           maxWidth={{ lg: "50%", md: "50%", sm: "50%", xs: "100%" }}
           height={{ lg: 360, md: 300, sm: 300, xs: 250 }}
         >
@@ -700,7 +758,12 @@ const Home = () => {
             }}
           />
         </Stack>
-        <Stack id="Wardrobe">
+        <Stack
+          id="Wardrobe"
+          data-aos={isMobile ? "fade-down" : "fade-left"}
+          data-aos-once="true"
+          data-aos-delay="800"
+        >
           <Typography
             fontFamily="Playfair Display"
             fontSize={22}
@@ -730,6 +793,9 @@ const Home = () => {
         textAlign="center"
         className="main-title"
         p="  20px 0 "
+        data-aos="fade-down"
+        data-aos-once="true"
+        data-aos-delay="1000"
         id="Showroom"
       >
         {t("showroom")}
@@ -771,6 +837,10 @@ const Home = () => {
                 transition: "all ease-in-out .5s ",
                 pr: { lg: "10px", md: "10px", sm: "10px", xs: "0" },
               }}
+              data-aos="flip-right"
+              data-aos-once="true"
+              data-aos-delay="800"
+              data-aos-easing="ease-in-out"
             >
               {/* <Typography
                 textAlign="center"
@@ -808,6 +878,10 @@ const Home = () => {
                 pr: { lg: "10px", md: "10px", sm: "10px", xs: "0" },
                 transition: "all ease-in-out .5s ",
               }}
+              data-aos="flip-right"
+              data-aos-once="true"
+              data-aos-delay="1000"
+              data-aos-easing="ease-in-out"
             >
               {/* <Typography
                 textAlign="center"
@@ -845,6 +919,10 @@ const Home = () => {
                 pr: { lg: "10px", md: "10px", sm: "10px", xs: "0" },
                 transition: "all ease-in-out .5s ",
               }}
+              data-aos="flip-right"
+              data-aos-once="true"
+              data-aos-delay="1100"
+              data-aos-easing="ease-in-out"
             >
               {/* <Typography
                 textAlign="center"
@@ -883,6 +961,10 @@ const Home = () => {
                 transition: "all ease-in-out .5s ",
                 height: "100%",
               }}
+              data-aos="flip-right"
+              data-aos-once="true"
+              data-aos-delay="1200"
+              data-aos-easing="ease-in-out"
             >
               {/* <Typography
                 textAlign="center"
@@ -921,6 +1003,10 @@ const Home = () => {
                 transition: "all ease-in-out .5s ",
                 height: "100%",
               }}
+              data-aos="flip-right"
+              data-aos-once="true"
+              data-aos-delay="1300"
+              data-aos-easing="ease-in-out"
             >
               {/* <Typography
                 textAlign="center"
@@ -956,6 +1042,10 @@ const Home = () => {
         className="main-title"
         p="  20px 0 "
         id="Ideas"
+        data-aos="fade-right"
+        data-aos-once="true"
+        data-aos-delay="600"
+        data-aos-easing="ease-in-out"
       >
         {t("ideas")}
       </Typography>

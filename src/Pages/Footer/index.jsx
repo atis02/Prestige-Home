@@ -10,6 +10,8 @@ import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Img } from "react-image";
 import { Link } from "react-router-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Footer = () => {
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -111,7 +113,10 @@ const Footer = () => {
       title: t("designPersonal"),
     },
   ];
-
+  AOS.init({
+    duration: 1500,
+    offset: 0,
+  });
   return (
     <Box id="contacts" sx={{ scrollMarginTop: "40px" }}>
       <Stack

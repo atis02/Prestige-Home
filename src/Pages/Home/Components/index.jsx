@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Grow,
   Slide,
   Stack,
   Tab,
@@ -26,6 +25,8 @@ import {
   sowrSwiper,
 } from "./swiperData.mjs";
 import { useTranslation } from "react-i18next";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const TabButtons = () => {
   const [value, setValue] = useState(0);
@@ -38,6 +39,10 @@ const TabButtons = () => {
     setChecked((prev) => !prev);
     setValue(newValue);
   };
+  AOS.init({
+    duration: 1500,
+    offset: 0,
+  });
   function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -56,14 +61,19 @@ const TabButtons = () => {
               height: "100%",
               maxWidth: 1280,
             }}
+            data-aos="flip-right"
+            data-aos-once="true"
+            data-aos-delay="900"
+            data-aos-easing="ease-in-out"
           >
-            <Grow
+            {/* <Slide
+              direction="up"
               style={{ transformOrigin: "0 0 1" }}
-              {...(value === index ? { timeout: 2600 } : {})}
+              {...(value === index ? { timeout: 1600 } : {})}
               in={value === index}
-            >
-              {children}
-            </Grow>
+            > */}
+            {children}
+            {/* </Slide> */}
           </Box>
         )}
       </div>
@@ -110,6 +120,10 @@ const TabButtons = () => {
           }}
         >
           <Tab
+            data-aos="fade-up"
+            data-aos-once="true"
+            data-aos-delay="800"
+            data-aos-easing="ease-in-out"
             id="Classic"
             label={
               <Typography
@@ -168,6 +182,10 @@ const TabButtons = () => {
             }}
           />
           <Tab
+            data-aos="fade-up"
+            data-aos-once="true"
+            data-aos-delay="900"
+            data-aos-easing="ease-in-out"
             id="Neo"
             label={
               <Typography
@@ -226,6 +244,10 @@ const TabButtons = () => {
             }}
           />
           <Tab
+            data-aos="fade-up"
+            data-aos-once="true"
+            data-aos-delay="1000"
+            data-aos-easing="ease-in-out"
             id="Loft"
             label={
               <Typography
@@ -285,6 +307,10 @@ const TabButtons = () => {
             }}
           />
           <Tab
+            data-aos="fade-up"
+            data-aos-once="true"
+            data-aos-delay="1100"
+            data-aos-easing="ease-in-out"
             id="Modern"
             label={
               <Typography
@@ -353,9 +379,18 @@ const TabButtons = () => {
           spacing={2}
           minHeight={600}
         >
+          {/* <Slide
+            direction="up"
+            style={{ transformOrigin: "0 0 1" }}
+            {...(value == 1 ? { timeout: 2000 } : {})}
+            in={value == 1}
+          > */}
           <Stack
             maxWidth={{ lg: 500, md: 400, sm: 300, xs: "100%" }}
             maxHeight={600}
+            data-aos="flip-up"
+            data-aos-once="true"
+            data-aos-delay="600"
           >
             <Img
               src="/images/neoClassics/neo (1).png"
@@ -363,6 +398,8 @@ const TabButtons = () => {
               alt=""
             />
           </Stack>
+          {/* </Slide> */}
+
           <Stack
             spacing={3}
             width={{ lg: "60%", md: "60%", sm: "100%", xs: "100%" }}
@@ -379,6 +416,10 @@ const TabButtons = () => {
                 sm: "center",
                 xs: "center",
               }}
+              data-aos="zoom-out"
+              data-aos-once="true"
+              data-aos-delay="550"
+              data-aos-easing="ease-in-out"
             >
               {t("neoClassicalKtichen")}
             </Typography>
@@ -387,6 +428,10 @@ const TabButtons = () => {
               fontFamily="Montserrat"
               fontWeight={500}
               fontSize={16}
+              data-aos="fade-up"
+              data-aos-once="true"
+              data-aos-delay="650"
+              data-aos-easing="ease-in-out"
             >
               {t("neoClassicalKtichenDesc")}
             </Typography>
@@ -395,6 +440,9 @@ const TabButtons = () => {
               spacing={4}
               alignItems="center"
               justifyContent="center"
+              data-aos="fade-up"
+              data-aos-once="true"
+              data-aos-delay="750"
             >
               <Swiper
                 slidesPerView={isMobile ? 1 : 2.5}
@@ -410,7 +458,7 @@ const TabButtons = () => {
                 }}
                 className="swiperNextButton"
               >
-                {neoSwiper.map((item) => (
+                {neoSwiper.map((item, index) => (
                   <SwiperSlide key={item.id}>
                     <Stack
                       maxWidth={{ lg: 280, md: 210, sm: 260, xs: "100%" }}
@@ -419,6 +467,9 @@ const TabButtons = () => {
                         transition: "all ease 0.5s",
                         ":hover": { transform: "scale(1.15)" },
                       }}
+                      data-aos="flip-right"
+                      data-aos-once="true"
+                      data-aos-delay="1500"
                     >
                       <Img
                         src={item.image}
@@ -448,6 +499,9 @@ const TabButtons = () => {
           <Stack
             maxWidth={{ lg: 500, md: 400, sm: 300, xs: "100%" }}
             maxHeight={600}
+            data-aos="flip-right"
+            data-aos-once="true"
+            data-aos-delay="600"
           >
             <Img
               src="/images/loft/loft (1).png"
@@ -471,6 +525,10 @@ const TabButtons = () => {
                 sm: "center",
                 xs: "center",
               }}
+              data-aos="zoom-out"
+              data-aos-once="true"
+              data-aos-delay="550"
+              data-aos-easing="ease-in-out"
             >
               {t("loftStyle")}
             </Typography>
@@ -479,6 +537,10 @@ const TabButtons = () => {
               fontFamily="Montserrat"
               fontWeight={500}
               fontSize={16}
+              data-aos="fade-up"
+              data-aos-once="true"
+              data-aos-delay="650"
+              data-aos-easing="ease-in-out"
             >
               {t("loftStyleDesc")}
             </Typography>
@@ -511,6 +573,9 @@ const TabButtons = () => {
                         transition: "all ease 0.5s",
                         ":hover": { transform: "scale(1.15)" },
                       }}
+                      data-aos="flip-left"
+                      data-aos-once="true"
+                      data-aos-delay="1500"
                     >
                       <Img
                         src={item.image}
@@ -536,6 +601,9 @@ const TabButtons = () => {
           <Stack
             maxWidth={{ lg: 500, md: 400, sm: 300, xs: "100%" }}
             maxHeight={600}
+            data-aos="flip-right"
+            data-aos-once="true"
+            data-aos-delay="600"
           >
             <Img
               src="/images/sowr/sowr (1).png"
@@ -559,6 +627,10 @@ const TabButtons = () => {
                 sm: "center",
                 xs: "center",
               }}
+              data-aos="zoom-out-up"
+              data-aos-once="true"
+              data-aos-delay="550"
+              data-aos-easing="ease-in-out"
             >
               {t("classicKitchen")}
             </Typography>
@@ -567,6 +639,10 @@ const TabButtons = () => {
               fontFamily="Montserrat"
               fontWeight={500}
               fontSize={16}
+              data-aos="zoom-out-up"
+              data-aos-once="true"
+              data-aos-delay="600"
+              data-aos-easing="ease-in-out"
             >
               {t("classicKitchenDesc")}
             </Typography>
@@ -599,6 +675,10 @@ const TabButtons = () => {
                         transition: "all ease 0.5s",
                         ":hover": { transform: "scale(1.15)" },
                       }}
+                      data-aos="flip-left"
+                      data-aos-once="true"
+                      data-aos-delay="1500"
+                      data-aos-easing="ease-in-out"
                     >
                       <Img
                         src={item.image}
@@ -624,6 +704,9 @@ const TabButtons = () => {
           <Stack
             maxWidth={{ lg: 500, md: 400, sm: 300, xs: "100%" }}
             maxHeight={600}
+            data-aos="flip-right"
+            data-aos-once="true"
+            data-aos-delay="600"
           >
             <Img
               src="/images/modern/Rectangle 9.png"
@@ -647,6 +730,10 @@ const TabButtons = () => {
                 sm: "center",
                 xs: "center",
               }}
+              data-aos="zoom-out-up"
+              data-aos-once="true"
+              data-aos-delay="550"
+              data-aos-easing="ease-in-out"
             >
               {t("modernStyle")}
             </Typography>
@@ -655,6 +742,10 @@ const TabButtons = () => {
               fontWeight={500}
               fontFamily="Montserrat"
               fontSize={16}
+              data-aos="zoom-out-up"
+              data-aos-once="true"
+              data-aos-delay="600"
+              data-aos-easing="ease-in-out"
             >
               {t("modernStyleDesc")}
             </Typography>
@@ -687,6 +778,10 @@ const TabButtons = () => {
                         transition: "all ease 0.5s",
                         ":hover": { transform: "scale(1.15)" },
                       }}
+                      data-aos="flip-right"
+                      data-aos-once="true"
+                      data-aos-delay="1500"
+                      data-aos-easing="ease-in-out"
                     >
                       <Img
                         src={item.image}
