@@ -23,12 +23,12 @@
 }
 @keyframes animate {
   0%{
-    color: #484848;
+    color: #fff;
     text-shadow: none;
   }
   
   90%{
-    color: gray;
+    color:#fff;
     text-shadow: none;
     filter: blur(2.5px);
 
