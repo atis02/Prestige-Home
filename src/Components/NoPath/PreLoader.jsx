@@ -5,11 +5,12 @@ const PreLoader = () => {
   return (
     <Box>
       <Stack
-        direction="column"
+        direction="row"
         alignItems="center"
         justifyContent="center"
         height="100vh"
         backgroundColor="#000"
+        spacing={2}
       >
         <Stack direction="row" alignItems="center" justifyContent="center">
           <Typography
@@ -61,7 +62,6 @@ const PreLoader = () => {
             e
           </Typography>
         </Stack>
-
         <Stack
           height={30}
           direction="row"

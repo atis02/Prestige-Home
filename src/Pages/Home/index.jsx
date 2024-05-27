@@ -293,6 +293,7 @@ const Home = () => {
             fontSize={15}
             fontFamily="Montserrat"
             color="#858585"
+            textAlign="justify"
             lineHeight="28px"
           >
             {t("europeKitchenDesc")}
@@ -374,6 +375,7 @@ const Home = () => {
             fontFamily="Montserrat"
             color="#858585"
             lineHeight="28px"
+            textAlign="justify"
           >
             {t("mieleDesc")}
           </Typography>
@@ -574,6 +576,7 @@ const Home = () => {
             fontFamily="Montserrat"
             color="#858585"
             lineHeight="28px"
+            textAlign="justify"
           >
             {t("furnitureDesc")}
           </Typography>

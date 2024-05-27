@@ -19,25 +19,46 @@
 }
 .Loader,.Loader2{
   color:#484848;
-  animation: animate 1.4s linear infinite;
+  animation: animate 1.8s  linear infinite ;
 }
 @keyframes animate {
   0%{
-    color: #fff;
-    text-shadow: none;
+    color: #c0c0c0;
+    filter: blur(0.5px);
   }
-  
+  10%{
+    filter: blur(1px);
+  }
+  20%{
+    filter: blur(2px);
+  }
+  30%{
+    filter: blur(3px);
+  }
+  40%{
+    filter: blur(4px);
+  }
+  50%{
+    filter: blur(4.5px);
+  }
+  60%{
+    filter: blur(4px);
+  }
+  70%{
+    filter: blur(3px);
+  }
+  80%{
+    filter: blur(2px);
+  }
   90%{
-    color:#fff;
-    text-shadow: none;
-    filter: blur(2.5px);
-
+    filter: blur(1px);
   }
   100%{
-    color: #a7a7a7;
-    text-shadow: 0 0 7px #a7a7a7,0 0 50px #fff;
+    filter: blur(0.5px);
+    color: #c0c0c0;
 
   }
+  
 }
 .Loader:nth-child(1){
   animation-delay: 0.1;

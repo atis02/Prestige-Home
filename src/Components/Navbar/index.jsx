@@ -395,7 +395,7 @@ const Navbar = () => {
                     }}
                     onClick={handleDropdownPartnersMobile}
                   >
-                    Partners
+                    {t("partners")}
                     <KeyboardArrowDownIcon
                       sx={{
                         ...(openDropdown2
@@ -439,7 +439,7 @@ const Navbar = () => {
                     }}
                     onClick={handleDropdownServicesMobile}
                   >
-                    Services
+                    {t("services")}
                     <KeyboardArrowDownIcon
                       sx={{
                         ...(openDropdownServices2
@@ -458,7 +458,7 @@ const Navbar = () => {
                         fontSize: 18,
                         fontFamily: "Montserrat",
                         textTransform: "capitalize",
-                        p: "6px",
+                        p: 0,
                         borderRadius: 0,
                       }}
                       onClick={() => {
