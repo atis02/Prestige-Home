@@ -407,35 +407,27 @@ const Home = () => {
                 aria-describedby="modal-modal-description"
               >
                 <Box sx={style}>
-                  <Stack
+                  <IconButton
                     sx={{
-                      position: "absolute",
+                      position: "sticky",
                       zIndex: 1000,
-                      top: 10,
+                      top: 0,
                       right: 0,
+                      alignItems: "end",
+                      justifyContent: "flex-end",
+                      width: "100%",
                     }}
+                    onClick={handleClose}
                   >
-                    <IconButton
-                      sx={{
-                        position: "sticky",
-                        zIndex: 10000,
-                        top: 0,
-                        right: 0,
-                        alignItems: "end",
-                        justifyContent: "flex-end",
+                    <img
+                      src="/images/main/Vector-3.png"
+                      style={{
+                        width: 24,
+                        height: 24,
                       }}
-                      onClick={handleClose}
-                    >
-                      <img
-                        src="/images/main/Vector-3.png"
-                        style={{
-                          width: 24,
-                          height: 24,
-                        }}
-                        alt=""
-                      />
-                    </IconButton>
-                  </Stack>
+                      alt=""
+                    />
+                  </IconButton>
                   <Stack direction="row" justifyContent="space-between">
                     <Typography
                       className="modal-title"
