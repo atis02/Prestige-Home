@@ -34,7 +34,7 @@ export const resources = {
       garderobFurnitureDesc:
         "A wardrobe is a place where you can neatly and rationally place clothes, shoes, and accessories while keeping them always accessible, preventing deformation or deterioration due to improper storage. Today, minimalist dressing rooms that are as functional as possible are especially relevant.",
       showroom: "Our showroom",
-      ideas: "Our Ideas and projects",
+      ideas: "Our ideas and projects",
       neoClassical: "Neo-Classical",
       classic: "Classic",
       loft: "Loft",
@@ -125,7 +125,7 @@ export const resources = {
       garderobFurnitureDesc:
         "Гардеробная – это место, где можно аккуратно и рационально разместить одежду, обувь, аксессуары, при этом они всегда будут доступны, они не деформируются и не изветшают от неправильного хранения. Сегодня особенно актуальны минималистичные гардеробные, которые могут быть максимально функциональными.",
       showroom: "Наш шоурум",
-      ideas: "Наши Идеи и проекты",
+      ideas: "Наши идеи и проекты",
       neoClassical: "Нео - классика",
       classic: "Kлассика",
       loft: "Лофт",
