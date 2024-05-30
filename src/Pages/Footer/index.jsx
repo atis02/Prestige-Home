@@ -166,7 +166,7 @@ const Footer = () => {
             </Typography>
           </Stack>
           <Stack width={20} height={20} direction="row" spacing={3}>
-            <a href="https://www.instagram.com/">
+            <a href="https://www.instagram.com/prestigehome_tm?igsh=NmxodjM3eXg5a3Bo">
               <Img
                 src="/images/main/bi_instagram (1).png"
                 style={{ width: "20px", height: "20px" }}
@@ -180,7 +180,7 @@ const Footer = () => {
                 alt=""
               />
             </a>
-            <a href="https://www.tiktok.com/">
+            <a href="https://www.tiktok.com/@prestige_home_">
               <Img
                 src="/images/main/bi_tiktok (1).png"
                 style={{ width: "20px", height: "20px" }}
@@ -260,93 +260,20 @@ const Footer = () => {
             <li>{t("home")}</li>
           </Link>
 
-          <Button
-            sx={{
-              height: 22,
-              color: "#000",
-              fontSize: 16,
-              fontWeight: 400,
+          <Link
+            to="/services"
+            style={{
               fontFamily: "Montserrat",
-              textTransform: "capitalize",
-              p: 0,
-              marginTop: 0,
-              borderRadius: 0,
-              display: "flex",
-              justifyContent: "start",
+              fontSize: 16,
+              lineHeight: "24px",
+              fontWeight: 400,
+              textDecoration: "none",
+              color: "#000",
             }}
-            onClick={handleDropdown}
           >
-            <li style={{ mr: "10px" }}>{t("services")}</li>
+            <li>{t("services")}</li>
+          </Link>
 
-            <Backdrop
-              sx={{
-                backgroundColor: "transparent",
-                color: "#000",
-                zIndex: (theme) => theme.zIndex.drawer + 1,
-                width: "100%",
-                height: "100%",
-                alignItems: "start",
-                top: { lg: "10%", md: "12%", sm: "70px", xs: "55px" },
-              }}
-              open={openDropdownServices}
-              onClick={() => setOpenDropdownServices(false)}
-            >
-              <Stack
-                width="100%"
-                backgroundColor="#fff"
-                direction="row"
-                flexWrap="wrap"
-                boxShadow="0px 5px 10px 0px rgba(0,0,0,0.25)"
-                height={{ lg: 300, md: 300, sm: 500, xs: 300 }}
-                justifyContent={{
-                  lg: "space-between",
-                  md: "start",
-                  sm: "space-between",
-                  xs: "space-between",
-                }}
-                alignItems="center"
-                p={{
-                  lg: "5px 80px",
-                  md: "10px 60px",
-                  sm: "10px 30px",
-                  xs: "5px 10px",
-                }}
-              >
-                {services.map((item) => (
-                  <Stack
-                    flexWrap="wrap"
-                    direction="row"
-                    alignItems="center"
-                    key={item.id}
-                    width={{ lg: 420, md: 375, sm: 370, xs: 350 }}
-                    maxHeight={120}
-                    spacing={2}
-                  >
-                    <Stack
-                      maxWidth={{ lg: 120, md: 90, sm: 70, xs: 40 }}
-                      maxHeight={120}
-                    >
-                      <img
-                        style={{
-                          borderRadius: "7px",
-                        }}
-                        src={item.img_src}
-                        alt=""
-                      />
-                    </Stack>
-                    <Typography
-                      fontFamily="Playfair display"
-                      color="#3a3a3a"
-                      fontSize={16}
-                      fontWeight={800}
-                    >
-                      {item.title}
-                    </Typography>
-                  </Stack>
-                ))}
-              </Stack>
-            </Backdrop>
-          </Button>
           <Button
             sx={{
               height: 22,
@@ -371,7 +298,7 @@ const Footer = () => {
                 width: "100%",
                 height: "100%",
                 alignItems: "start",
-                top: { lg: "10%", md: "12%", sm: "70px", xs: "55px" },
+                top: { lg: "8%", md: "12%", sm: "70px", xs: "55px" },
               }}
               className="partners"
               open={openDropdown}

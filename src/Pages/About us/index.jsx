@@ -21,27 +21,27 @@ const About = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const aboutImg = [
     {
-      img_src: "/images/services/about (1)-min.png",
+      img_src: "/images/about/about (1)-min.png",
       title: t("aboutImgDesc1"),
     },
     {
-      img_src: "/images/services/about (2)-min.png",
+      img_src: "/images/about/about (2)-min.png",
       title: t("aboutImgDesc2"),
     },
     {
-      img_src: "/images/services/about (3)-min.png",
+      img_src: "/images/about/about (3)-min.png",
       title: t("aboutImgDesc3"),
     },
     {
-      img_src: "/images/services/about (4)-min.png",
+      img_src: "/images/about/about (4)-min.png",
       title: t("aboutImgDesc4"),
     },
     {
-      img_src: "/images/services/about (5)-min.png",
+      img_src: "/images/about/about (5)-min.png",
       title: t("aboutImgDesc5"),
     },
     {
-      img_src: "/images/services/about (6)-min.png",
+      img_src: "/images/about/about (6)-min.png",
       title: t("aboutImgDesc6"),
     },
   ];
@@ -78,7 +78,8 @@ const About = () => {
           direction="row"
           mt="30px"
           flexWrap="wrap"
-          justifyContent="space-between"
+          spacing={10}
+          justifyContent="center"
         >
           {aboutImg.map((item, index) => (
             <Stack

@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Container,
   Divider,
   Stack,
   Typography,
@@ -13,7 +12,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { Img } from "react-image";
 import { Navigation, Scrollbar, A11y, Autoplay } from "swiper/modules";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
@@ -21,7 +20,6 @@ import "swiper/css/navigation";
 import TabButtons from "./Components";
 import Footer from "../Footer";
 import { Trans, useTranslation } from "react-i18next";
-import { TypeAnimation } from "react-type-animation";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -61,7 +59,7 @@ const Home = () => {
       >
         <Stack
           width={{ lg: "50%", md: "50%", sm: "50%", xs: "100%" }}
-          height={{ lg: 500, md: 400, sm: 330, xs: "45vh" }}
+          height={{ lg: 700, md: 500, sm: 430, xs: "45vh" }}
         >
           <Swiper
             slidesPerView={1}
@@ -130,7 +128,7 @@ const Home = () => {
 
         <Stack
           maxWidth={{ lg: "50%", md: "50%", sm: "50%", xs: "100%" }}
-          height={{ lg: 500, md: 400, sm: 330, xs: "45vh" }}
+          height={{ lg: 700, md: 500, sm: 430, xs: "45vh" }}
         >
           <Swiper
             slidesPerView={1}
@@ -202,33 +200,26 @@ const Home = () => {
           </Swiper>
         </Stack>
       </Stack>
-      <Stack
+      <Typography
         position="absolute"
-        top={{ lg: "420px", md: "320px", sm: "270px", xs: "190px" }}
-        left={{
-          ...(i18n.language === "ru"
-            ? { lg: "20%", md: "10%", sm: "13%" }
-            : { lg: "28%", md: "20%", sm: "23%" }),
-        }}
+        top={{ lg: "580px", md: "420px", sm: "370px", xs: "190px" }}
+        color="#fff"
+        width="100%"
+        zIndex={100}
+        fontSize={{ lg: 42, md: 38, sm: 25, xs: 25 }}
+        fontWeight={600}
+        lineHeight={{ lg: "63px", md: "63px", sm: "63px", xs: "none" }}
+        textAlign={{ lg: "center", md: "start", sm: "center", xs: "center" }}
+        fontFamily="Montserrat"
         p="10px"
         backgroundColor="#2506074D"
-        zIndex={100}
         sx={{ display: { lg: "block", md: "block", sm: "block", xs: "none" } }}
         data-aos="fade-up"
         data-aos-once="true"
         data-aos-delay="1000"
       >
-        <Typography
-          color="#fff"
-          fontSize={{ lg: 42, md: 38, sm: 25, xs: 25 }}
-          fontWeight={600}
-          lineHeight={{ lg: "63px", md: "63px", sm: "63px", xs: "none" }}
-          textAlign={{ lg: "start", md: "start", sm: "center", xs: "center" }}
-          fontFamily="Montserrat"
-        >
-          {t("mainText")}
-        </Typography>
-      </Stack>
+        {t("mainText")}
+      </Typography>
       <Stack
         width="100%"
         pt="20px"
@@ -273,10 +264,12 @@ const Home = () => {
         mb={{ lg: 0, md: 0, sm: 0, xs: 3 }}
       >
         <Stack
-          id="European"
+          sx={{ scrollMarginTop: "100px" }}
+          id={i18n.language === "en" ? "European Kitchen" : "Европейские кухни"}
           data-aos={isMobile ? "fade-down" : "fade-right"}
           data-aos-once="true"
           data-aos-delay="1000"
+          width={{ xl: "50%", lg: "50%", md: "50%", sm: "55%", xs: "100%" }}
         >
           <Typography
             fontFamily="Playfair Display"
@@ -301,7 +294,7 @@ const Home = () => {
         </Stack>
         <Stack
           maxWidth={{ lg: "50%", md: "50%", sm: "50%", xs: "100%" }}
-          height={{ lg: 360, md: 300, sm: 300, xs: 250 }}
+          height={{ lg: 430, md: 300, sm: 300, xs: 250 }}
           data-aos={isMobile ? "fade-down" : "fade-left"}
           data-aos-once="true"
           data-aos-delay="1000"
@@ -339,7 +332,7 @@ const Home = () => {
       >
         <Stack
           maxWidth={{ lg: "50%", md: "50%", sm: "50%", xs: "100%" }}
-          height={{ lg: 360, md: 300, sm: 300, xs: 250 }}
+          height={{ lg: 430, md: 300, sm: 300, xs: 250 }}
           data-aos={isMobile ? "fade-down" : "fade-right"}
           data-aos-once="true"
           data-aos-delay="1000"
@@ -354,10 +347,12 @@ const Home = () => {
           />
         </Stack>
         <Stack
+          sx={{ scrollMarginTop: "100px" }}
           id="Miele"
           data-aos={isMobile ? "fade-down" : "fade-left"}
           data-aos-once="true"
           data-aos-delay="1000"
+          width={{ xl: "100%", lg: "47%", md: "50%", sm: "55%", xs: "100%" }}
         >
           <Typography
             fontFamily="Playfair Display"
@@ -407,7 +402,7 @@ const Home = () => {
                 aria-describedby="modal-modal-description"
               >
                 <Box sx={style}>
-                  <IconButton
+                  <Stack
                     sx={{
                       position: "sticky",
                       zIndex: 1000,
@@ -415,19 +410,25 @@ const Home = () => {
                       right: 0,
                       alignItems: "end",
                       justifyContent: "flex-end",
-                      width: "100%",
                     }}
-                    onClick={handleClose}
                   >
-                    <img
-                      src="/images/main/Vector-3.png"
-                      style={{
-                        width: 24,
-                        height: 24,
+                    <IconButton
+                      sx={{
+                        width: 30,
+                        height: 30,
                       }}
-                      alt=""
-                    />
-                  </IconButton>
+                      onClick={handleClose}
+                    >
+                      <img
+                        src="/images/main/Vector-3.png"
+                        style={{
+                          width: 24,
+                          height: 24,
+                        }}
+                        alt=""
+                      />
+                    </IconButton>
+                  </Stack>
                   <Stack direction="row" justifyContent="space-between">
                     <Typography
                       className="modal-title"
@@ -546,10 +547,14 @@ const Home = () => {
         sx={{ gap: { lg: "30px", md: "30px", sm: "15px", xs: "10px" } }}
       >
         <Stack
-          id="Upholstered"
+          sx={{ scrollMarginTop: "100px" }}
+          id={
+            i18n.language === "en" ? "Upholstered Furniture" : "Мягкие мебели"
+          }
           data-aos={isMobile ? "fade-down" : "fade-right"}
           data-aos-once="true"
           data-aos-delay="1000"
+          width={{ xl: "100%", lg: "47%", md: "50%", sm: "55%", xs: "100%" }}
         >
           <Typography
             fontFamily="Playfair Display"
@@ -578,7 +583,7 @@ const Home = () => {
           data-aos-once="true"
           data-aos-delay="1000"
           maxWidth={{ lg: "50%", md: "50%", sm: "50%", xs: "100%" }}
-          height={{ lg: 360, md: 300, sm: 300, xs: 250 }}
+          height={{ lg: 430, md: 300, sm: 300, xs: 250 }}
         >
           <img
             src="/images/main/main (4).png"
@@ -612,7 +617,7 @@ const Home = () => {
       >
         <Stack
           maxWidth={{ lg: "50%", md: "50%", sm: "50%", xs: "100%" }}
-          height={{ lg: 360, md: 300, sm: 300, xs: 250 }}
+          height={{ lg: 430, md: 300, sm: 300, xs: 250 }}
           data-aos={isMobile ? "fade-down" : "fade-right"}
           data-aos-once="true"
           data-aos-delay="1000"
@@ -627,10 +632,12 @@ const Home = () => {
           />
         </Stack>
         <Stack
+          sx={{ scrollMarginTop: "150px" }}
           id="Loewe"
           data-aos={isMobile ? "fade-down" : "fade-left"}
           data-aos-once="true"
           data-aos-delay="800"
+          width={{ xl: "100%", lg: "47%", md: "50%", sm: "55%", xs: "100%" }}
         >
           <Typography
             fontFamily="Playfair Display"
@@ -647,6 +654,7 @@ const Home = () => {
             fontSize={16}
             fontFamily="Montserrat"
             color="#858585"
+            textAlign="justify"
             lineHeight="28px"
           >
             {t("loewe")}
@@ -675,10 +683,16 @@ const Home = () => {
         sx={{ gap: { lg: "30px", md: "30px", sm: "15px", xs: "10px" } }}
       >
         <Stack
-          id="Small"
+          sx={{ scrollMarginTop: "150px" }}
+          id={
+            i18n.language === "en"
+              ? "Small Household Appliances"
+              : "Мелкая бытовая техника"
+          }
           data-aos={isMobile ? "fade-down" : "fade-right"}
           data-aos-once="true"
           data-aos-delay="800"
+          width={{ xl: "100%", lg: "47%", md: "50%", sm: "55%", xs: "100%" }}
         >
           <Typography
             fontFamily="Playfair Display"
@@ -694,6 +708,7 @@ const Home = () => {
             fontWeight={500}
             fontSize={15}
             fontFamily="Montserrat"
+            textAlign="justify"
             color="#858585"
             lineHeight="28px"
           >
@@ -702,7 +717,7 @@ const Home = () => {
         </Stack>
         <Stack
           maxWidth={{ lg: "50%", md: "50%", sm: "50%", xs: "100%" }}
-          height={{ lg: 360, md: 300, sm: 300, xs: 250 }}
+          height={{ lg: 430, md: 300, sm: 300, xs: 250 }}
           data-aos={isMobile ? "fade-down" : "fade-left"}
           data-aos-once="true"
           data-aos-delay="1000"
@@ -742,7 +757,7 @@ const Home = () => {
           data-aos-once="true"
           data-aos-delay="1000"
           maxWidth={{ lg: "50%", md: "50%", sm: "50%", xs: "100%" }}
-          height={{ lg: 360, md: 300, sm: 300, xs: 250 }}
+          height={{ lg: 430, md: 300, sm: 300, xs: 250 }}
         >
           <img
             src="/images/main/main (8).png"
@@ -754,10 +769,12 @@ const Home = () => {
           />
         </Stack>
         <Stack
-          id="Wardrobe"
+          sx={{ scrollMarginTop: "150px" }}
+          id={i18n.language === "en" ? "Wardrobe" : "Гардеробная мебель"}
           data-aos={isMobile ? "fade-down" : "fade-left"}
           data-aos-once="true"
           data-aos-delay="800"
+          width={{ xl: "100%", lg: "47%", md: "50%", sm: "55%", xs: "100%" }}
         >
           <Typography
             fontFamily="Playfair Display"
@@ -775,6 +792,7 @@ const Home = () => {
             fontFamily="Montserrat"
             color="#858585"
             lineHeight="28px"
+            textAlign="justify"
           >
             {t("garderobFurnitureDesc")}
           </Typography>
@@ -791,7 +809,8 @@ const Home = () => {
         data-aos="fade-down"
         data-aos-once="true"
         data-aos-delay="1000"
-        id="Showroom"
+        id={i18n.language === "en" ? "Showroom" : "Шоурум"}
+        sx={{ scrollMarginTop: "80px" }}
       >
         {t("showroom")}
       </Typography>
@@ -837,22 +856,6 @@ const Home = () => {
               data-aos-delay="800"
               data-aos-easing="ease-in-out"
             >
-              {/* <Typography
-                textAlign="center"
-                position="absolute"
-                color="#fff"
-                fontSize={24}
-                fontWeight={700}
-                fontFamily="Montserrat"
-                top="45%"
-                left="33%"
-                className="text"
-                sx={{
-                  display: "none",
-                }}
-              >
-                Диван
-              </Typography> */}
               <img
                 src="/images/main/main (9).png"
                 style={{ width: "100%", height: "100%" }}
@@ -878,22 +881,6 @@ const Home = () => {
               data-aos-delay="1000"
               data-aos-easing="ease-in-out"
             >
-              {/* <Typography
-                textAlign="center"
-                position="absolute"
-                color="#fff"
-                fontSize={24}
-                fontWeight={700}
-                fontFamily="Montserrat"
-                top="45%"
-                left="33%"
-                className="text"
-                sx={{
-                  display: "none",
-                }}
-              >
-                Диван
-              </Typography> */}
               <img
                 src="/images/main/main (10).png"
                 style={{ width: "100%", height: "100%" }}
@@ -919,22 +906,6 @@ const Home = () => {
               data-aos-delay="1100"
               data-aos-easing="ease-in-out"
             >
-              {/* <Typography
-                textAlign="center"
-                position="absolute"
-                color="#fff"
-                fontSize={24}
-                fontWeight={700}
-                fontFamily="Montserrat"
-                top="45%"
-                left="33%"
-                className="text"
-                sx={{
-                  display: "none",
-                }}
-              >
-                Диван
-              </Typography> */}
               <img
                 src="/images/main/main (11).png"
                 style={{ width: "100%", height: "100%" }}
@@ -961,22 +932,6 @@ const Home = () => {
               data-aos-delay="1200"
               data-aos-easing="ease-in-out"
             >
-              {/* <Typography
-                textAlign="center"
-                position="absolute"
-                color="#fff"
-                fontSize={24}
-                fontWeight={700}
-                fontFamily="Montserrat"
-                top="45%"
-                left="33%"
-                className="text"
-                sx={{
-                  display: "none",
-                }}
-              >
-                Диван
-              </Typography> */}
               <img
                 src="/images/main/main (12).png"
                 style={{ width: "100%", height: "100%" }}
@@ -1003,22 +958,6 @@ const Home = () => {
               data-aos-delay="1300"
               data-aos-easing="ease-in-out"
             >
-              {/* <Typography
-                textAlign="center"
-                position="absolute"
-                color="#fff"
-                fontSize={24}
-                fontWeight={700}
-                fontFamily="Montserrat"
-                top="45%"
-                left="33%"
-                className="text"
-                sx={{
-                  display: "none",
-                }}
-              >
-                Диван
-              </Typography> */}
               <img
                 src="/images/main/main (13).png"
                 style={{ width: "100%", height: "100%" }}
@@ -1036,11 +975,12 @@ const Home = () => {
         textAlign="center"
         className="main-title"
         p="  20px 0 "
-        id="Ideas"
         data-aos="fade-right"
         data-aos-once="true"
         data-aos-delay="600"
         data-aos-easing="ease-in-out"
+        id={i18n.language === "en" ? "Ideas and Projects" : "Идеи и Проекты"}
+        sx={{ scrollMarginTop: "80px" }}
       >
         {t("ideas")}
       </Typography>

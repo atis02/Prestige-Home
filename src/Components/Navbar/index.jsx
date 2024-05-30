@@ -16,8 +16,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Img } from "react-image";
-import { navData } from "./components/navData.mjs";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import MenuIcon from "@mui/icons-material/Menu";
 import Language from "../Language/Language";
@@ -27,10 +26,12 @@ import { RuLangResources, resources } from "../Language/Text.mjs";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ScrollIntoView from "react-scroll-into-view";
-import smoothScrollIntoView from "smooth-scroll-into-view-if-needed";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [hoverOpen, setHoverOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(false);
   const open = Boolean(anchorEl);
@@ -38,25 +39,16 @@ const Navbar = () => {
   const [openDropdown2, setOpenDropdown2] = useState(false);
   const [openDropdownServices, setOpenDropdownServices] = useState(false);
   const [openDropdownServices2, setOpenDropdownServices2] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
   AOS.init({
     duration: 1500,
     offset: 0,
   });
-  const node = document.getElementById("contacts");
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value.toLowerCase());
-  };
-  const focusAndHighlight = (element) => {
-    element.focus();
-    element.style.backgroundColor = "green";
-  };
+  const navigate = useNavigate();
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -87,101 +79,109 @@ const Navbar = () => {
   };
   const partnerImages = [
     {
-      link: "https://www.miele.com/en/com/index.htm",
+      title: "Miele",
+      link: "https://www.miele.com/en/com/index.html",
       src: "/images/partners/Vector.png",
     },
     {
+      title: "Haecker-kuechen",
       link: "https://www.haecker-kuechen.com/en/",
       src: "/images/partners/Vector-1.png",
     },
     {
+      title: "Blanco",
+
       link: "https://www.blanco.com/int-en/",
       src: "/images/partners/Vector-2.png",
     },
     {
+      title: "Falmec",
+
       link: "https://www.falmec.com/en-ww/",
       src: "/images/partners/Vector-3.png",
     },
     {
+      title: "KitchenAid",
+
       link: "https://www.kitchenaid.com/",
       src: "/images/partners/Vector-4.png",
     },
-    { link: "https://kuvings.com/", src: "/images/partners/Vector-5.png" },
+    {
+      title: "Kuvings",
+      link: "https://kuvings.com/",
+      src: "/images/partners/Vector-5.png",
+    },
     {
       id: 1,
+      title: "Nivona",
+
       link: "https://nivona.com/",
       src: "/images/partners/Vector-6.png",
     },
-    { link: "https://www.dyson.com/en", src: "/images/partners/Vector-7.png" },
     {
+      title: "Dyson",
+      link: "https://www.dyson.com/en",
+      src: "/images/partners/Vector-7.png",
+    },
+    {
+      title: "Loewe",
+
       link: "https://www.loewe.com/usa/en/home",
       src: "/images/partners/Vector-8.png",
     },
     {
+      title: "Gala",
+
       link: "https://www.galameble.com/",
       src: "/images/partners/Vector-9.png",
     },
     {
+      title: "Voglauer",
+
       link: "https://www.voglauer.com/de/",
       src: "/images/partners/Vector-10.png",
     },
-    { link: "https://www.gwinner.de/", src: "/images/partners/Vector-11.png" },
     {
+      title: "Gwinner",
+      link: "https://www.gwinner.de/",
+      src: "/images/partners/Vector-11.png",
+    },
+    {
+      title: "Aran Cucine",
+
       link: "https://www.arancucine.it/",
       src: "/images/partners/Vector-12.png",
     },
     {
+      title: "Colombini",
+
       link: "https://www.colombinicasa.com/",
       src: "/images/partners/Vector-13.png",
     },
     {
+      title: "Bauformat",
+
       link: "https://www.bauformat.de/",
       src: "/images/partners/Vector-14.png",
     },
-    { link: "https://giusti.com/", src: "/images/partners/image 32.png" },
-  ];
-  const services = [
     {
-      id: 1,
-      img_src: "/images/services/services (1).png",
-      title: t("byuro"),
-    },
-    {
-      id: 2,
-      img_src: "/images/services/services (2).png",
-      title: t("design"),
-    },
-    {
-      id: 3,
-      img_src: "/images/services/services (3).png",
-      title: t("projectAgree"),
-    },
-    {
-      id: 4,
-      img_src: "/images/services/services (4).png",
-      title: t("sizePlace"),
-    },
-    {
-      id: 5,
-      img_src: "/images/services/services (5).png",
-      title: t("materials"),
-    },
-    {
-      id: 6,
-      img_src: "/images/services/services (6).png",
-      title: t("designPersonal"),
+      title: "Giusti",
+      link: "https://giusti.com/",
+      src: "/images/partners/image 32.png",
     },
   ];
+
   const handleDropdown = () => {
     setOpenDropdownServices(!openDropdownServices);
     setOpenDropdown(false);
+    setHoverOpen(false);
   };
   const handleDropdownPartners = () => {
     setOpenDropdown(!openDropdown);
-    setOpenDropdownServices(false);
+    setHoverOpen(false);
   };
   const handleDropdownPartnersMobile = () => {
-    setOpenDropdown2(!openDropdown2);
+    setOpenDropdown2(!openDropdown);
     setOpenDropdownServices2(false);
     setMobileMenuOpen(false);
   };
@@ -190,15 +190,20 @@ const Navbar = () => {
     setOpenDropdown2(false);
     setMobileMenuOpen(false);
   };
+
   return (
     <Box
       position="sticky"
       zIndex={1000}
       backgroundColor="#fff"
+      height={{ lg: 88, md: 80, sm: 80, xs: 60 }}
       top={0}
       sx={{
         ...(scrolled
-          ? { boxShadow: "0px 5px 10px 0px rgba(0,0,0,0.25)" }
+          ? {
+              boxShadow: "0px 5px 10px 0px rgba(0,0,0,0.25)",
+              opacity: "90%",
+            }
           : { boxShadow: "0" }),
       }}
       p={{ lg: "5px 80px", md: "10px 60px", sm: "10px 30px", xs: "5px 10px" }}
@@ -207,13 +212,16 @@ const Navbar = () => {
         direction="row"
         width="100%"
         alignItems="center"
-        sx={{ gap: "20px" }}
+        justifyContent="space-between"
+        height="100%"
+        sx={{ gap: { lg: "20px", md: "20px", sm: "20px", xs: "5px" } }}
       >
+        <ToastContainer />
         <Link to="/">
           <Stack
             sx={{
-              width: { lg: 65, md: 60, sm: 50, xs: 45 },
-              height: { lg: 65, md: 60, sm: 50, xs: 45 },
+              width: { lg: 80, md: 60, sm: 50, xs: 45 },
+              height: { lg: 80, md: 60, sm: 50, xs: 45 },
             }}
           >
             <img
@@ -225,94 +233,11 @@ const Navbar = () => {
         </Link>
         <Stack
           direction="row"
-          width="100%"
+          width={{ lg: "100%", md: "100%", sm: "100%", xs: "70px" }}
           alignItems="center"
-          justifyContent="space-between"
+          justifyContent="center"
           sx={{ gap: "20px" }}
         >
-          <Stack width={{ lg: "60%", md: "60%", sm: "100%", xs: "100%" }}>
-            <Autocomplete
-              disableClearable
-              id="free-solo-demo"
-              freeSolo
-              options={
-                i18n.language == "en"
-                  ? resources.map((elem) => elem.text)
-                  : RuLangResources.map((elem) => elem.text)
-              }
-              filterSelectedOptions
-              onChange={handleSearch}
-              sx={{
-                "& .MuiOutlinedInput-root": {
-                  padding: "0 15px !important",
-                },
-              }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  fullWidth
-                  name="user_name"
-                  id="outlined-basic"
-                  autoComplete="off"
-                  placeholder={t("search")}
-                  variant="outlined"
-                  InputProps={{
-                    ...params.InputProps,
-                    style: {
-                      color: "#3a3a3a",
-                      gap: "10px",
-                    },
-
-                    startAdornment: (
-                      <Img
-                        style={{ width: 23, height: 23 }}
-                        src="/images/main/Shape.png"
-                        alt=""
-                      />
-                    ),
-                    sx: {
-                      backgroundColor: "#fff",
-                      height: {
-                        lg: "48px",
-                        md: "48px",
-                        sm: "38px",
-                        xs: "38px",
-                      },
-                      width: "auto",
-                      fontWeight: "600",
-
-                      borderRadius: {
-                        lg: "10px",
-                        md: "10px",
-                        sm: "100px",
-                        xs: "100px",
-                      },
-                    },
-                  }}
-                />
-              )}
-            />
-          </Stack>
-          <Stack
-            direction="row"
-            spacing={1}
-            alignItems="center"
-            justifyContent="center"
-            sx={{ ...(isMobile ? { display: "flex" } : { display: "none" }) }}
-          >
-            <IconButton
-              onClick={toggleMobileMenu}
-              sx={{
-                width: 24,
-                height: 24,
-                p: 0,
-              }}
-            >
-              <MenuIcon sx={{ color: "#000" }} />
-            </IconButton>
-
-            <Language />
-          </Stack>
           <Drawer
             anchor="right"
             open={mobileMenuOpen}
@@ -411,43 +336,31 @@ const Navbar = () => {
                       width: "auto",
                       minWidth: "100px",
                     }}
-                    to="about"
+                    to="/about"
                     onClick={() => {
                       setMobileMenuOpen(false);
                       setOpenDropdown2(false);
                       setOpenDropdownServices2(false);
                     }}
                   >
-                    About us
+                    {t("about")}
                   </NavLink>
-                  <Button
-                    id="Services"
-                    sx={{
-                      color: "#3A3A3A",
-                      fontSize: 18,
-                      fontFamily: "Montserrat",
-                      textTransform: "capitalize",
-                      ...(openDropdownServices2
-                        ? {
-                            borderBottom: "1px solid #8B181B",
-                            color: "#8B181B",
-                            fontWeight: 600,
-                          }
-                        : ""),
-                      p: 0,
-                      borderRadius: 0,
+
+                  <NavLink
+                    className="nav-linksDrawer"
+                    style={{
+                      width: "auto",
+                      minWidth: "100px",
                     }}
-                    onClick={handleDropdownServicesMobile}
+                    to="/services"
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      setOpenDropdown2(false);
+                      setOpenDropdownServices2(false);
+                    }}
                   >
                     {t("services")}
-                    <KeyboardArrowDownIcon
-                      sx={{
-                        ...(openDropdownServices2
-                          ? { transform: "rotate(180deg)" }
-                          : ""),
-                      }}
-                    />
-                  </Button>
+                  </NavLink>
 
                   <ScrollIntoView smooth={true} selector="#contacts">
                     <Button
@@ -477,12 +390,12 @@ const Navbar = () => {
           <Stack
             sx={{
               display: { lg: "flex", md: "flex", sm: "none", xs: "none" },
-              minWidth: "650px",
+              minWidth: { lg: "650px", md: "350px" },
             }}
             direction="row"
             justifyContent="center"
             alignItems="center"
-            spacing={3}
+            spacing={{ lg: 3, md: 1.5, sm: 3, xs: 3 }}
           >
             <NavLink className="nav-links" to="/">
               {t("home")}
@@ -496,7 +409,7 @@ const Navbar = () => {
                 fontSize: 18,
                 fontFamily: "Montserrat",
                 textTransform: "capitalize",
-                ...(openDropdown
+                ...(openDropdown || hoverOpen
                   ? {
                       borderBottom: "1px solid #8B181B",
                       color: "#8B181B",
@@ -508,8 +421,8 @@ const Navbar = () => {
                 borderRadius: 0,
               }}
               onClick={handleDropdownPartners}
-              onMouseEnter={() => setOpenDropdown(true)}
-              onMouseLeave={() => setOpenDropdown(false)}
+              onMouseEnter={() => setHoverOpen(true)}
+              onMouseLeave={() => setHoverOpen(false)}
             >
               {t("partners")}
               <Backdrop
@@ -520,11 +433,14 @@ const Navbar = () => {
                   width: "100%",
                   height: "30%",
                   alignItems: "start",
-                  top: { lg: "10%", md: "12%", sm: "70px", xs: "58px" },
+                  top: { lg: "75px", md: "75px", sm: "70px", xs: "58px" },
                 }}
                 className="partners"
-                open={openDropdown}
-                onClick={() => setOpenDropdown(false)}
+                open={openDropdown || hoverOpen}
+                onClick={() => {
+                  setHoverOpen(false);
+                  setOpenDropdown(false);
+                }}
               >
                 <Stack
                   width="100%"
@@ -569,99 +485,16 @@ const Navbar = () => {
             >
               {t("about")}
             </NavLink>
-            <Button
-              sx={{
-                height: 40,
-                mb: "10px",
-                color: "#3A3A3A",
-                fontSize: 18,
-                fontFamily: "Montserrat",
-                textTransform: "capitalize",
-                ...(openDropdownServices
-                  ? {
-                      borderBottom: "1px solid #8B181B",
-                      color: "#8B181B",
-                      fontWeight: 600,
-                    }
-                  : ""),
-                p: "6px",
-                borderRadius: 0,
+            <NavLink
+              className="nav-links"
+              style={{
+                width: "auto",
+                minWidth: "50px",
               }}
-              onClick={handleDropdown}
-              onMouseEnter={() => setOpenDropdownServices(true)}
-              onMouseLeave={() => setOpenDropdownServices(false)}
+              to="/services"
             >
               {t("services")}
-
-              <Backdrop
-                sx={{
-                  backgroundColor: "transparent",
-                  color: "#000",
-                  zIndex: (theme) => theme.zIndex.drawer + 1,
-                  width: "100%",
-                  height: "30%",
-                  alignItems: "start",
-                  top: { lg: "10%", md: "12%", sm: "70px", xs: "58px" },
-                }}
-                open={openDropdownServices}
-                onClick={() => setOpenDropdownServices(false)}
-              >
-                <Stack
-                  width="100%"
-                  backgroundColor="#fff"
-                  direction="row"
-                  flexWrap="wrap"
-                  boxShadow="0px 5px 10px 0px rgba(0,0,0,0.25)"
-                  height={{ lg: 300, md: 300, sm: 500, xs: 300 }}
-                  justifyContent={{
-                    lg: "space-between",
-                    md: "start",
-                    sm: "space-between",
-                    xs: "space-between",
-                  }}
-                  alignItems="center"
-                  p={{
-                    lg: "5px 80px",
-                    md: "10px 60px",
-                    sm: "10px 30px",
-                    xs: "5px 10px",
-                  }}
-                >
-                  {services.map((item) => (
-                    <Stack
-                      flexWrap="wrap"
-                      direction="row"
-                      alignItems="center"
-                      key={item.id}
-                      width={{ lg: 420, md: 375, sm: 370, xs: 350 }}
-                      maxHeight={120}
-                      spacing={2}
-                    >
-                      <Stack
-                        maxWidth={{ lg: 120, md: 90, sm: 70, xs: 40 }}
-                        maxHeight={120}
-                      >
-                        <img
-                          style={{
-                            borderRadius: "7px",
-                          }}
-                          src={item.img_src}
-                          alt=""
-                        />
-                      </Stack>
-                      <Typography
-                        fontFamily="Playfair display"
-                        color="#3a3a3a"
-                        fontSize={16}
-                        fontWeight={800}
-                      >
-                        {item.title}
-                      </Typography>
-                    </Stack>
-                  ))}
-                </Stack>
-              </Backdrop>
-            </Button>
+            </NavLink>
             <Button
               sx={{
                 height: 34,
@@ -677,7 +510,6 @@ const Navbar = () => {
             >
               {t("contacts")}
             </Button>
-            <Language />
           </Stack>
           <Backdrop
             sx={{
@@ -687,7 +519,7 @@ const Navbar = () => {
               width: "100%",
               height: "100%",
               alignItems: "start",
-              top: { lg: "10%", md: "12%", sm: "70px", xs: "55px" },
+              top: { lg: "80px", md: "80px", sm: "70px", xs: "60px" },
             }}
             className="partners"
             open={openDropdown2}
@@ -728,75 +560,156 @@ const Navbar = () => {
               ))}
             </Stack>
           </Backdrop>
-          <Backdrop
+        </Stack>
+        <Stack
+          width={{ lg: "40%", md: "30%", sm: "100%", xs: "10000px" }}
+          direction="row"
+          spacing={2}
+        >
+          <Stack
             sx={{
-              backgroundColor: "transparent",
-              color: "#000",
-              zIndex: (theme) => theme.zIndex.drawer + 1,
-              width: "100%",
-              height: "100%",
-              alignItems: "start",
-              top: { lg: "10%", md: "12%", sm: "70px", xs: "55px" },
+              display: { lg: "block", md: "none", sm: "none", xs: "none" },
             }}
-            open={openDropdownServices2}
-            onClick={() => setOpenDropdownServices2(false)}
+            spacing={1}
           >
-            <Stack
-              width="100%"
-              backgroundColor="#fff"
-              direction="row"
-              flexWrap="wrap"
-              boxShadow="0px 5px 10px 0px rgba(0,0,0,0.25)"
-              height={{ lg: 300, md: 300, sm: 500, xs: 300 }}
-              justifyContent={{
-                lg: "space-between",
-                md: "start",
-                sm: "space-between",
-                xs: "space-between",
-              }}
-              alignItems="center"
-              p={{
-                lg: "5px 80px",
-                md: "10px 60px",
-                sm: "10px 30px",
-                xs: "5px 10px",
+            <Link
+              to="tel:+99365687740"
+              style={{
+                textDecoration: "none",
+                color: "#3a3a3a",
+                fontWeight: 600,
+                fontSize: 18,
+                fontFamily: "Montserrat",
+                textAlign: "center",
               }}
             >
-              {services.map((item) => (
-                <Stack
-                  flexWrap="wrap"
-                  direction="row"
-                  alignItems="center"
-                  key={item.id}
-                  width={{ lg: 420, md: 375, sm: 370, xs: 350 }}
-                  maxHeight={120}
-                  spacing={2}
+              +993 65687740
+            </Link>
+            <Stack direction="row" alignItems="center" spacing={1}>
+              <img
+                src="/images/main/bi_instagram (1).png"
+                style={{ width: 18, height: 18 }}
+                alt=""
+              />
+              <Typography
+                fontFamily="Montserrat"
+                fontSize={15}
+                fontWeight={400}
+              >
+                <a
+                  href="https://www.instagram.com/prestigehome_tm?igsh=NmxodjM3eXg5a3Bo"
+                  target="_blank"
+                  style={{ textDecoration: "none", color: "#8B181B" }}
                 >
-                  <Stack
-                    maxWidth={{ lg: 120, md: 90, sm: 70, xs: 40 }}
-                    maxHeight={120}
-                  >
-                    <img
-                      style={{
-                        borderRadius: "7px",
-                      }}
-                      src={item.img_src}
+                  prestigehome_tm
+                </a>
+              </Typography>
+            </Stack>
+          </Stack>
+          <Autocomplete
+            fullWidth
+            freeSolo
+            options={partnerImages.map((elem) => elem.title)}
+            onChange={(event, value) => {
+              partnerImages.find(
+                (item) =>
+                  item.title === value
+                    ? setTimeout(() => {
+                        window.location.assign(item.link);
+                      }, 1500)
+                    : "",
+                toast.warn(t("redirect"))
+              );
+            }}
+            // options={
+            //   i18n.language == "en"
+            //     ? resources.map((elem) => elem.text)
+            //     : RuLangResources.map((elem) => elem.text)
+            // }
+            // onChange={(event, value) => {
+            //   if (value === "Home" || value === "Главная") {
+            //     navigate("/");
+            //   } else if (value === "About" || value === "О нас") {
+            //     navigate("/about");
+            //   } else if (value === "Services" || value === "Услуги") {
+            //     navigate("/services");
+            //   } else {
+            //     let element = document.getElementById(value.toString());
+            //     element.scrollIntoView();
+            //   }
+            // }}
+            sx={{
+              "& .MuiOutlinedInput-root": {
+                padding: "0 15px !important",
+                width: "100%",
+              },
+            }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                fullWidth
+                name="user_name"
+                id="outlined-basic"
+                autoComplete="off"
+                placeholder={t("search")}
+                variant="outlined"
+                InputProps={{
+                  ...params.InputProps,
+                  style: {
+                    color: "#3a3a3a",
+                    gap: "10px",
+                  },
+
+                  startAdornment: (
+                    <Img
+                      style={{ width: 23, height: 23 }}
+                      src="/images/main/Shape.png"
                       alt=""
                     />
-                  </Stack>
-                  <Typography
-                    fontFamily="Playfair display"
-                    color="#3a3a3a"
-                    fontSize={16}
-                    fontWeight={800}
-                  >
-                    {item.title}
-                  </Typography>
-                </Stack>
-              ))}
-            </Stack>
-          </Backdrop>
+                  ),
+                  sx: {
+                    backgroundColor: "transparent",
+                    height: {
+                      lg: "48px",
+                      md: "48px",
+                      sm: "38px",
+                      xs: "38px",
+                    },
+                    width: "auto",
+                    fontWeight: "500",
+                    borderRadius: {
+                      lg: "10px",
+                      md: "10px",
+                      sm: "100px",
+                      xs: "100px",
+                    },
+                  },
+                }}
+              />
+            )}
+          />
         </Stack>
+
+        <Stack
+          direction="row"
+          spacing={1}
+          alignItems="center"
+          justifyContent="center"
+          sx={{ ...(isMobile ? { display: "flex" } : { display: "none" }) }}
+          ml={2}
+        >
+          <IconButton
+            onClick={toggleMobileMenu}
+            sx={{
+              width: 24,
+              height: 24,
+              p: 0,
+            }}
+          >
+            <MenuIcon sx={{ color: "#000" }} />
+          </IconButton>
+        </Stack>
+        <Language />
       </Stack>
     </Box>
   );

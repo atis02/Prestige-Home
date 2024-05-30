@@ -34,7 +34,7 @@ export const resources = {
       garderobFurnitureDesc:
         "A wardrobe is a place where you can neatly and rationally place clothes, shoes, and accessories while keeping them always accessible, preventing deformation or deterioration due to improper storage. Today, minimalist dressing rooms that are as functional as possible are especially relevant.",
       showroom: "Our showroom",
-      ideas: "Ideas and projects",
+      ideas: "Our Ideas and projects",
       neoClassical: "Neo-Classical",
       classic: "Classic",
       loft: "Loft",
@@ -75,6 +75,22 @@ export const resources = {
       sizePlace: "Size of your room",
       materials: "Selection of necessary materials",
       designPersonal: "Personal project design",
+      servicesTitle: "1. Measuring and design",
+      servicesTitle2: "2.Work on individual design.",
+      servicesTitle3: "3. Turnkey project delivery.",
+      servicesTitle4: "4. Delivery and service of equipment",
+      servicesTitle5: "5. Favorable prices and agreement.",
+      servicesText:
+        "We are one big team that does a common job, starting from the worker at the factory and ending with the installer who installs the kitchen or furniture in your home. <1/>We want our furniture and appliances to become part of your home for many years",
+      servicesText2:
+        "Prestigehome`s professional team is a source of special proud for the company. Our designers have been designing kitchens and interiors for more than 10 years,  they annually undergo specialized training, take part in seminars and trainings in Germany, Austria, France and Italy.<1/><1/> Trust the professionals!",
+      servicesText3:
+        "In our work, we pay special attention to an individual approach to the needs of each client. We carefully supervise all stages: from product presentation to after-sales service.<1/>The Miele service team periodically undergoes training and testing in the repair and installation of household appliances.",
+      servicesText4:
+        "For these days Prestigehome`s team of professionals is a recognized expert in creating unique design projects. Using our accumulated experience and applying the achievements of famous architects and designers, we design creative kitchen and living interiors that meet the requirements of today, looking into the future. That is our purpose.",
+      servicesText5:
+        "As the largest official distributor, we provide our customers with a wide range of home furniture, flexible prices and the most favorable terms of cooperation.",
+      redirect: "You are being redirected to company`s site!",
     },
   },
   ru: {
@@ -109,7 +125,7 @@ export const resources = {
       garderobFurnitureDesc:
         "Гардеробная – это место, где можно аккуратно и рационально разместить одежду, обувь, аксессуары, при этом они всегда будут доступны, они не деформируются и не изветшают от неправильного хранения. Сегодня особенно актуальны минималистичные гардеробные, которые могут быть максимально функциональными.",
       showroom: "Наш шоурум",
-      ideas: "Идеи и проекты",
+      ideas: "Наши Идеи и проекты",
       neoClassical: "Нео - классика",
       classic: "Kлассика",
       loft: "Лофт",
@@ -149,6 +165,23 @@ export const resources = {
       sizePlace: "Размер вашего помещения",
       materials: "Подбор необходимых материалов",
       designPersonal: "Дизайн персонального проекта",
+      servicesText:
+        "Мы – одна большая команда, которая делает общее дело, начиная от рабочего на заводе и заканчивая монтажником, который устанавливает кухнюили мебель у Вас дома. <1/>Мы хотим, чтобы наша мебель и техника стала частью Вашего дома на долгие-долгие годы.",
+      servicesText2:
+        "Профессиональная команда Prestigehome — предмет особой гордости компании. Более 10 лет наши дизайнеры занимаются проектированием кухонь и интерьеров, они ежегодно проходят специализированную подготовку, принимают участие в семинарах и тренингах в Германии, Австрии, Франции и Италии. <1/><1/> Доверьтесь профессионалам!",
+      servicesText3:
+        "В своей работе мы уделяем особо внимание индивидуальному подходу к потребностям каждого клиента. Тщательно курируем все этапы: начиная от презентации продукции, и заканчивая постпродажным обслуживанием.<1/>Сервисная команда Miele переодически проходит обучение и тестирование по ремонту и установке бытовой техники.",
+      servicesText4:
+        "Сегодня команда профессионалов   Prestigehome, является признанным экспертом в создании уникальных дизайн-проектов. Используя накопленный опыт и применяя достижения известных архитекторов и дизайнеров, мы проектируем креативные кухонные и жилые интерьеры, отвечающие требованиям сегодняшнего дня, устремленные в будущее. В этом мы видим свое предназначение.",
+      servicesText5:
+        "Являясь крупнейшим официальным дистрибьютором, мы предоставляем нашим клиентам широкий ассортимент мебели для дома, гибкие цены и самые выгодные условия сотрудничества.",
+
+      servicesTitle: "1. Замеры и проектирование",
+      servicesTitle2: "2.Работа над индивидуальным дизайном.",
+      servicesTitle3: "3.Сдача проект под ключ.",
+      servicesTitle4: "4. Доставка и сервис техники",
+      servicesTitle5: "5.Выгодные цены и договоренность.",
+      redirect: "Вы будете перенаправлены на сайт компании!",
     },
   },
 };
@@ -159,7 +192,6 @@ i18n.use(initReactI18next).init({
   interpolation: {
     escapeValue: false,
   },
-  debug: true,
   initImmediate: false,
 });
 export default i18n;

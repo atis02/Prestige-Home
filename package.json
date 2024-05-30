@@ -25,6 +25,7 @@
     "react-router-dom": "^6.23.0",
     "react-scroll": "^1.9.0",
     "react-scroll-into-view": "^2.1.2",
+    "react-toastify": "^10.0.5",
     "react-type-animation": "^3.2.0",
     "smooth-scroll-into-view-if-needed": "^2.0.2",
     "swiper": "^11.1.1"

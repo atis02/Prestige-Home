@@ -18,7 +18,7 @@
   background-color: transparent;
 }
 .Loader,.Loader2{
-  color:#484848;
+  color:#fff;
   animation: animate 1.8s  linear infinite ;
 }
 @keyframes animate {

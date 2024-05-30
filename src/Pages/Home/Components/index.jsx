@@ -31,7 +31,7 @@ import "aos/dist/aos.css";
 const TabButtons = () => {
   const [value, setValue] = useState(0);
   const [checked, setChecked] = useState(false);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -59,21 +59,13 @@ const TabButtons = () => {
             sx={{
               p: 1,
               height: "100%",
-              maxWidth: 1280,
             }}
             data-aos="flip-right"
             data-aos-once="true"
             data-aos-delay="900"
             data-aos-easing="ease-in-out"
           >
-            {/* <Slide
-              direction="up"
-              style={{ transformOrigin: "0 0 1" }}
-              {...(value === index ? { timeout: 1600 } : {})}
-              in={value === index}
-            > */}
             {children}
-            {/* </Slide> */}
           </Box>
         )}
       </div>
@@ -124,7 +116,6 @@ const TabButtons = () => {
             data-aos-once="true"
             data-aos-delay="800"
             data-aos-easing="ease-in-out"
-            id="Classic"
             label={
               <Typography
                 className="tabText"
@@ -186,7 +177,7 @@ const TabButtons = () => {
             data-aos-once="true"
             data-aos-delay="900"
             data-aos-easing="ease-in-out"
-            id="Neo"
+            id="Neo-classical"
             label={
               <Typography
                 className="tabText2"
@@ -375,16 +366,9 @@ const TabButtons = () => {
         <Stack
           direction={{ lg: "row", md: "row", sm: "column", xs: "column" }}
           alignItems="center"
-          justifyContent="center"
           spacing={2}
           minHeight={600}
         >
-          {/* <Slide
-            direction="up"
-            style={{ transformOrigin: "0 0 1" }}
-            {...(value == 1 ? { timeout: 2000 } : {})}
-            in={value == 1}
-          > */}
           <Stack
             maxWidth={{ lg: 500, md: 400, sm: 300, xs: "100%" }}
             maxHeight={600}
@@ -398,7 +382,6 @@ const TabButtons = () => {
               alt=""
             />
           </Stack>
-          {/* </Slide> */}
 
           <Stack
             spacing={3}
@@ -449,6 +432,7 @@ const TabButtons = () => {
                 navigation
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
                 modules={[Autoplay, Navigation, Scrollbar, A11y]}
+                spaceBetween={1}
                 style={{
                   width: "100%",
                   height: "auto",
@@ -487,7 +471,6 @@ const TabButtons = () => {
           </Stack>
         </Stack>
       </CustomTabPanel>
-
       <CustomTabPanel value={value} index={2}>
         <Stack
           direction={{ lg: "row", md: "row", sm: "column", xs: "column" }}
@@ -796,7 +779,6 @@ const TabButtons = () => {
           </Stack>
         </Stack>
       </CustomTabPanel>
-      {/* <Stack id="contacts"></Stack> */}
     </Stack>
   );
 };

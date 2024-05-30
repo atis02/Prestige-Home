@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import NoPath from "./Components/NoPath/NoPath";
 import AOS from "aos";
 import PreLoader from "./Components/NoPath/PreLoader";
+import Services from "./Pages/Services";
 
 function App() {
   const [loader, setLoader] = useState(false);
@@ -19,7 +20,7 @@ function App() {
     setLoader(true);
     setTimeout(() => {
       setLoader(false);
-    }, 3000);
+    }, 3300);
   }, []);
   return (
     <>
@@ -31,6 +32,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
             <Route path="*" element={<NoPath />} />
           </Routes>
         </BrowserRouter>
