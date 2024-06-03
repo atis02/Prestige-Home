@@ -78,7 +78,6 @@ const About = () => {
           direction="row"
           mt="30px"
           flexWrap="wrap"
-          // spacing={{ lg: 8, md: 10, sm: 8, xs: 2 }}
           sx={{ gap: { lg: "40px", md: "30px", sm: "25px", xs: "15px" } }}
           justifyContent="center"
         >
