@@ -19,9 +19,9 @@ const Footer = () => {
   const [openDropdownServices, setOpenDropdownServices] = useState(false);
   const [openDropdownServices2, setOpenDropdownServices2] = useState(false);
   const { t } = useTranslation();
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const handleDropdown = () => {
     setOpenDropdownServices(!openDropdownServices);
     setOpenDropdown(false);
