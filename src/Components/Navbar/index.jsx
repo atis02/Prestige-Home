@@ -63,69 +63,65 @@ const Navbar = () => {
   const scrollToBottom = () => {
     scroll.scrollToBottom();
     setMobileMenuOpen(false);
+    setOpenDropdown(false);
   };
+
   const partnerImages = [
     {
       title: "Miele",
-      link: "https://www.miele.com/en/com/index.html",
+      link: "https://www.miele.com",
       src: "/images/partners/Vector.png",
     },
     {
+      title: "Gala collezione",
+      link: "https://www.galameble.com",
+      src: "/images/partners/Vector-9.png",
+    },
+    {
       title: "Haecker-kuechen",
-      link: "https://www.haecker-kuechen.com/en/",
+      link: "https://www.haecker-kuechen.com",
       src: "/images/partners/Vector-1.png",
     },
     {
       title: "Blanco",
-
-      link: "https://www.blanco.com/int-en/",
+      link: "https://www.blanco.com",
       src: "/images/partners/Vector-2.png",
     },
     {
       title: "Falmec",
-
-      link: "https://www.falmec.com/en-ww/",
+      link: "https://www.falmec.com",
       src: "/images/partners/Vector-3.png",
     },
     {
       title: "KitchenAid",
-
-      link: "https://www.kitchenaid.com/",
+      link: "https://www.kitchenaid.com",
       src: "/images/partners/Vector-4.png",
     },
     {
       title: "Kuvings",
-      link: "https://kuvings.com/",
+      link: "https://kuvings.com",
       src: "/images/partners/Vector-5.png",
     },
     {
       id: 1,
       title: "Nivona",
-
       link: "https://nivona.com/",
       src: "/images/partners/Vector-6.png",
     },
     {
       title: "Dyson",
-      link: "https://www.dyson.com/en",
+      link: "https://www.dyson.com",
       src: "/images/partners/Vector-7.png",
     },
     {
       title: "Loewe",
-
-      link: "https://www.loewe.com/usa/en/home",
+      link: "https://www.loewe.tv",
       src: "/images/partners/Vector-8.png",
     },
-    {
-      title: "Gala",
 
-      link: "https://www.galameble.com/",
-      src: "/images/partners/Vector-9.png",
-    },
     {
       title: "Voglauer",
-
-      link: "https://www.voglauer.com/de/",
+      link: "https://www.voglauer.com",
       src: "/images/partners/Vector-10.png",
     },
     {
@@ -135,19 +131,16 @@ const Navbar = () => {
     },
     {
       title: "Aran Cucine",
-
       link: "https://www.arancucine.it/",
       src: "/images/partners/Vector-12.png",
     },
     {
-      title: "Colombini",
-
+      title: "Colombini casa",
       link: "https://www.colombinicasa.com/",
       src: "/images/partners/Vector-13.png",
     },
     {
-      title: "Bauformat",
-
+      title: "Bauformat Küchen",
       link: "https://www.bauformat.de/",
       src: "/images/partners/Vector-14.png",
     },
@@ -171,9 +164,9 @@ const Navbar = () => {
   return (
     <Box
       position="sticky"
-      zIndex={1000}
+      zIndex={10000}
       backgroundColor="#fff"
-      height={{ lg: 88, md: 80, sm: 80, xs: 60 }}
+      height={{ lg: 80, md: 80, sm: 80, xs: 60 }}
       top={0}
       sx={{
         ...(scrolled
@@ -191,21 +184,32 @@ const Navbar = () => {
         alignItems="center"
         justifyContent="space-between"
         height="100%"
-        sx={{ gap: { lg: "20px", md: "20px", sm: "20px", xs: "5px" } }}
+        sx={{ gap: { lg: "10px", md: "10px", sm: "10px", xs: "5px" } }}
       >
         <ToastContainer />
         <Link to="/">
           <Stack
             sx={{
-              width: { lg: 80, md: 60, sm: 50, xs: 45 },
-              height: { lg: 80, md: 60, sm: 50, xs: 45 },
+              width: { lg: 270, md: 180, sm: 50, xs: 50 },
+              height: { lg: 70, md: 60, sm: 50, xs: 50 },
             }}
           >
-            <img
-              style={{ width: "100%", height: "100%" }}
-              src="/images/main/Logo.png"
-              alt=""
-            />
+            {isMobile ? (
+              <img
+                style={{
+                  width: 50,
+                  height: 50,
+                }}
+                src="/images/main/Logo.png"
+                alt=""
+              />
+            ) : (
+              <img
+                style={{ width: "100%", height: "100%", borderRadius: "7px" }}
+                src="/images/main/logo 1 (1).png"
+                alt=""
+              />
+            )}
           </Stack>
         </Link>
         <Stack
@@ -365,14 +369,19 @@ const Navbar = () => {
           <Stack
             sx={{
               display: { lg: "flex", md: "flex", sm: "none", xs: "none" },
-              minWidth: { lg: "650px", md: "350px" },
+              // width: { lg: "450px", md: "350px" },
             }}
             direction="row"
             justifyContent="center"
             alignItems="center"
-            spacing={{ lg: 3, md: 1.5, sm: 3, xs: 3 }}
+            spacing={{ lg: 2, md: 1.5, sm: 3, xs: 3 }}
+            mt={2.2}
           >
-            <NavLink className="nav-links" to="/">
+            <NavLink
+              className="nav-links"
+              onClick={() => setOpenDropdown(false)}
+              to="/"
+            >
               {t("home")}
             </NavLink>
 
@@ -404,11 +413,10 @@ const Navbar = () => {
                 sx={{
                   backgroundColor: "transparent",
                   color: "#000",
-                  zIndex: (theme) => theme.zIndex.drawer + 1,
                   width: "100%",
-                  height: "30%",
+                  height: "28%",
                   alignItems: "start",
-                  top: { lg: "75px", md: "75px", sm: "70px", xs: "58px" },
+                  top: { lg: "70px", md: "70px", sm: "70px", xs: "58px" },
                 }}
                 className="partners"
                 open={openDropdown || hoverOpen}
@@ -456,6 +464,7 @@ const Navbar = () => {
                 width: "auto",
                 minWidth: "50px",
               }}
+              onClick={() => setOpenDropdown(false)}
               to="/services"
             >
               {t("services")}
@@ -467,6 +476,7 @@ const Navbar = () => {
                 minWidth: "50px",
               }}
               to="/about"
+              onClick={() => setOpenDropdown(false)}
             >
               {t("about")}
             </NavLink>
@@ -537,7 +547,7 @@ const Navbar = () => {
           </Backdrop>
         </Stack>
         <Stack
-          width={{ lg: "40%", md: "30%", sm: "100%", xs: "10000px" }}
+          width={{ lg: "50%", md: "30%", sm: "100%", xs: "1000px" }}
           direction="row"
           spacing={2}
         >
