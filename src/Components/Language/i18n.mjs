@@ -52,7 +52,9 @@ export const resources = {
       modernStyle: "Kitchen in Modern Style",
       modernStyleDesc:
         "Modern style is one of the most interesting and controversial trends in interior design. It symbolizes novelty and an expression of freedom, a desire for simplicity and functionality. Laconic modernism is universal, equally harmonious in small apartments and country houses, in living rooms and kitchens, and is in demand in different countries. A kitchen in this style is a combination of aesthetics and functionality, comfort, and practicality.",
-      footerDest: "Stage 15, Rysgally building, Ashgabat, Turkmenistan",
+      footerDest: "Stage 15, Rysgally building, Ashgabat, Turkmenistan ",
+      footerDest2:
+        "Shopping mall Arkach 1th floor - shop MIELE, Ashgabat, Turkmenistan ",
       aboutImgDesc1: "Main showroom",
       aboutImgDesc2: "Best Price",
       aboutImgDesc3: "High quality",
@@ -111,7 +113,7 @@ export const resources = {
       mieleDesc:
         "Вот уже более 120 лет качество техники Miele не вызывает сомнений. Мы тестируем свою продукцию на долгий срок службы. Именно поэтому потребители Miele остаются преданными своему выбору и рекомендуют нашу продукцию другим. Для нас не существует никаких компромиссов, если речь идёт о качестве и долговечности!",
       moreBtn: "Узнать подробнeе",
-      furniture: "Мягкие мебели",
+      furniture: "Мягкая мебель ",
       mieleModalDesc:
         "Вот уже более 120 лет качество техники Miele не вызывает сомнений. Мы тестируем свою продукцию на долгий срок службы. Именно поэтому потребители Miele остаются преданными своему выбору и рекомендуют нашу продукцию другим. Для нас не существует никаких компромиссов, если речь идёт о качестве и долговечности!<1/> Бытовая техника Miele обеспечивает превосходные результаты при минимальном потреблении электроэнергии. Передовые технологии с инновационными характеристиками, которые предлагает исключительно Miele, гарантируют безупречный и бережный уход за бельём, домом и посудой, а также удовольствие от приготовления изысканных кулинарных шедевров. Это подтверждается победами в многочисленных тестах продукции, проводимых по всему миру.<1/> Во многих странах Miele является наиболее привлекательным брендом в своей отрасли. На внутреннем рынке Германии Miele была признана «Лучшим брендом» среди других немецких компаний. Такое признание говорит о многом: покупатели продукции Miele уделяют особое внимание качеству и очень требовательны к дизайну, удобству и экологичности бытовой техники. Покупая технику Miele, вы можете быть уверены в правильности своего выбора!",
       furnitureDesc:
@@ -142,7 +144,9 @@ export const resources = {
       modernStyle: "Кухня в стиле модерн",
       modernStyleDesc:
         "Стиль модерн — одно из самых интересных и неоднозначных направлений в дизайне интерьера. Это символ новизны и выражения свободы, стремление к простоте и функциональности. Лаконичный модерн универсален, он одинаково гармоничен в малогабаритных квартирах и загородных домах, в гостиных и кухнях и востребован в разных странах. Кухня в этом стиле — это сочетание эстетики и функциональности, комфорта и практичности.",
-      footerDest: "15 этап, здание Рысгаллы, г. Aшгабад, Туркменистан",
+      footerDest: "15 этап, здание Рысгаллы, г. Aшгабад, Туркменистан ",
+      footerDest2:
+        "Торговый центр Аркач, 1 этаж - магазин MIELE,г. Aшгабад, Туркменистан",
       aboutImgDesc1: "Главный шоурум",
       aboutImgDesc2: "Лучшая цена",
       aboutImgDesc3: "Высокое качество",

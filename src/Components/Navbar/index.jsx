@@ -4,10 +4,7 @@ import {
   Box,
   Button,
   Drawer,
-  Grow,
   IconButton,
-  InputLabel,
-  MenuItem,
   Stack,
   TextField,
   Typography,
@@ -22,7 +19,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Language from "../Language/Language";
 import { useTranslation } from "react-i18next";
 import { animateScroll as scroll } from "react-scroll";
-import { RuLangResources, resources } from "../Language/Text.mjs";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ScrollIntoView from "react-scroll-into-view";
@@ -33,11 +29,8 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [hoverOpen, setHoverOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(false);
-  const open = Boolean(anchorEl);
   const [openDropdown, setOpenDropdown] = useState(false);
   const [openDropdown2, setOpenDropdown2] = useState(false);
-  const [openDropdownServices, setOpenDropdownServices] = useState(false);
   const [openDropdownServices2, setOpenDropdownServices2] = useState(false);
   AOS.init({
     duration: 1500,
@@ -52,7 +45,7 @@ const Navbar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -66,13 +59,7 @@ const Navbar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
   const scrollToBottom = () => {
     scroll.scrollToBottom();
     setMobileMenuOpen(false);
@@ -171,11 +158,6 @@ const Navbar = () => {
     },
   ];
 
-  const handleDropdown = () => {
-    setOpenDropdownServices(!openDropdownServices);
-    setOpenDropdown(false);
-    setHoverOpen(false);
-  };
   const handleDropdownPartners = () => {
     setOpenDropdown(!openDropdown);
     setHoverOpen(false);
@@ -183,11 +165,6 @@ const Navbar = () => {
   const handleDropdownPartnersMobile = () => {
     setOpenDropdown2(!openDropdown);
     setOpenDropdownServices2(false);
-    setMobileMenuOpen(false);
-  };
-  const handleDropdownServicesMobile = () => {
-    setOpenDropdownServices2(!openDropdownServices2);
-    setOpenDropdown2(false);
     setMobileMenuOpen(false);
   };
 
@@ -336,22 +313,6 @@ const Navbar = () => {
                       width: "auto",
                       minWidth: "100px",
                     }}
-                    to="/about"
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                      setOpenDropdown2(false);
-                      setOpenDropdownServices2(false);
-                    }}
-                  >
-                    {t("about")}
-                  </NavLink>
-
-                  <NavLink
-                    className="nav-linksDrawer"
-                    style={{
-                      width: "auto",
-                      minWidth: "100px",
-                    }}
                     to="/services"
                     onClick={() => {
                       setMobileMenuOpen(false);
@@ -361,7 +322,21 @@ const Navbar = () => {
                   >
                     {t("services")}
                   </NavLink>
-
+                  <NavLink
+                    className="nav-linksDrawer"
+                    style={{
+                      width: "auto",
+                      minWidth: "100px",
+                    }}
+                    to="/about"
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      setOpenDropdown2(false);
+                      setOpenDropdownServices2(false);
+                    }}
+                  >
+                    {t("about")}
+                  </NavLink>
                   <ScrollIntoView smooth={true} selector="#contacts">
                     <Button
                       sx={{
@@ -481,9 +456,9 @@ const Navbar = () => {
                 width: "auto",
                 minWidth: "50px",
               }}
-              to="/about"
+              to="/services"
             >
-              {t("about")}
+              {t("services")}
             </NavLink>
             <NavLink
               className="nav-links"
@@ -491,9 +466,9 @@ const Navbar = () => {
                 width: "auto",
                 minWidth: "50px",
               }}
-              to="/services"
+              to="/about"
             >
-              {t("services")}
+              {t("about")}
             </NavLink>
             <Button
               sx={{
@@ -621,23 +596,6 @@ const Navbar = () => {
                 toast.warn(t("redirect"))
               );
             }}
-            // options={
-            //   i18n.language == "en"
-            //     ? resources.map((elem) => elem.text)
-            //     : RuLangResources.map((elem) => elem.text)
-            // }
-            // onChange={(event, value) => {
-            //   if (value === "Home" || value === "Главная") {
-            //     navigate("/");
-            //   } else if (value === "About" || value === "О нас") {
-            //     navigate("/about");
-            //   } else if (value === "Services" || value === "Услуги") {
-            //     navigate("/services");
-            //   } else {
-            //     let element = document.getElementById(value.toString());
-            //     element.scrollIntoView();
-            //   }
-            // }}
             sx={{
               "& .MuiOutlinedInput-root": {
                 padding: "0 15px !important",

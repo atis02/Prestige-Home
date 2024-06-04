@@ -19,9 +19,9 @@ const Footer = () => {
   const [openDropdownServices, setOpenDropdownServices] = useState(false);
   const [openDropdownServices2, setOpenDropdownServices2] = useState(false);
   const { t } = useTranslation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
   const handleDropdown = () => {
     setOpenDropdownServices(!openDropdownServices);
     setOpenDropdown(false);
@@ -129,11 +129,11 @@ const Footer = () => {
         mt="10px"
         mb="10px"
         direction="row"
-        alignItems={{ lg: "center", md: "center", sm: "start", xs: "start" }}
+        alignItems="start"
         justifyContent="space-between"
         flexWrap="wrap"
       >
-        <Stack maxWidth={320} spacing={1} mb={3}>
+        <Stack maxWidth={320} spacing={0.5}>
           <Stack direction="row" spacing={1}>
             <Typography
               fontFamily="Montserrat"
@@ -160,9 +160,17 @@ const Footer = () => {
               fontSize={16}
               lineHeight="24px"
               fontWeight={400}
-              mb={2}
             >
               {t("footerDest")}
+            </Typography>
+            <Typography
+              fontFamily="Montserrat"
+              fontSize={16}
+              lineHeight="24px"
+              fontWeight={400}
+              mb={2}
+            >
+              {t("footerDest2")}
             </Typography>
           </Stack>
           <Stack width={20} height={20} direction="row" spacing={3}>
@@ -189,7 +197,7 @@ const Footer = () => {
             </a>
           </Stack>
         </Stack>
-        <Stack height={144} spacing={1} justifyContent="space-between">
+        <Stack height={144} spacing={1} mt={2} justifyContent="space-between">
           <Stack>
             <Typography
               color="#8B181B"
@@ -204,6 +212,9 @@ const Footer = () => {
             </Typography>
             <Typography fontWeight={300} fontSize={18} fontFamily="Montserrat">
               miele_turkmenistan
+            </Typography>
+            <Typography fontWeight={300} fontSize={18} fontFamily="Montserrat">
+              haecker_kuchen_tm
             </Typography>
           </Stack>
           <Stack>
@@ -242,9 +253,10 @@ const Footer = () => {
           </Stack>
         </Stack>
         <Stack
-          spacing="6px"
+          spacing="16px"
           pr={{ lg: 0, md: 0, sm: 0, xs: 3 }}
           mb={{ lg: 0, md: 0, sm: 3, xs: 3 }}
+          mt={2}
         >
           <Link
             to="/"
