@@ -206,7 +206,7 @@ const Navbar = () => {
             ) : (
               <img
                 style={{ width: "100%", height: "100%" }}
-                src="/images/main/logo 1 (1).png"
+                src="/images/main/logo 2.png"
                 alt=""
               />
             )}
