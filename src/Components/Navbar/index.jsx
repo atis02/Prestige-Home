@@ -205,7 +205,7 @@ const Navbar = () => {
               />
             ) : (
               <img
-                style={{ width: "100%", height: "100%", borderRadius: "7px" }}
+                style={{ width: "100%", height: "100%" }}
                 src="/images/main/logo 1 (1).png"
                 alt=""
               />
@@ -369,13 +369,11 @@ const Navbar = () => {
           <Stack
             sx={{
               display: { lg: "flex", md: "flex", sm: "none", xs: "none" },
-              // width: { lg: "450px", md: "350px" },
             }}
             direction="row"
             justifyContent="center"
             alignItems="center"
             spacing={{ lg: 2, md: 1.5, sm: 3, xs: 3 }}
-            mt={2.2}
           >
             <NavLink
               className="nav-links"
