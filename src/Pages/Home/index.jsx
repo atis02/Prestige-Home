@@ -405,7 +405,7 @@ const Home = () => {
                   <Stack
                     sx={{
                       position: "sticky",
-                      zIndex: 1000,
+                      zIndex: 10000,
                       top: 0,
                       right: 0,
                       alignItems: "end",

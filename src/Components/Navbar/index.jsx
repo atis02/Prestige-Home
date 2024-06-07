@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Img } from "react-image";
-import { NavLink, Link, useNavigate } from "react-router-dom";
+import { NavLink, Link, useNavigate, useLocation } from "react-router-dom";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import MenuIcon from "@mui/icons-material/Menu";
 import Language from "../Language/Language";
@@ -24,16 +24,18 @@ import "aos/dist/aos.css";
 import ScrollIntoView from "react-scroll-into-view";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import { AnimationWrapper } from "react-hover-animation";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [scrolling, setScrolling] = useState(false);
   const [hoverOpen, setHoverOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
   const [openDropdown2, setOpenDropdown2] = useState(false);
   const [openDropdownServices2, setOpenDropdownServices2] = useState(false);
   AOS.init({
-    duration: 1500,
+    duration: 600,
     offset: 0,
   });
   const navigate = useNavigate();
@@ -54,18 +56,29 @@ const Navbar = () => {
         setScrolled(false);
       }
     };
+    const handleBottomScroll = () => {
+      location.pathname === "/" && window.scrollY > 4300
+        ? setScrolling(true)
+        : location.pathname === "/services" && window.scrollY > 800
+        ? setScrolling(true)
+        : location.pathname === "/about" && window.scrollY > 400
+        ? setScrolling(true)
+        : setScrolling(false);
+    };
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleBottomScroll);
     return () => {
+      window.removeEventListener("scroll", handleBottomScroll);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  const location = useLocation();
 
   const scrollToBottom = () => {
     scroll.scrollToBottom();
     setMobileMenuOpen(false);
     setOpenDropdown(false);
   };
-
   const partnerImages = [
     {
       title: "Miele",
@@ -150,10 +163,10 @@ const Navbar = () => {
       src: "/images/partners/image 32.png",
     },
   ];
-
   const handleDropdownPartners = () => {
     setOpenDropdown(!openDropdown);
     setHoverOpen(false);
+    setScrolling(false);
   };
   const handleDropdownPartnersMobile = () => {
     setOpenDropdown2(!openDropdown);
@@ -161,10 +174,27 @@ const Navbar = () => {
     setMobileMenuOpen(false);
   };
 
+  const navStyle = ({ isActive }) => {
+    return {
+      textDecoration: "none",
+      color: "#3A3A3A",
+      fontFamily: "Montserrat",
+      fontSize: 18,
+      fontWeight: 500,
+      lineHeight: "27px",
+      ...(openDropdown === false && scrolling === false
+        ? {
+            fontWeight: isActive ? 600 : 500,
+            color: isActive ? "#8B181B" : "#3A3A3A",
+            borderBottom: isActive ? " 2px solid #8B181B" : "",
+          }
+        : ""),
+    };
+  };
   return (
     <Box
       position="sticky"
-      zIndex={10000}
+      zIndex={1000}
       backgroundColor="#fff"
       height={{ lg: 80, md: 80, sm: 80, xs: 60 }}
       top={0}
@@ -272,10 +302,12 @@ const Navbar = () => {
                   spacing={2}
                 >
                   <NavLink
-                    className="nav-linksDrawer"
+                    className="nav-links"
+                    style={navStyle}
                     to="/"
                     onClick={() => {
                       setMobileMenuOpen(false);
+                      window.scrollTo(0, 0);
                       setOpenDropdown2(false);
                       setOpenDropdownServices2(false);
                     }}
@@ -291,7 +323,7 @@ const Navbar = () => {
                       textTransform: "capitalize",
                       ...(openDropdown2
                         ? {
-                            borderBottom: "1px solid #8B181B",
+                            borderBottom: "2px solid #8B181B",
                             color: "#8B181B",
                             fontWeight: 600,
                           }
@@ -312,14 +344,12 @@ const Navbar = () => {
                   </Button>
 
                   <NavLink
-                    className="nav-linksDrawer"
-                    style={{
-                      width: "auto",
-                      minWidth: "100px",
-                    }}
+                    className="nav-links"
+                    style={navStyle}
                     to="/services"
                     onClick={() => {
                       setMobileMenuOpen(false);
+                      window.scrollTo(0, 0);
                       setOpenDropdown2(false);
                       setOpenDropdownServices2(false);
                     }}
@@ -327,14 +357,12 @@ const Navbar = () => {
                     {t("services")}
                   </NavLink>
                   <NavLink
-                    className="nav-linksDrawer"
-                    style={{
-                      width: "auto",
-                      minWidth: "100px",
-                    }}
+                    className="nav-links"
+                    style={navStyle}
                     to="/about"
                     onClick={() => {
                       setMobileMenuOpen(false);
+                      window.scrollTo(0, 0);
                       setOpenDropdown2(false);
                       setOpenDropdownServices2(false);
                     }}
@@ -352,6 +380,13 @@ const Navbar = () => {
                         textTransform: "capitalize",
                         p: 0,
                         borderRadius: 0,
+                        ...(scrolling
+                          ? {
+                              fontWeight: 600,
+                              color: "#8B181B",
+                              borderBottom: " 2px solid #8B181B",
+                            }
+                          : ""),
                       }}
                       onClick={() => {
                         setMobileMenuOpen(false);
@@ -377,23 +412,27 @@ const Navbar = () => {
           >
             <NavLink
               className="nav-links"
-              onClick={() => setOpenDropdown(false)}
+              onClick={() => {
+                setOpenDropdown(false);
+                window.scrollTo(0, 0);
+              }}
               to="/"
+              style={navStyle}
             >
-              {t("home")}
+              <AnimationWrapper>{t("home")}</AnimationWrapper>
             </NavLink>
 
             <Button
               sx={{
                 mb: "10px",
-                height: 40,
+                height: 30,
                 color: "#3A3A3A",
                 fontSize: 18,
                 fontFamily: "Montserrat",
                 textTransform: "capitalize",
                 ...(openDropdown || hoverOpen
                   ? {
-                      borderBottom: "1px solid #8B181B",
+                      borderBottom: "2px solid #8B181B",
                       color: "#8B181B",
                       fontWeight: 600,
                     }
@@ -406,81 +445,124 @@ const Navbar = () => {
               onMouseEnter={() => setHoverOpen(true)}
               onMouseLeave={() => setHoverOpen(false)}
             >
-              {t("partners")}
-              <Backdrop
+              <AnimationWrapper>{t("partners")}</AnimationWrapper>
+            </Button>
+            {openDropdown || hoverOpen ? (
+              <Stack
                 sx={{
                   backgroundColor: "transparent",
                   color: "#000",
-                  width: "100%",
-                  height: "28%",
+                  width: "106.9%",
+                  height: "250px",
                   alignItems: "start",
-                  top: { lg: "70px", md: "70px", sm: "70px", xs: "58px" },
+                  top: { lg: "60px", md: "70px", sm: "70px", xs: "58px" },
+                  cursor: "auto",
+                  position: "absolute",
                 }}
                 className="partners"
-                open={openDropdown || hoverOpen}
-                onClick={() => {
-                  setHoverOpen(false);
-                  setOpenDropdown(false);
-                }}
+                data-aos="fade"
+                data-aos-once="true"
+                data-aos-delay="100"
+                onMouseEnter={() => setHoverOpen(true)}
+                onMouseLeave={() => setHoverOpen(false)}
               >
                 <Stack
                   width="100%"
                   backgroundColor="#fff"
-                  direction="row"
-                  flexWrap="wrap"
                   boxShadow="0px 5px 10px 0px rgba(0,0,0,0.25)"
-                  height={{ lg: 260, md: 260, sm: 260, xs: 400 }}
-                  justifyContent={{
-                    lg: "center",
-                    md: "start",
-                    sm: "start",
-                    xs: "center",
-                  }}
-                  sx={{ gap: "0 42px" }}
-                  alignItems="center"
+                  height={{ lg: 460, md: 260, sm: 260, xs: 400 }}
                   p={{
-                    lg: "5px 80px",
+                    lg: "5px 20px 0 140px",
                     md: "10px 60px",
                     sm: "10px 30px",
                     xs: "5px 10px",
                   }}
                 >
-                  {partnerImages.map((item, index) => (
-                    <Link key={index} target="_blank" to={item.link}>
-                      <Stack mr={4} width="120px" maxHeight={60}>
-                        <img src={item.src} alt="" />
-                      </Stack>
-                    </Link>
-                  ))}
+                  <Stack
+                    sx={{
+                      position: "absolute",
+                      zIndex: 10000,
+                      top: 10,
+                      right: 30,
+                    }}
+                  >
+                    <AnimationWrapper>
+                      <IconButton
+                        sx={{
+                          width: 30,
+                          height: 30,
+                        }}
+                        onClick={() => {
+                          setHoverOpen(false);
+                          setOpenDropdown(false);
+                        }}
+                      >
+                        <img
+                          src="/images/main/Vector-3.png"
+                          style={{
+                            width: 24,
+                            height: 24,
+                          }}
+                          alt=""
+                        />
+                      </IconButton>
+                    </AnimationWrapper>
+                  </Stack>
+                  <Stack
+                    width="100%"
+                    height="100%"
+                    direction="row"
+                    flexWrap="wrap"
+                    justifyContent={{
+                      lg: "center",
+                      md: "start",
+                      sm: "start",
+                      xs: "center",
+                    }}
+                    sx={{ gap: "0 42px" }}
+                    alignItems="center"
+                    mt={3}
+                  >
+                    {partnerImages.map((item, index) => (
+                      <AnimationWrapper>
+                        <Link key={index} target="_blank" to={item.link}>
+                          <Stack mr={4} width="120px" maxHeight={60}>
+                            <img src={item.src} alt="" />
+                          </Stack>
+                        </Link>
+                      </AnimationWrapper>
+                    ))}
+                  </Stack>
                 </Stack>
-              </Backdrop>
-            </Button>
-
+              </Stack>
+            ) : (
+              ""
+            )}
             <NavLink
               className="nav-links"
-              style={{
-                width: "auto",
-                minWidth: "50px",
+              style={navStyle}
+              onClick={() => {
+                window.scrollTo(0, 0);
+                setOpenDropdown(false);
               }}
-              onClick={() => setOpenDropdown(false)}
               to="/services"
             >
-              {t("services")}
+              <AnimationWrapper>{t("services")}</AnimationWrapper>
             </NavLink>
             <NavLink
               className="nav-links"
-              style={{
-                width: "auto",
-                minWidth: "50px",
-              }}
+              style={navStyle}
               to="/about"
-              onClick={() => setOpenDropdown(false)}
+              onClick={() => {
+                window.scrollTo(0, 0);
+                setOpenDropdown(false);
+              }}
             >
-              {t("about")}
+              <AnimationWrapper>{t("about")}</AnimationWrapper>
             </NavLink>
             <Button
               sx={{
-                height: 34,
+                height: 28,
                 mb: "10px",
                 color: "#3A3A3A",
                 fontSize: 18,
@@ -488,10 +570,17 @@ const Navbar = () => {
                 textTransform: "capitalize",
                 p: "6px",
                 borderRadius: 0,
+                ...(scrolling
+                  ? {
+                      fontWeight: 600,
+                      color: "#8B181B",
+                      borderBottom: " 2px solid #8B181B",
+                    }
+                  : ""),
               }}
               onClick={scrollToBottom}
             >
-              {t("contacts")}
+              <AnimationWrapper>{t("contacts")}</AnimationWrapper>
             </Button>
           </Stack>
           <Backdrop
@@ -566,7 +655,7 @@ const Navbar = () => {
                 textAlign: "center",
               }}
             >
-              +993 65687740
+              <AnimationWrapper> +993 65687740</AnimationWrapper>
             </Link>
             <Stack direction="row" alignItems="center" spacing={1}>
               <img
@@ -574,19 +663,21 @@ const Navbar = () => {
                 style={{ width: 18, height: 18 }}
                 alt=""
               />
-              <Typography
-                fontFamily="Montserrat"
-                fontSize={15}
-                fontWeight={400}
-              >
-                <a
-                  href="https://www.instagram.com/prestigehome_tm?igsh=NmxodjM3eXg5a3Bo"
-                  target="_blank"
-                  style={{ textDecoration: "none", color: "#8B181B" }}
+              <AnimationWrapper>
+                <Typography
+                  fontFamily="Montserrat"
+                  fontSize={15}
+                  fontWeight={400}
                 >
-                  prestigehome_tm
-                </a>
-              </Typography>
+                  <a
+                    href="https://www.instagram.com/prestigehome_tm?igsh=NmxodjM3eXg5a3Bo"
+                    target="_blank"
+                    style={{ textDecoration: "none", color: "#8B181B" }}
+                  >
+                    prestigehome_tm
+                  </a>
+                </Typography>
+              </AnimationWrapper>
             </Stack>
           </Stack>
           <Autocomplete
