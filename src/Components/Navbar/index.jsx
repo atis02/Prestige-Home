@@ -56,19 +56,20 @@ const Navbar = () => {
         setScrolled(false);
       }
     };
-    const handleBottomScroll = () => {
-      location.pathname === "/" && window.scrollY > 4300
-        ? setScrolling(true)
-        : location.pathname === "/services" && window.scrollY > 800
-        ? setScrolling(true)
-        : location.pathname === "/about" && window.scrollY > 400
-        ? setScrolling(true)
-        : setScrolling(false);
+    const handleScrollBottom = () => {
+      const bottom =
+        Math.ceil(window.innerHeight + window.scrollY) >=
+        document.documentElement.scrollHeight;
+      if (bottom) {
+        setScrolling(true);
+      } else {
+        setScrolling(false);
+      }
     };
     window.addEventListener("scroll", handleScroll);
-    window.addEventListener("scroll", handleBottomScroll);
+    window.addEventListener("scroll", handleScrollBottom);
     return () => {
-      window.removeEventListener("scroll", handleBottomScroll);
+      window.removeEventListener("scroll", handleScrollBottom);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
@@ -746,7 +747,6 @@ const Navbar = () => {
             )}
           />
         </Stack>
-
         <Stack
           direction="row"
           spacing={1}
