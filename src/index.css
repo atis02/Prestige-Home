@@ -10,6 +10,10 @@
   font-family: Montserrat;
   src: url(/Montserrat-VariableFont_wght.ttf);
 }
+::selection{
+  background-color: #8B181B;
+  color: #fff;
+}
 ::-webkit-scrollbar-thumb {
   background:#8B181B;
 }
